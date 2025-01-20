@@ -21,8 +21,45 @@ void conv_gold_tiled(
   
   // Your accelerator will use the same tiling, and in the next homework you
   // will use this function to verify the output of your accelerator.
+
  
   // Your code starts here
+
+
+  //initialize ofmap to 0
+  for (int oy = 0; oy < OY1*OY0; oy++) {
+    for (int ox = 0; ox < OX1*OX0; ox++) {
+      for (int oc = 0; oc < OC1*OC0; oc++) {
+        ofmap[oy][ox][oc] = 0;
+      }
+    }
+  }
+
+  for (int oy1 = 0; oy1 < OY1; oy1++){ 
+    for (int ox1 = 0; ox1 < OX1; ox1++){
+      for (int oc1 = 0; oc1 < OC1; oc1++){
+        for (int ic1 = 0; ic1 < IC1; ic1++){
+          for (int fy = 0; fy < FY; fy++){
+            for (int fx = 0; fx < FX; fx++){
+              for (int oy0 = 0; oy0 < OY0; oy0++){
+                for (int ox0 = 0; ox0 < OX0; ox0++){
+                  for (int oc0 = 0; oc0 < OC0; oc0++){
+                    int oy = oy1*OY0 + oy0;
+                    int ox = ox1*OX0 + ox0;
+                    int oc = oc1*OC0 + oc0;
+                    for (int ic0 = 0; ic0 < IC0; ic0++){
+                      int ic = ic1*IC0 + ic0;
+                      ofmap[oy][ox][oc] += ifmap[oy*STRIDE + fy][ox*STRIDE + fx][ic] * weights[fy][fx][ic][oc];
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
   // Your code ends here
 }
