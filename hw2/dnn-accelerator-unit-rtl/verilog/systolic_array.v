@@ -101,6 +101,122 @@ module systolic_array
   // state.
 
   // Your code starts here
-
+  genvar w, h;
+  wire signed [IFMAP_WIDTH - 1 : 0] inputs_fromleft [ARRAY_WIDTH : 0][ARRAY_HEIGHT - 1 : 0];
+  wire signed [OFMAP_WIDTH - 1 : 0] partial_sums_prog_down [ARRAY_WIDTH - 1 : 0][ARRAY_HEIGHT - 1 : 0];
+  generate 
+    for (w = 0; w < ARRAY_WIDTH; w++) begin: mac_col
+      for (h = 0; h < ARRAY_HEIGHT; h++) begin: mac_row
+        if (w == 0 && h == 0) begin
+          mac
+          #(
+            .IFMAP_WIDTH(IFMAP_WIDTH),
+            .WEIGHT_WIDTH(WEIGHT_WIDTH),
+            .OFMAP_WIDTH(OFMAP_WIDTH)
+          ) mac_inst_topleft (
+            .clk(clk),
+            .rst_n(rst_n),
+            .en(en),
+            .weight_wen(weight_wen_w[w][h]),
+            .ifmap_in(ifmap_in[h]),
+            .weight_in(weight_in_skewed[w]),
+            .ofmap_in(ofmap_in[w]),
+            .ifmap_out(inputs_fromleft[w+1][h]),
+            .ofmap_out(partial_sums_prog_down[w][h+1])
+          );
+        end else if (h == 0) begin
+          mac
+          #(
+            .IFMAP_WIDTH(IFMAP_WIDTH),
+            .WEIGHT_WIDTH(WEIGHT_WIDTH),
+            .OFMAP_WIDTH(OFMAP_WIDTH)
+          ) mac_inst_toprow (
+            .clk(clk),
+            .rst_n(rst_n),
+            .en(en),
+            .weight_wen(weight_wen_w[w][h]),
+            .ifmap_in(inputs_fromleft[w][h]),
+            .weight_in(weight_in_skewed[w]),
+            .ofmap_in(ofmap_in[w]),
+            .ifmap_out(inputs_fromleft[w+1][h]),
+            .ofmap_out(partial_sums_prog_down[w][h+1])
+          );
+        end else if (w == 0) begin
+          if (h == ARRAY_HEIGHT-1) begin
+            mac
+            #(
+              .IFMAP_WIDTH(IFMAP_WIDTH),
+              .WEIGHT_WIDTH(WEIGHT_WIDTH),
+              .OFMAP_WIDTH(OFMAP_WIDTH)
+            ) mac_inst_bottomrow (
+              .clk(clk),
+              .rst_n(rst_n),
+              .en(en),
+              .weight_wen(weight_wen_w[w][h]),
+              .ifmap_in(ifmap_in[h]),
+              .weight_in(weight_in_skewed[w]),
+              .ofmap_in(partial_sums_prog_down[w][h]),
+              .ifmap_out(inputs_fromleft[w+1][h]),
+              .ofmap_out(ofmap_out[w])
+            );
+          end
+          else begin
+            mac
+            #(
+              .IFMAP_WIDTH(IFMAP_WIDTH),
+              .WEIGHT_WIDTH(WEIGHT_WIDTH),
+              .OFMAP_WIDTH(OFMAP_WIDTH)
+            ) mac_inst_leftcol (
+              .clk(clk),
+              .rst_n(rst_n),
+              .en(en),
+              .weight_wen(weight_wen_w[w][h]),
+              .ifmap_in(ifmap_in[h]),
+              .weight_in(weight_in_skewed[w]),
+              .ofmap_in(partial_sums_prog_down[w][h]),
+              .ifmap_out(inputs_fromleft[w+1][h]),
+              .ofmap_out(partial_sums_prog_down[w][h+1])
+            );
+          end
+        end else if (h == ARRAY_HEIGHT-1) begin
+          mac
+          #(
+            .IFMAP_WIDTH(IFMAP_WIDTH),
+            .WEIGHT_WIDTH(WEIGHT_WIDTH),
+            .OFMAP_WIDTH(OFMAP_WIDTH)
+          ) mac_inst_bottomrow (
+            .clk(clk),
+            .rst_n(rst_n),
+            .en(en),
+            .weight_wen(weight_wen_w[w][h]),
+            .ifmap_in(inputs_fromleft[w][h]),
+            .weight_in(weight_in_skewed[w]),
+            .ofmap_in(partial_sums_prog_down[w][h]),
+            .ifmap_out(inputs_fromleft[w+1][h]),
+            .ofmap_out(ofmap_out[w])
+          );
+        end
+        else begin
+          mac
+          #(
+            .IFMAP_WIDTH(IFMAP_WIDTH),
+            .WEIGHT_WIDTH(WEIGHT_WIDTH),
+            .OFMAP_WIDTH(OFMAP_WIDTH)
+          ) mac_inst_everythingelse (
+            .clk(clk),
+            .rst_n(rst_n),
+            .en(en),
+            .weight_wen(weight_wen_w[w][h]),
+            .ifmap_in(inputs_fromleft[w][h]),
+            .weight_in(weight_in_skewed[w]),
+            .ofmap_in(partial_sums_prog_down[w][h]),
+            .ifmap_out(inputs_fromleft[w+1][h]),
+            .ofmap_out(partial_sums_prog_down[w][h+1])
+          );
+        end
+      end
+    end
+  endgenerate
+  
   // Your code ends here
 endmodule

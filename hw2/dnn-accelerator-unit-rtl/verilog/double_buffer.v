@@ -29,5 +29,64 @@ module double_buffer
 
   // Your code starts here
 
+  reg bank_write; // 1 bit register to keep track of which bank is currently being written to
+  wire [BANK_ADDR_WIDTH - 1 : 0] sram_wadr;
+  wire [BANK_ADDR_WIDTH - 1 : 0] sram_radr;
+
+  always @(posedge clk) begin
+    if (!rst_n) begin
+      // reset logic
+      bank_write <= 0;
+    end else begin
+      if (switch_banks) begin
+        // switch logic
+        //if bank_write is 0, means we are writing from addr 0 to BANK_DEPTH/2-1
+        //if bank_write is 1, means we are writing from addr BANK_DEPTH/2 to BANK_DEPTH-1
+        bank_write <= ~bank_write;
+      end
+    end
+  end
+
+  always_comb begin
+    if (wen) begin
+      // write logic
+      if (bank_write) begin
+        // write to the bank 1, so need to offset the address
+        sram_wadr = wadr + (BANK_DEPTH / 2);
+      end
+      else begin
+        // write to the bank 0, so no offset needed
+        sram_wadr = wadr;
+      end
+    end
+    if (ren) begin
+      // read logic
+      if (!bank_write) begin //if bank_write is 0, means we are reading from bank 1, which is addr BANK_DEPTH/2 to BANK_DEPTH-1
+        // read from bank 1, so need to offset the address
+        sram_radr = radr + (BANK_DEPTH / 2);
+      end
+      else begin
+        // read from bank 0, so no offset needed
+        sram_radr = radr;
+      end
+    end
+  end
+    
+ 
+  //instantiate the dual-port SRAM here
+  ram_sync_1r1w #(
+    .DATA_WIDTH(DATA_WIDTH),
+    .ADDR_WIDTH(BANK_ADDR_WIDTH),
+    .DEPTH(BANK_DEPTH)
+  ) ram_inst (
+    .clk(clk),
+    .wen(wen),
+    .wadr(sram_wadr),
+    .wdata(wdata),
+    .ren(ren),
+    .radr(sram_radr),
+    .rdata(rdata)
+  );
+
   // Your code ends here
 endmodule

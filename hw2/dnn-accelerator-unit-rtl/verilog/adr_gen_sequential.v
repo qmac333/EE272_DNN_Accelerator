@@ -11,6 +11,7 @@ module adr_gen_sequential
 );
 
   reg [BANK_ADDR_WIDTH - 1 : 0] config_block_max;
+  reg [BANK_ADDR_WIDTH - 1 : 0] adr_reg;
 
   // This is a common sequential address generator, reused with input write,
   // weight write, weight read, output write, output read and output read for
@@ -28,6 +29,23 @@ module adr_gen_sequential
   // convolution).
 
   // Your code starts here
-
+  always @(posedge clk) begin
+    if (!rst_n) begin
+      config_block_max <= 0;
+      adr_reg <= 0;
+    end else begin
+      if (config_en) begin
+        config_block_max <= config_data;
+      end
+      if (adr_en) begin
+        if (adr_reg == config_block_max) begin
+          adr_reg <= 0;
+        end else begin
+          adr_reg <= adr_reg + 1;
+        end
+      end
+    end
+  end
+  assign adr = adr_reg;
   // Your code ends here
 endmodule

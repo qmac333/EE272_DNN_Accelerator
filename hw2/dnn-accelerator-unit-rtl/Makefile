@@ -37,3 +37,9 @@ clean:
 	rm -rf ucli.key
 	rm -rf vc_hdrs.h
 	rm -rf DVEfiles
+
+mac:
+	vcs -full64 -sverilog -timescale=1ns/1ps -debug_access+pp tests/mac_tb.v verilog/mac.v
+
+sys_skew:
+	vcs -full64 -sverilog -timescale=1ns/1ps -debug_access+pp tests/systolic_array_with_skew_tb.v verilog/systolic_array_with_skew.v verilog/skew_registers.v verilog/systolic_array.v verilog/mac.v

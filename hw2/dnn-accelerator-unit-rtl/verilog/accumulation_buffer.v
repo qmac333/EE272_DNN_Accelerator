@@ -45,6 +45,137 @@ module accumulation_buffer
   // array and vice versa.
 
   // Your code starts here
+  reg bank_read_write; // 1 bit register to keep track of which bank is doing both read and write, 1 meaning yea
+  wire [BANK_ADDR_WIDTH - 1 : 0] sram_wadr0;
+  wire [BANK_ADDR_WIDTH - 1 : 0] sram_radr0;
+  wire [BANK_ADDR_WIDTH - 1 : 0] sram_wadr1;
+  wire [BANK_ADDR_WIDTH - 1 : 0] sram_radr1;
+  wire [DATA_WIDTH - 1 : 0] wdata0;
+  wire [DATA_WIDTH - 1 : 0] wdata1;
+  wire ren0;
+  wire ren1;
+  wire wen0;
+  wire wen1;
+  wire [DATA_WIDTH - 1 : 0] rdata0;
+  wire [DATA_WIDTH - 1 : 0] rdata1;
 
+  always @(posedge clk) begin
+    if (!rst_n) begin
+      // reset logic
+      bank_read_write <= 0;
+    end else begin
+      if (switch_banks) begin
+        // switch logic
+        //if bank_read_write is 0, means we are reading/writing from bank 0: addr 0 to BANK_DEPTH/2-1
+        //if bank_read_write is 1, means we are reading/writing from bank 1: addr BANK_DEPTH/2 to BANK_DEPTH-1
+        bank_read_write <= ~bank_read_write;
+      end
+    end
+  end
+
+  always_comb begin
+    if (bank_read_write) begin
+      // bank 1 is doing both read and write, bank 0 is just reading
+      if (wen) begin
+        wen1 = wen;
+        wen0 = !wen;
+        sram_wadr1 = wadr;
+      end
+      if (ren) begin
+        ren1 = ren;
+        sram_radr1 = radr;
+        rdata = rdata1;
+      end
+      if (ren_wb) begin
+        ren0 = ren_wb;
+        sram_radr0 = radr_wb;
+        rdata_wb = rdata0;
+      end
+    end else begin
+      // bank 0 is doing both read and write, bank 1 is just reading
+      if (wen) begin
+        wen0 = wen;
+        wen1 = !wen;
+        sram_wadr0 = wadr;
+      end
+      if (ren) begin
+        ren0 = ren;
+        sram_radr0 = radr;
+        rdata = rdata0;
+      end
+      if (ren_wb) begin
+        ren1 = ren_wb;
+        sram_radr1 = radr_wb;
+        rdata_wb = rdata1;
+      end
+    end
+  end
+
+  // always_comb begin
+  //   if (wen) begin
+  //     // write logic
+  //     if (bank_read_write) begin
+  //       // write to the bank 1, so need to offset the address
+  //       sram_wadr = wadr + (BANK_DEPTH / 2);
+  //     end
+  //     else begin
+  //       // write to the bank 0, so no offset needed
+  //       sram_wadr = wadr;
+  //     end
+  //   end
+  //   if (ren) begin
+  //     // read logic
+  //     if (bank_read_write) begin //if bank_read_write is 1, means we are reading from bank 1, which is addr BANK_DEPTH/2 to BANK_DEPTH-1
+  //       // read from bank 1, so need to offset the address
+  //       sram_radr = radr + (BANK_DEPTH / 2);
+  //     end
+  //     else begin
+  //       // read from bank 0, so no offset needed
+  //       sram_radr = radr;
+  //     end
+  //   end
+
+  //   if (ren_wb) begin
+  //     // read logic
+  //     if (!bank_read_write) begin //if bank_read_write is 0, means we are reading from bank 0, which is addr BANK_DEPTH/2 to BANK_DEPTH-1
+  //       // read from bank 1, so need to offset the address
+  //       sram_radr_wb = radr_wb + (BANK_DEPTH / 2);
+  //     end
+  //     else begin
+  //       // read from bank 0, so no offset needed
+  //       sram_radr_wb = radr_wb;
+  //     end
+  //   end
+  // end
+    
+ 
+  //instantiate the dual-port SRAM here
+  ram_sync_1r1w #(
+    .DATA_WIDTH(DATA_WIDTH),
+    .ADDR_WIDTH(BANK_ADDR_WIDTH),
+    .DEPTH(BANK_DEPTH)
+  ) ram_inst0 (
+    .clk(clk),
+    .wen(wen0),
+    .wadr(sram_wadr0),
+    .wdata(wdata0),
+    .ren(ren0),
+    .radr(sram_radr0),
+    .rdata(rdata0)
+  );
+
+  ram_sync_1r1w #(
+    .DATA_WIDTH(DATA_WIDTH),
+    .ADDR_WIDTH(BANK_ADDR_WIDTH),
+    .DEPTH(BANK_DEPTH)
+  ) ram_inst1 (
+    .clk(clk),
+    .wen(wen1),
+    .wadr(sram_wadr1),
+    .wdata(wdata1),
+    .ren(ren1),
+    .radr(sram_radr1),
+    .rdata(rdata1)
+  );
   // Your code ends here
 endmodule

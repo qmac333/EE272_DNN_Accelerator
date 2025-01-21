@@ -34,8 +34,33 @@ module ifmap_radr_gen
   // sequence as the C++ tiled convolution that you implemented. Make sure you
   // increment/step the address generator only when adr_en is high. Also reset
   // all registers when rst_n is low.  
+
+// output_cell = oy*OX0 + ox
+// position of filter in input = output_cell + 1
+// filter_size = fx*fy
+// number of filters per input row = (IX - FX)/STRIDE + 1
+// conv_input_filter starting x position = 
+// addr = oy*OX0 + ox + fx*STRIDE + (fy*IX0 + ic1)*IY0
+//addr = (STRIDE*oy+fy)(STRIDE*ox+fx)*ic +
   
   // Your code starts here
-
+  always @(posedge clk) begin
+    if (!rst_n) begin
+      adr <= 0;
+    end else if (adr_en) begin
+      // Implement the address generation logic here
+      for (fy = 0; fy < config_FY; fy = fy + 1) begin
+        for (fx = 0; fx < config_FX; fx = fx + 1) begin
+          for (ic = 0; ic < config_IC1; ic = ic + 1) begin
+            for (oy = 0; oy < config_OY0; oy = oy + 1) begin
+              for (ox = 0; ox < config_OX0; ox = ox + 1) begin
+                adr <= (oy * STRIDE + fy) * (ic * config_IY0) + (ox * STRIDE + fx);
+              end
+          end
+        end
+      end
+    end
+    end
+  end
   // Your code ends here
 endmodule
