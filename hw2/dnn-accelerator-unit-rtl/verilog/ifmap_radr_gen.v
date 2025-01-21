@@ -44,22 +44,44 @@ module ifmap_radr_gen
 //addr = (STRIDE*oy+fy)(STRIDE*ox+fx)*ic +
   
   // Your code starts here
+  reg [BANK_ADDR_WIDTH - 1 : 0] fy, fx, ox, oy, ic1;
+
+  assign adr = (ic1 * config_IY0 * config_IX0) + (oy * config_STRIDE + fy) * config_IY0 + (ox * config_STRIDE + fx);
+
   always @(posedge clk) begin
     if (!rst_n) begin
-      adr <= 0;
+      fy <= 0;
+      fx <= 0;
+      oy <= 0;
+      ox <= 0;
+      ic1 <= 0;
     end else if (adr_en) begin
-      // Implement the address generation logic here
-      for (fy = 0; fy < config_FY; fy = fy + 1) begin
-        for (fx = 0; fx < config_FX; fx = fx + 1) begin
-          for (ic = 0; ic < config_IC1; ic = ic + 1) begin
-            for (oy = 0; oy < config_OY0; oy = oy + 1) begin
-              for (ox = 0; ox < config_OX0; ox = ox + 1) begin
-                adr <= (oy * STRIDE + fy) * (ic * config_IY0) + (ox * STRIDE + fx);
+      // increment all the loop counters
+      if (ox < config_OX0 - 1) begin
+        ox <= ox + 1;
+      end else begin
+        ox <= 0;
+        if (oy < config_OY0 - 1) begin
+          oy <= oy + 1;
+        end else begin
+          oy <= 0;
+          if (fx < config_FX - 1) begin
+            fx <= fx + 1;
+          end else begin
+            fx <= 0;
+            if (fy < config_FY - 1) begin
+              fy <= fy + 1;
+            end else begin
+              fy <= 0; 
+              if (ic1 < config_IC1 - 1) begin
+                ic1 <= ic1 + 1;
+              end else begin
+                ic1 <= 0; // reset all loop counters to restart the loop
               end
+            end
           end
         end
       end
-    end
     end
   end
   // Your code ends here
