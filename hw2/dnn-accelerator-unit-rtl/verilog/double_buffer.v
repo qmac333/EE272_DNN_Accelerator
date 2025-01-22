@@ -30,8 +30,8 @@ module double_buffer
   // Your code starts here
 
   reg bank_write; // 1 bit register to keep track of which bank is currently being written to
-  wire [BANK_ADDR_WIDTH - 1 : 0] sram_wadr;
-  wire [BANK_ADDR_WIDTH - 1 : 0] sram_radr;
+  logic [BANK_ADDR_WIDTH - 1 : 0] sram_wadr;
+  logic [BANK_ADDR_WIDTH - 1 : 0] sram_radr;
 
   always @(posedge clk) begin
     if (!rst_n) begin
@@ -47,7 +47,7 @@ module double_buffer
     end
   end
 
-  always_comb begin
+  always @(*) begin
     if (wen) begin
       // write logic
       if (bank_write) begin
@@ -77,7 +77,7 @@ module double_buffer
   ram_sync_1r1w #(
     .DATA_WIDTH(DATA_WIDTH),
     .ADDR_WIDTH(BANK_ADDR_WIDTH),
-    .DEPTH(BANK_DEPTH)
+    .DEPTH(2*BANK_DEPTH)
   ) ram_inst (
     .clk(clk),
     .wen(wen),

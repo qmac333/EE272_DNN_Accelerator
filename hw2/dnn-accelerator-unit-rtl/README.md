@@ -6,7 +6,7 @@
 * Before running tests you need to load the following modules:
 ```
 module load base
-module load vcs
+module load vcs/S-2021.09-SP1
 ```
 * Then you can run any unit test by either running the autograder or by copying over the corresponding command and running it on command line. For example, this command compiles the Verilog source and the test bench for MAC unit.
 ```
