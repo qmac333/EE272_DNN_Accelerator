@@ -153,34 +153,6 @@ class scoreboard;
         end else begin
           $display("T=%0t [Input out Scoreboard] Pass! Received = %h, expected = %h", $time, transaction.ifmap_out, expected_ifdata);
         end
-
-        // if (transaction.enq) begin
-        //   data_queue[put_idx] = transaction.din;
-        //   put_idx = (put_idx + 1) % `mac_DEPTH;
-        //   empty = 0; // since we just push something, cannot be empty
-        //   if (put_idx == get_idx) begin
-        //     full = 1;
-        //   end else begin
-        //     full = 0;
-        //   end
-        // end
-
-        // if (transaction.deq) begin
-        //   get_idx = (get_idx + 1) % `mac_DEPTH;
-        //   full = 0; // since we just pop something, cannot be full
-        //   if (put_idx == get_idx) begin
-        //     empty = 1;
-        //   end else begin
-        //     empty = 0;
-        //   end
-        // end
-
-        // update expected_data for next transaction
-        // when mac is empty, ofmap_out always shows the last dequeued data (this is how mac.v behaves)        
-        // if (!empty) begin
-        //   expected_data = data_queue[get_idx];
-        // end  
-
         resp_id = resp_id + 1;
       end
       $finish;

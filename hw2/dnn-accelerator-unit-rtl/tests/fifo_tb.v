@@ -72,17 +72,20 @@ module fifo_tb;
     clr <= 0;
     $display("test 4 empty_n = %b", empty_n); assert(empty_n == 0);
     //check latency
-    start_time = $time;
+    // start_time = $time;
     din <= 4;
     enq <= 1;
     //if if dout is 4
-    #20
-    enq <= 0;
+    #20 din<=3;
+    #20 din<=2;
+    #20 enq <= 0;
     deq <= 1;
     $display("test 5 dout = %d", dout); assert(dout == 4);
+    #20 $display("test 6 dout = %d", dout); assert(dout == 3);
+    #20 $display("test 7 dout = %d", dout); assert(dout == 2);
     //print latency
-    end_time = $time;
-    $display("latency = %d", end_time - start_time);
+    // end_time = $time;
+    // $display("latency = %d", end_time - start_time);
     #20
     deq <= 0;
 

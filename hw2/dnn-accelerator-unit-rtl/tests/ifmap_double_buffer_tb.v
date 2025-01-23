@@ -9,7 +9,7 @@
 
 module double_buffer_tb;
 
-//size of one bank is IC0*IX0*IX0*IC1
+//size of one bank is IC0*IX0*IY0*IC1
 //200 pixels according to the homework pdf
 
   parameter DATA_WIDTH = 64;
@@ -59,12 +59,14 @@ module double_buffer_tb;
     $display("Test 1: Writing to bank 0");
     wen = 1;
     wadr = 199;
-    wdata = 64'hDEADBEEFDEADBEEF; 
+    wdata = 64'hDEADBEEFDEADBEEF;
+    $display("Before switching: %d", dut.bank_write); 
     #20 wen = 0;
 
     $display("Switching banks");
     switch_banks = 1;
     #20 switch_banks = 0;
+    $display("After switching: %d", dut.bank_write); 
 
     $display("Test 2: Reading from bank 0");
     ren = 1;

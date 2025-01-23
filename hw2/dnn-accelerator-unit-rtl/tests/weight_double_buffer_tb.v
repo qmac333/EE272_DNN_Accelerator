@@ -69,7 +69,7 @@ module double_buffer_tb;
     assert(rdata == 64'hDEADBEEFDEADBEEF);
 
 
-
+    $display("Test 3: Writing to bank 1 and reading from bank 0 at the same time");
     $display("Writing to bank 1");
     wen = 1;
     wadr = 287;
@@ -87,6 +87,7 @@ module double_buffer_tb;
     switch_banks = 1;
     #20 switch_banks = 0;
 
+    $display("Test 4: Reading from bank 1 and at the last address");
     $display("Reading from bank 1");
     ren = 1;
     radr = 287;
@@ -94,7 +95,7 @@ module double_buffer_tb;
     #10 $display("Read data: %h", rdata);
     assert(rdata == 64'hCAFEBABECAFEBABE);
 
-    $display("Test 4: Verifying no cross-contamination between banks");
+    $display("Test 5: Verifying no cross-contamination between banks");
     switch_banks = 1;
     #20 switch_banks = 0;
     ren = 1;
@@ -105,6 +106,7 @@ module double_buffer_tb;
 
     //test switch bank and high at the same time
     //Writing to bank 1 and swtich banks
+    $display("Test 6: Writing to bank 1 and switching banks at the same time");
     switch_banks = 1;
     wen = 1;
     wadr = 0;
