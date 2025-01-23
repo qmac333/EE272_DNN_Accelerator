@@ -74,7 +74,14 @@ module double_buffer_tb;
     wen = 1;
     wadr = 287;
     wdata = 64'hCAFEBABECAFEBABE; // Test data
-    #20 wen = 0;
+    $display("Reading from bank 0 at the same time") ;
+    ren = 1;
+    radr = 287;
+    #20 
+    wen = 0;
+    ren = 0;
+    #10 $display("Read data: %h", rdata);
+    assert(rdata == 64'hDEADBEEFDEADBEEF);
 
     $display("Switching banks");
     switch_banks = 1;
@@ -93,8 +100,24 @@ module double_buffer_tb;
     ren = 1;
     radr = 287;
     #20 ren = 0;
-    #10 $display("Read data: %h", rdata);
+    #10 $display("Read data: %h", rdata); // Reading from bank 0
     assert(rdata == 64'hDEADBEEFDEADBEEF);
+
+    //test switch bank and high at the same time
+    //Writing to bank 1 and swtich banks
+    switch_banks = 1;
+    wen = 1;
+    wadr = 0;
+    wdata = 42;
+    #20 
+    switch_banks = 0;
+    wen = 0;
+    ren = 1;
+    radr = 0; 
+    #20 ren = 0;
+    #10 $display("Read data: %h", rdata); // Reading from bank 1
+    assert(rdata == 42);
+
 
     $display("All tests passed!");
     #100 $finish;

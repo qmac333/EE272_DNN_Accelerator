@@ -52,7 +52,7 @@ module double_buffer
       // write logic
       if (bank_write) begin
         // write to the bank 1, so need to offset the address
-        sram_wadr = wadr + (BANK_DEPTH / 2);
+        sram_wadr = wadr + (BANK_DEPTH);
       end
       else begin
         // write to the bank 0, so no offset needed
@@ -63,7 +63,7 @@ module double_buffer
       // read logic
       if (!bank_write) begin //if bank_write is 0, means we are reading from bank 1, which is addr BANK_DEPTH/2 to BANK_DEPTH-1
         // read from bank 1, so need to offset the address
-        sram_radr = radr + (BANK_DEPTH / 2);
+        sram_radr = radr + (BANK_DEPTH);
       end
       else begin
         // read from bank 0, so no offset needed
