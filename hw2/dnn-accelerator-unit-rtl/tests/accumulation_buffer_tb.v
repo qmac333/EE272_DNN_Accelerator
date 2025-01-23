@@ -114,7 +114,7 @@ module accumulation_buffer_tb;
         assert(rdata == 64'hABCDABCDABCDABCD);
         assert(rdata_wb == 64'hABEDBEADABEDBEAD);
 
-        $display("Writing to bank 0");
+        $display("Writing to bank 1");
         wen <= 1;
         wadr <= 41;
         wdata <= 64'h1234567890ABCDEF;
@@ -145,6 +145,33 @@ module accumulation_buffer_tb;
         #20 ren <= 0;
         wen <= 0;
         assert(rdata == 64'hDEADBEEFDEADBEEF);
+
+        $display("Switching banks at same time as writing to bank 0, so it should write to bank 1 and then switch banks");
+        #20 switch_banks <= 1;
+        wen <= 1;
+        wadr <= 101;
+        wdata <= 64'h8910891089108910;
+        #20 switch_banks <= 0;
+        ren_wb <= 1;
+        radr_wb <= 101;
+        #20 ren_wb <= 0;
+        wen <= 0;
+        $display("This is the end: Read data from bank 0: %h", rdata_wb);
+        assert(rdata_wb == 64'h8910891089108910);
+
+        $display("Reading from both banks at the same time while also switching banks. They should read first and then switch banks");
+        #20 switch_banks <= 1;
+        ren <= 1;
+        radr <= 150;
+        ren_wb <= 1;
+        radr_wb <= 150;
+        #20 switch_banks <= 0;
+        #20 ren <= 0;
+        ren_wb <= 0;
+        $display("Read data from bank 0: %h", rdata);
+        $display("Read data from bank 1: %h", rdata_wb);
+        assert(rdata == 64'hABEDBEADABEDBEAD);
+        assert(rdata_wb == 64'hCAFEBABECAFEBABE);
 
         $display("Test finished!");
     end
