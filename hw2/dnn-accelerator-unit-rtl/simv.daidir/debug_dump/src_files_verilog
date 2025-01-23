@@ -1,3 +1,2 @@
-/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw2/dnn-accelerator-unit-rtl/tests/weight_double_buffer_tb.v
-/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw2/dnn-accelerator-unit-rtl/verilog/double_buffer.v
-/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw2/dnn-accelerator-unit-rtl/verilog/ram_sync_1r1w.v
+/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw2/dnn-accelerator-unit-rtl/tests/mac_tb_uvm.v
+/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw2/dnn-accelerator-unit-rtl/verilog/mac.v

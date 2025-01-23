@@ -26,15 +26,16 @@ endinterface
 class mac_item;
     rand bit en;
     rand bit weight_wen;
-    rand bit [`IFMAP_WIDTH - 1 : 0] ifmap_in;
-    rand bit [`WEIGHT_WIDTH - 1 : 0] weight_in;
-    rand bit [`OFMAP_WIDTH - 1 : 0] ofmap_in;
-    bit [`IFMAP_WIDTH - 1 : 0] ifmap_out;
-    bit [`OFMAP_WIDTH - 1 : 0] ofmap_out;
+    rand bit signed [`IFMAP_WIDTH - 1 : 0] ifmap_in;
+    rand bit signed [`WEIGHT_WIDTH - 1 : 0] weight_in;
+    rand bit signed [`OFMAP_WIDTH - 1 : 0] ofmap_in;
+    bit signed [`IFMAP_WIDTH - 1 : 0] ifmap_out;
+    bit signed [`OFMAP_WIDTH - 1 : 0] ofmap_out;
 
 
   function void print(int id = "");
-    $display("T=%0t [transaction_id=%0d] din=%h enq=%d deq=%h ofmap_out=%h", $time, id, din, enq, deq, ofmap_out);
+    // $display("T=%0t [transaction_id=%0d] din=%h enq=%d deq=%h ofmap_out=%h", $time, id, din, enq, deq, ofmap_out);
+    $display("T=%0t [transaction_id=%0d] en=%d weight_wen=%d ifmap_in=%h weight_in=%h ofmap_in=%h ifmap_out=%h ofmap_out=%h", $time, id, en, weight_wen, ifmap_in, weight_in, ofmap_in, ifmap_out, ofmap_out);
   endfunction
 endclass;
 
@@ -97,9 +98,13 @@ endclass
 class scoreboard;
   mailbox scb_mbx;
   int resp_id;
-  reg [`DATA_WIDTH - 1 : 0] expected_data;
+  reg signed [`IFMAP_WIDTH - 1 : 0] expected_ifindata;
+  reg signed [`WEIGHT_WIDTH - 1 : 0] expected_weightindata;
+  reg signed [`OFMAP_WIDTH - 1 : 0] expected_ofindata;
+  reg signed [`IFMAP_WIDTH - 1 : 0] expected_ifdata;
+  reg signed [`OFMAP_WIDTH - 1 : 0] expected_ofdata;
   // create a "golden" mac to track the correct behavior
-  reg [`DATA_WIDTH - 1 : 0] data_queue[0 : `mac_DEPTH - 1];
+  // reg [`DATA_WIDTH - 1 : 0] data_queue[0 : `mac_DEPTH - 1];
   int get_idx = 0;
   int put_idx = 0;
   bit full = 0;
@@ -109,50 +114,72 @@ class scoreboard;
     forever begin
       mac_item transaction;
       resp_id = 0;
+      //initialise them
+      expected_weightindata = 0;
+      expected_ifdata = 0;
+      expected_ofdata = 0;
 
       // the initial data is garbage since no stimulus applied yet, skip it
       scb_mbx.get(transaction);  // at 30ns
       // set the initial expected_data to the initial ofmap_out to pass the first comparison
-      expected_data = transaction.ofmap_out; 
+      expected_ofdata = transaction.ofmap_out; 
+      expected_ifdata = transaction.ifmap_out;
 
       while(resp_id < `TEST_LENGTH) begin
         scb_mbx.get(transaction);  // first mail arrives at 50ns
         transaction.print(resp_id);
 
-        // Comparison
-        if (transaction.ofmap_out !== expected_data) begin
-          $display("T=%0t [Scoreboard] Error! Received = %h, expected = %h", $time, transaction.ofmap_out, expected_data);
-        end else begin
-          $display("T=%0t [Scoreboard] Pass! Received = %h, expected = %h", $time, transaction.ofmap_out, expected_data);
-        end
-
         // Update golden model
-        if (transaction.enq) begin
-          data_queue[put_idx] = transaction.din;
-          put_idx = (put_idx + 1) % `mac_DEPTH;
-          empty = 0; // since we just push something, cannot be empty
-          if (put_idx == get_idx) begin
-            full = 1;
-          end else begin
-            full = 0;
-          end
+        if (transaction.weight_wen)  begin
+          expected_weightindata <= transaction.weight_in;
+        end
+        if (transaction.en) begin
+          expected_ofdata <= (transaction.ifmap_in * expected_weightindata) + transaction.ofmap_in;
+          expected_ifdata <= transaction.ifmap_in;
+          $display("GOLDEN MODEL COMPUTATION: input = %h, weight = %h, ofmap_in = %h, expected_ofdata = %h", transaction.ifmap_in, expected_weightindata, transaction.ofmap_in, expected_ofdata);
+        end
+        // Comparison
+        if (transaction.ofmap_out !== expected_ofdata) begin
+          $display("T=%0t [Output out Scoreboard] Error! Received = %h, expected = %h", $time, transaction.ofmap_out, expected_ofdata);
+          //print the weight, ifmap_in, and ofmap_in
+          // $display("T=%0t [Output out Scoreboard] weight_in=%h ifmap_in=%h ofmap_in=%h", $time, transaction.weight_in, transaction.ifmap_in, transaction.ofmap_in);
+        end else begin
+    
+          $display("T=%0t [Output out Scoreboard] Pass! Received = %h, expected = %h", $time, transaction.ofmap_out, expected_ofdata);
+        end
+        //comparison for if
+        if (transaction.ifmap_out !== expected_ifdata) begin
+          $display("T=%0t [Input out Scoreboard] Error! Received = %h, expected = %h", $time, transaction.ifmap_out, expected_ifdata);
+        end else begin
+          $display("T=%0t [Input out Scoreboard] Pass! Received = %h, expected = %h", $time, transaction.ifmap_out, expected_ifdata);
         end
 
-        if (transaction.deq) begin
-          get_idx = (get_idx + 1) % `mac_DEPTH;
-          full = 0; // since we just pop something, cannot be full
-          if (put_idx == get_idx) begin
-            empty = 1;
-          end else begin
-            empty = 0;
-          end
-        end
+        // if (transaction.enq) begin
+        //   data_queue[put_idx] = transaction.din;
+        //   put_idx = (put_idx + 1) % `mac_DEPTH;
+        //   empty = 0; // since we just push something, cannot be empty
+        //   if (put_idx == get_idx) begin
+        //     full = 1;
+        //   end else begin
+        //     full = 0;
+        //   end
+        // end
+
+        // if (transaction.deq) begin
+        //   get_idx = (get_idx + 1) % `mac_DEPTH;
+        //   full = 0; // since we just pop something, cannot be full
+        //   if (put_idx == get_idx) begin
+        //     empty = 1;
+        //   end else begin
+        //     empty = 0;
+        //   end
+        // end
 
         // update expected_data for next transaction
         // when mac is empty, ofmap_out always shows the last dequeued data (this is how mac.v behaves)        
-        if (!empty) begin
-          expected_data = data_queue[get_idx];
-        end  
+        // if (!empty) begin
+        //   expected_data = data_queue[get_idx];
+        // end  
 
         resp_id = resp_id + 1;
       end
@@ -230,37 +257,34 @@ module mac_tb;
 
     reg clk;
     reg rst_n;
-    reg clr;
 
     always #10 clk =~clk;
     
     mac_if _if (clk);
 
     mac #(
-      .DATA_WIDTH(`DATA_WIDTH), 
-      .mac_DEPTH(`mac_DEPTH), 
-      .COUNTER_WIDTH(`COUNTER_WIDTH)
-    ) dut (
+      .IFMAP_WIDTH(`IFMAP_WIDTH),
+      .WEIGHT_WIDTH(`WEIGHT_WIDTH),
+      .OFMAP_WIDTH(`OFMAP_WIDTH)
+    ) mac_inst (
       .clk(_if.clk),
       .rst_n(_if.rst_n),
-      .din(_if.din),
-      .enq(_if.enq),
-      .full_n(_if.full_n),
-      .ofmap_out(_if.ofmap_out),
-      .deq(_if.deq),
-      .empty_n(_if.empty_n),
-      .clr(_if.clr)
+      .en(_if.en),
+      .weight_wen(_if.weight_wen),
+      .ifmap_in(_if.ifmap_in),
+      .weight_in(_if.weight_in),
+      .ofmap_in(_if.ofmap_in),
+      .ifmap_out(_if.ifmap_out),
+      .ofmap_out(_if.ofmap_out)
     );
 
     assign _if.rst_n = rst_n;
-    assign _if.clr = clr;
 
     initial begin
         test t0;
 
         clk <= 0;
         rst_n <= 0;
-        clr <= 0;
         #20 rst_n <= 1;
         t0 = new(); 
         t0.e0.vif = _if;

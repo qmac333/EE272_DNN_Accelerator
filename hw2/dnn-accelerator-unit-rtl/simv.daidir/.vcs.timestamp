@@ -1,5 +1,5 @@
 0 
-30
+29
 +itf+/cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/vcsdp_lite.tab
 +vcsd1
 +vpi
@@ -27,9 +27,8 @@
 -sverilog
 -timescale=1ns/1ps
 /cad/synopsys/vcs/S-2021.09-SP1/linux64/bin/vcs1
-tests/weight_double_buffer_tb.v
-verilog/double_buffer.v
-verilog/ram_sync_1r1w.v
+tests/mac_tb_uvm.v
+verilog/mac.v
 71
 _LMFILES_=/etc/modulefiles/base/rsg:/etc/modulefiles/vcs/S-2021.09-SP1
 XDG_SESSION_TYPE=tty
@@ -104,15 +103,14 @@ APPTAINER_BIND=/scratch,/cad,/farmshare,/farmshare/home
 APPTAINER_APPNAME=
 0
 0
-4
-1737396783 verilog/ram_sync_1r1w.v
-1737600494 verilog/double_buffer.v
-1737600908 tests/weight_double_buffer_tb.v
+3
+1737585326 verilog/mac.v
+1737608509 tests/mac_tb_uvm.v
 1638245157 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/vcsdp_lite.tab
 4
 1638257447 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/libvirsim.so
 1638246089 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/liberrorinf.so
 1638245983 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/libsnpsmalloc.so
 1638246086 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/libvfs.so
-1737600924 simv.daidir
+1737608601 simv.daidir
 -1 partitionlib
