@@ -5,8 +5,8 @@
 module accumulation_buffer_tb;
 
     parameter DATA_WIDTH = 64;
-    parameter BANK_ADDR_WIDTH = 9;
-    parameter BANK_DEPTH = 200;
+    parameter BANK_ADDR_WIDTH = 6;
+    parameter BANK_DEPTH = 36;
 
     reg clk;
     reg rst_n;
@@ -58,21 +58,21 @@ module accumulation_buffer_tb;
 
         $display("Writing to bank 0 and reading from bank 0 in different cycles");
         wen <= 1;
-        wadr <= 150;
+        wadr <= 2;
         wdata <= 64'hABEDBEADABEDBEAD;
 
         #20 wen <= 0;
         ren <= 1;
-        radr <= 150;
+        radr <= 2;
         #20 ren <= 0;
         assert(rdata == 64'hABEDBEADABEDBEAD);
         
         $display("Reading and writing to bank 0 in the same cycle");
         wen <= 1;
-        wadr <= 41;
+        wadr <= 34;
         wdata <= 64'hDEADBEEFDEADBEEF;
         ren <= 1;
-        radr <= 150;
+        radr <= 2;
         #20 wen <= 0;
         ren <= 0;
         assert(rdata == 64'hABEDBEADABEDBEAD);
@@ -82,31 +82,31 @@ module accumulation_buffer_tb;
 
         $display("Writing to bank 1 and reading from bank 1");
         #20 wen <= 1;
-        wadr <= 150;
+        wadr <= 2;
         wdata <= 64'hCAFEBABECAFEBABE;
         #20 wen <= 0;
         #20 wen <= 1;
-        wadr <= 101;
+        wadr <= 22;
         wdata <= 64'hABCDABCDABCDABCD;
 
         ren <= 1;
-        radr <= 150;
+        radr <= 2;
         #20 ren <= 0;
         assert(rdata == 64'hCAFEBABECAFEBABE);
         wen <= 0;
 
         $display("Reading from bank 0");
         ren_wb <= 1;
-        radr_wb <= 150;
+        radr_wb <= 2;
         #20 ren_wb <= 0;
         $display("Read data from bank 0: %h", rdata_wb);
         assert(rdata_wb == 64'hABEDBEADABEDBEAD);
 
         $display("Reading from bank 0 and bank 1 at same time");
         #20 ren_wb <= 1;
-        radr_wb <= 150;
+        radr_wb <= 2;
         ren <= 1;
-        radr <= 101;
+        radr <= 22;
         #20 ren <= 0;
         ren_wb <= 0;
         $display("Read data from bank 1: %h", rdata);
@@ -116,7 +116,7 @@ module accumulation_buffer_tb;
 
         $display("Writing to bank 1");
         wen <= 1;
-        wadr <= 41;
+        wadr <= 34;
         wdata <= 64'h1234567890ABCDEF;
         #20 wen <= 0;
 
@@ -124,9 +124,9 @@ module accumulation_buffer_tb;
         #20 switch_banks <= 0;
 
         ren <= 1;
-        radr <= 41;
+        radr <= 34;
         ren_wb <= 1;
-        radr_wb <= 41;
+        radr_wb <= 34;
         #20 ren <= 0;
         ren_wb <= 0;
         assert(rdata == 64'hDEADBEEFDEADBEEF);
@@ -138,9 +138,9 @@ module accumulation_buffer_tb;
 
         $display("Reading and writing to the same address in same cycle in Bank 0, the read operation should read the old value");
         ren <= 1;
-        radr <= 41;
+        radr <= 34;
         wen <= 1;
-        wadr <= 41;
+        wadr <= 34;
         wdata <= 64'hFEDCBA0987654321;
         #20 ren <= 0;
         wen <= 0;
@@ -149,22 +149,22 @@ module accumulation_buffer_tb;
         $display("Switching banks at same time as writing to bank 0, so it should write to bank 1 and then switch banks");
         #20 switch_banks <= 1;
         wen <= 1;
-        wadr <= 101;
+        wadr <= 22;
         wdata <= 64'h8910891089108910;
         #20 switch_banks <= 0;
         ren_wb <= 1;
-        radr_wb <= 101;
+        radr_wb <= 22;
         #20 ren_wb <= 0;
         wen <= 0;
         $display("This is the end: Read data from bank 0: %h", rdata_wb);
         assert(rdata_wb == 64'h8910891089108910);
 
-        $display("Reading from both banks at the same time while also switching banks. They should read first and then switch banks");
+        $display("Reading from both banks at the same time while also switching banks.");
         #20 switch_banks <= 1;
         ren <= 1;
-        radr <= 150;
+        radr <= 2;
         ren_wb <= 1;
-        radr_wb <= 150;
+        radr_wb <= 2;
         #20 switch_banks <= 0;
         #20 ren <= 0;
         ren_wb <= 0;
