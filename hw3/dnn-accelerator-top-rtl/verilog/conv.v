@@ -38,7 +38,25 @@ module conv
     
     input [CONFIG_ADDR_WIDTH + CONFIG_DATA_WIDTH - 1: 0] config_data,
     output reg config_rdy,
-    input config_vld
+    input config_vld,
+
+    //add the enable signals for the counter
+    output weight_wen_out,
+    output ifmap_wen_out,
+    output ofmap_wb_ren_out,
+
+    output weight_ren_out,
+    output ifmap_ren_out,
+    output ofmap_wen_out,
+    output ofmap_ren_out,
+
+    output ofmap_skew_en_out,
+    output systolic_array_weight_wen_out [ARRAY_HEIGHT - 1 : 0],
+    output systolic_array_en_out,
+    output systolic_array_weight_en_out,
+
+    output config_en_out
+
 );
 
   localparam CONFIG_WIDTH = CONFIG_ADDR_WIDTH + CONFIG_DATA_WIDTH;
@@ -184,6 +202,24 @@ module conv
   // registers.
  
   // Your code starts here
+
+  //assign the signals for counter
+  assign weight_wen_out = weight_wen;
+  assign ifmap_wen_out = ifmap_wen;
+  assign ofmap_wb_ren_out = ofmap_wb_ren;
+
+  assign weight_ren_out = weight_ren;
+  assign ifmap_ren_out = ifmap_ren;
+  assign ofmap_wen_out = ofmap_wen;
+  assign ofmap_ren_out = ofmap_ren;
+
+  assign ofmap_skew_en_out = ofmap_skew_en;
+  assign systolic_array_weight_wen_out = systolic_array_weight_wen;
+  assign systolic_array_en_out = systolic_array_en;
+  assign systolic_array_weight_en_out = systolic_array_weight_en;
+
+  assign config_en_out = config_en;
+
 
   // first instantiate the weight double buffer
   double_buffer #(

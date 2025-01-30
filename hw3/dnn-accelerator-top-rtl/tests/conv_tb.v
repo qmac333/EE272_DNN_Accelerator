@@ -63,6 +63,41 @@ module conv_tb;
   wire [`IFMAP_BANK_ADDR_WIDTH - 1 : 0] STRIDE_c;
   wire [`COUNTER_WIDTH         - 1 : 0] OY0_OX0_c;
   wire [`COUNTER_WIDTH         - 1 : 0] IC1_FY_FX_OY0_OX0_c;
+
+  //add counters for all the signals
+  //add the enable signals for the counter
+  reg [63:0] weight_wen_counter;
+  reg [63:0] ifmap_wen_counter;
+  reg [63:0] ofmap_wb_ren_counter;
+
+  reg [63:0] weight_ren_counter;
+  reg [63:0] ifmap_ren_counter;
+  reg [63:0] ofmap_wen_counter;
+  reg [63:0] ofmap_ren_counter;
+
+  reg [63:0] ofmap_skew_en_counter;
+  reg [63:0] systolic_array_weight_wen_counter;
+  reg [63:0] systolic_array_en_counter;
+  reg [63:0] systolic_array_weight_en_counter;
+
+  reg [63:0] config_en_counter;
+
+  //add the enable signals for the counter
+  wire weight_wen_out;
+  wire ifmap_wen_out;
+  wire ofmap_wb_ren_out;
+
+  wire weight_ren_out;
+  wire ifmap_ren_out;
+  wire ofmap_wen_out;
+  wire ofmap_ren_out;
+
+  wire ofmap_skew_en_out;
+  wire systolic_array_weight_wen_out [`ARRAY_HEIGHT - 1 : 0];
+  wire systolic_array_en_out;
+  wire systolic_array_weight_en_out;
+
+  wire config_en_out;
  
 
   assign weight_max_adr_c = `FX*`FY*`IC0*`IC1 - 1;
@@ -90,6 +125,69 @@ module conv_tb;
 
   always #10 clk =~clk;
 
+  always @ (posedge clk) begin
+    //all the counters
+    if (!rst_n) begin
+      weight_wen_counter <= 0;
+      ifmap_wen_counter <= 0;
+      ofmap_wb_ren_counter <= 0;
+
+      weight_ren_counter <= 0;
+      ifmap_ren_counter <= 0;
+      ofmap_wen_counter <= 0;
+      ofmap_ren_counter <= 0;
+
+      ofmap_skew_en_counter <= 0;
+      systolic_array_weight_wen_counter <= 0;
+      systolic_array_en_counter <= 0;
+      systolic_array_weight_en_counter <= 0;
+
+      config_en_counter <= 0;
+    end else begin
+      if (weight_wen_out) begin
+        weight_wen_counter <= weight_wen_counter + 1;
+      end
+      if (ifmap_wen_out) begin
+        ifmap_wen_counter <= ifmap_wen_counter + 1;
+      end
+      if (ofmap_wb_ren_out) begin
+        ofmap_wb_ren_counter <= ofmap_wb_ren_counter + 1;
+      end
+
+      if (weight_ren_out) begin
+        weight_ren_counter <= weight_ren_counter + 1;
+      end
+      if (ifmap_ren_out) begin
+        ifmap_ren_counter <= ifmap_ren_counter + 1;
+      end
+      if (ofmap_wen_out) begin
+        ofmap_wen_counter <= ofmap_wen_counter + 1;
+      end
+      if (ofmap_ren_out) begin
+        ofmap_ren_counter <= ofmap_ren_counter + 1;
+      end
+
+      if (ofmap_skew_en_out) begin
+        ofmap_skew_en_counter <= ofmap_skew_en_counter + 1;
+      end
+      if (systolic_array_en_out) begin
+        systolic_array_en_counter <= systolic_array_en_counter + 1;
+      end
+      if (config_en_out) config_en_counter <= config_en_counter + 1;
+      
+      // for (integer i = 0; i < ARRAY_HEIGHT; i = i + 1) begin
+      //   if (systolic_array_weight_wen_out[i]) begin
+      //     systolic_array_weight_wen_counter[i] <= systolic_array_weight_wen_counter[i] + 1;
+      //   end
+      //   if (systolic_array_en_out) begin
+      //     systolic_array_en_counter[i] <= systolic_array_en_counter[i] + 1;
+      //   end
+      //   if (systolic_array_weight_en_out) begin
+      //     systolic_array_weight_en_counter[i] <= systolic_array_weight_en_counter[i
+      //   end
+      // end
+    end
+  end
   conv 
   #(
     .IFMAP_WIDTH(`IFMAP_WIDTH),
@@ -130,7 +228,19 @@ module conv_tb;
     .ofmap_vld(ofmap_vld_w),
     .config_data(config_data_r),
     .config_rdy(config_rdy_w),
-    .config_vld(config_vld_r)
+    .config_vld(config_vld_r),
+    .weight_wen_out(weight_wen_out),
+    .ifmap_wen_out(ifmap_wen_out),
+    .ofmap_wb_ren_out(ofmap_wb_ren_out),
+    .weight_ren_out(weight_ren_out),
+    .ifmap_ren_out(ifmap_ren_out),
+    .ofmap_wen_out(ofmap_wen_out),
+    .ofmap_ren_out(ofmap_ren_out),
+    .ofmap_skew_en_out(ofmap_skew_en_out),
+    .systolic_array_weight_wen_out(systolic_array_weight_wen_out),
+    .systolic_array_en_out(systolic_array_en_out),
+    .systolic_array_weight_en_out(systolic_array_weight_en_out),
+    .config_en_out(config_en_out)
   );
 
   initial begin
@@ -218,6 +328,20 @@ module conv_tb;
         $display("Done layer");
       	$display("Cycles taken = %d", $time/20);
 	      $display("Ideal cycles = %d", `OX0*`OY0*`OX1*`OY1*`OC1*`IC1*`FX*`FY);
+        //display the counters
+        $display("weight_wen_counter = %d", weight_wen_counter);
+        $display("ifmap_wen_counter = %d", ifmap_wen_counter);
+        $display("ofmap_wb_ren_counter = %d", ofmap_wb_ren_counter);
+        $display("weight_ren_counter = %d", weight_ren_counter);
+        $display("ifmap_ren_counter = %d", ifmap_ren_counter);
+        $display("ofmap_wen_counter = %d", ofmap_wen_counter);
+        $display("ofmap_ren_counter = %d", ofmap_ren_counter);
+        $display("ofmap_skew_en_counter = %d", ofmap_skew_en_counter);
+        $display("systolic_array_weight_wen_counter = %d", systolic_array_weight_wen_counter);
+        $display("systolic_array_en_counter = %d", systolic_array_en_counter);
+        $display("systolic_array_weight_en_counter = %d", systolic_array_weight_en_counter);
+        $display("config_en_counter = %d", config_en_counter);
+
 	      $finish;
       end
     end
