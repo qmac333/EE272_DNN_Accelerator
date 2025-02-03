@@ -3,7 +3,8 @@
 #or export MGC_HOME=/tools/catapult/Catapult_Synthesis_10.3-793810/Mgc_home
 
 IDIR =$(MGC_HOME)/shared/include
-TDIR ?= $(MGC_HOME)/tmp
+# TDIR ?= $(MGC_HOME)/tmp
+TDIR ?= $(shell pwd)
 CC=$(MGC_HOME)/bin/g++
 CFLAGS=-g
 
