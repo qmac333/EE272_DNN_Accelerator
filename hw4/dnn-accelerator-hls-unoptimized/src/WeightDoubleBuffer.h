@@ -21,7 +21,7 @@ public:
                 for (uint_16 oc1 = 0; oc1 < params.OC1; oc1++){
                     chanStruct<PackedInt<WEIGHT_PRECISION, OC0>, size> tile;
                     PackedInt<WEIGHT_PRECISION, 4> input;
-                    //define size of a weight tile
+                    //define size of a weight tile (IC1*IC0*FX*FY)
                     for (uint_16 ic = 0; ic < (params.IC1*IC0); ic++){
                         for (uint_16 fy = 0; fy < params.FY; fy++){
                             for (uint_16 fx = 0; fx < params.FX; fx++){
