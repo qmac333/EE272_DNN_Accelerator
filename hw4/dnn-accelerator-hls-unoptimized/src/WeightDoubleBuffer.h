@@ -14,7 +14,31 @@ public:
     {
         // -------------------------------
         // Your code starts here
+        Params params = paramsIn.read();
 
+        for (uint_16 oy1 = 0; oy1 < params.OY1; oy1++){
+            for (uint_16 ox1 = 0; ox1 < params.OX1; ox1++){
+                for (uint_16 oc1 = 0; oc1 < params.OC1; oc1++){
+                    chanStruct<PackedInt<WEIGHT_PRECISION, OC0>, size> tile;
+                    PackedInt<WEIGHT_PRECISION, 4> input;
+                    //define size of a weight tile
+                    for (uint_16 ic = 0; ic < (params.IC1*IC0); ic++){
+                        for (uint_16 fy = 0; fy < params.FY; fy++){
+                            for (uint_16 fx = 0; fx < params.FX; fx++){
+                                for (uint_16 weight_index = 0; weight_index < OC0/4; weight_index++){
+                                    input = din.read();
+                                    for (uint_16 j = 0; j < 4; j++){
+                                        tile.data[ic*(params.FY)*(params.FX) + fy*(params.FX) + fx].value[weight_index*4+j] = input.value[j];
+                                    }
+                                }
+                  
+                            }
+                        }
+                    }
+                    dout.write(tile);
+                }
+            }
+        }
         // Your code ends here
         // -------------------------------
     }
@@ -32,6 +56,25 @@ public:
     {
         // -------------------------------
         // Your code starts here
+        Params params = paramsIn.read();
+
+        for (uint_16 oy1 = 0; oy1 < params.OY1; oy1++){
+            for (uint_16 ox1 = 0; ox1 < params.OX1; ox1++){
+                for (uint_16 oc1 = 0; oc1 < params.OC1; oc1++){
+                    chanStruct<PackedInt<WEIGHT_PRECISION, OC0>,size> tmp = din.read();
+                    PackedInt<WEIGHT_PRECISION, OC0> weights_going_to_systolic_array;
+                    for (uint_16 ic = 0; ic < (params.IC1*IC0); ic++){
+                        for (uint_16 fy = 0; fy < params.FY; fy++){
+                            for (uint_16 fx = 0; fx < params.FX; fx++){
+                                weights_going_to_systolic_array = tmp.data[ic*(params.FY)*(params.FX) + fy*(params.FX) + fx];
+                                dout.write(weights_going_to_systolic_array);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         // Your code ends here
         // -------------------------------
