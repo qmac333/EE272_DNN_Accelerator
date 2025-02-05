@@ -106,7 +106,7 @@ public:
         #endif
 
         #ifndef __SYNTHESIS__
-        while(loopIndicesIn.available(1))
+        while(loopIndicesIn.available(1) && paramsIn.available(1))
         #endif
         {
             // -------------------------------

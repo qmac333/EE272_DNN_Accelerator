@@ -14,9 +14,9 @@
 //                       CDS_OASYS v19.1_2.4, CDS_PSR v19.1_1.16, 
 //                       DesignPad v2.78_1.0
 //  
-//  Start time Tue Feb  4 21:58:43 2025
+//  Start time Tue Feb  4 22:27:21 2025
 # -------------------------------------------------
-# Logging session transcript to file "/tmp/log2174205680df96d.0"
+# Logging session transcript to file "/tmp/log2213267ec0d1003.0"
 dofile ./scripts/run_c_test.tcl
 # > if {[file isdirectory test]} { 
 # >     project load test
@@ -108,7 +108,7 @@ dofile ./scripts/run_c_test.tcl
 # solution design add ParamsDeserializer -type block -unlocked (HC-1)
 # solution design add Conv -type top -unlocked (HC-1)
 # Source file analysis completed (CIN-68)
-# Info: Completed transformation 'analyze' on solution 'solution.v1': elapsed time 1.93 seconds, memory usage 878200kB, peak memory usage 878200kB (SOL-9)
+# Info: Completed transformation 'analyze' on solution 'solution.v1': elapsed time 1.91 seconds, memory usage 878200kB, peak memory usage 878200kB (SOL-9)
 # > directive set -DESIGN_HIERARCHY { 
 # >     {Conv}
 # > }
@@ -423,7 +423,7 @@ dofile ./scripts/run_c_test.tcl
 # Info: Optimizing partition '/Conv/WeightDoubleBuffer<8192,16,16>': (Total ops = 18, Real ops = 0, Vars = 9) (SOL-10)
 # Info: Optimizing partition '/Conv/WeightDoubleBuffer<8192,16,16>/run': (Total ops = 12, Real ops = 0, Vars = 1) (SOL-10)
 # $PROJECT_HOME/src/Conv.cpp(25): Creating instance '/Conv/weightDoubleBuffer' of C Hierarchy 'WeightDoubleBuffer<8192,16,16>' (CIN-204)
-# $PROJECT_HOME/src/SystolicArray.h(55): Inlining member function 'SystolicArrayWrapper<IDTYPE, WDTYPE, ODTYPE, 16, 16>::SystolicArrayWrapper' on object '' (CIN-64)
+# $PROJECT_HOME/src/SystolicArray.h(56): Inlining member function 'SystolicArrayWrapper<IDTYPE, WDTYPE, ODTYPE, 16, 16>::SystolicArrayWrapper' on object '' (CIN-64)
 # $PROJECT_HOME/src/SystolicArrayCore.h(65): Inlining member function 'SystolicArrayCore<IDTYPE, WDTYPE, ODTYPE, 16, 16>::SystolicArrayCore' on object '' (CIN-64)
 # $PROJECT_HOME/src/ProcessingElement.h(10): Inlining member function 'ProcessingElement<IDTYPE, WDTYPE, ODTYPE>::ProcessingElement' on object '' (CIN-64)
 # $PROJECT_HOME/src/ProcessingElement.h(13): Synthesizing method 'ProcessingElement<IDTYPE, WDTYPE, ODTYPE>::run' (CIN-13)
@@ -1990,7 +1990,7 @@ dofile ./scripts/run_c_test.tcl
 # Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2894, Real ops = 29, Vars = 587) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4270, Real ops = 29, Vars = 1152) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2894, Real ops = 29, Vars = 587) (SOL-10)
-# $PROJECT_HOME/src/SystolicArray.h(55): Creating instance '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/systolicArrayCore' of C Hierarchy 'SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>' (CIN-204)
+# $PROJECT_HOME/src/SystolicArray.h(56): Creating instance '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/systolicArrayCore' of C Hierarchy 'SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>' (CIN-204)
 # $PROJECT_HOME/src/SystolicArray.h(15): Inlining member function 'SystolicArrayLooper::SystolicArrayLooper' on object '' (CIN-64)
 # $PROJECT_HOME/src/SystolicArray.h(18): Synthesizing method 'SystolicArrayLooper::run' (CIN-13)
 # $PROJECT_HOME/src/SystolicArray.h(18): Inlining member function 'SystolicArrayLooper::run' on object '' (CIN-64)
@@ -2007,8 +2007,8 @@ dofile ./scripts/run_c_test.tcl
 # Info: Optimizing partition '/Conv/SystolicArrayLooper/run': (Total ops = 66, Real ops = 24, Vars = 33) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayLooper/run': (Total ops = 66, Real ops = 24, Vars = 21) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayLooper': (Total ops = 66, Real ops = 24, Vars = 24) (SOL-10)
-# Info: $PROJECT_HOME/src/SystolicArray.h(27): Splitting object 'paramsOut.cwt' into 9 segments (OPT-19)
 # Info: $PROJECT_HOME/src/SystolicArray.h(39): Splitting object 'loopIndicesOut.cwt' into 3 segments (OPT-19)
+# Info: $PROJECT_HOME/src/SystolicArray.h(40): Splitting object 'paramsOut.cwt' into 9 segments (OPT-19)
 # Info: Optimizing partition '/Conv/SystolicArrayLooper/run': (Total ops = 68, Real ops = 24, Vars = 33) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayLooper/run': (Total ops = 49, Real ops = 24, Vars = 7) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayLooper': (Total ops = 49, Real ops = 24, Vars = 10) (SOL-10)
@@ -2019,19 +2019,19 @@ dofile ./scripts/run_c_test.tcl
 # Info: Optimizing partition '/Conv/SystolicArrayLooper/run': (Total ops = 49, Real ops = 24, Vars = 7) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayLooper': (Total ops = 49, Real ops = 24, Vars = 10) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayLooper/run': (Total ops = 49, Real ops = 24, Vars = 7) (SOL-10)
-# $PROJECT_HOME/src/SystolicArray.h(55): Creating instance '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/systolicArrayLooper' of C Hierarchy 'SystolicArrayLooper' (CIN-204)
-# $PROJECT_HOME/src/SystolicArray.h(58): Synthesizing method 'SystolicArrayWrapper<IDTYPE, WDTYPE, ODTYPE, 16, 16>::run' (CIN-13)
-# $PROJECT_HOME/src/SystolicArray.h(58): Inlining member function 'SystolicArrayWrapper<IDTYPE, WDTYPE, ODTYPE, 16, 16>::run' on object '' (CIN-64)
-# $PROJECT_HOME/src/SystolicArray.h(58): Optimizing block '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>' ... (CIN-4)
-# $PROJECT_HOME/src/SystolicArray.h(58): INOUT port 'input' is only used as an input. (OPT-10)
-# $PROJECT_HOME/src/SystolicArray.h(59): INOUT port 'weight' is only used as an input. (OPT-10)
-# $PROJECT_HOME/src/SystolicArray.h(60): INOUT port 'output' is only used as an output. (OPT-11)
-# $PROJECT_HOME/src/SystolicArray.h(61): INOUT port 'paramsIn' is only used as an input. (OPT-10)
+# $PROJECT_HOME/src/SystolicArray.h(56): Creating instance '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/systolicArrayLooper' of C Hierarchy 'SystolicArrayLooper' (CIN-204)
+# $PROJECT_HOME/src/SystolicArray.h(59): Synthesizing method 'SystolicArrayWrapper<IDTYPE, WDTYPE, ODTYPE, 16, 16>::run' (CIN-13)
+# $PROJECT_HOME/src/SystolicArray.h(59): Inlining member function 'SystolicArrayWrapper<IDTYPE, WDTYPE, ODTYPE, 16, 16>::run' on object '' (CIN-64)
+# $PROJECT_HOME/src/SystolicArray.h(59): Optimizing block '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>' ... (CIN-4)
+# $PROJECT_HOME/src/SystolicArray.h(59): INOUT port 'input' is only used as an input. (OPT-10)
+# $PROJECT_HOME/src/SystolicArray.h(60): INOUT port 'weight' is only used as an input. (OPT-10)
+# $PROJECT_HOME/src/SystolicArray.h(61): INOUT port 'output' is only used as an output. (OPT-11)
+# $PROJECT_HOME/src/SystolicArray.h(62): INOUT port 'paramsIn' is only used as an input. (OPT-10)
 # Info: Optimizing partition '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 16, Real ops = 0, Vars = 38) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/constructor': (Total ops = 0, Real ops = 0, Vars = 0) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/constructor': (Total ops = 0, Real ops = 0, Vars = 0) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 16, Real ops = 0, Vars = 9) (SOL-10)
-# Info: $PROJECT_HOME/src/SystolicArray.h(55): Partition '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/constructor' is found empty and is optimized away. (OPT-12)
+# Info: $PROJECT_HOME/src/SystolicArray.h(56): Partition '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/constructor' is found empty and is optimized away. (OPT-12)
 # Info: Optimizing partition '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 16, Real ops = 0, Vars = 9) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 8, Real ops = 0, Vars = 0) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 8, Real ops = 0, Vars = 0) (SOL-10)
@@ -2078,8 +2078,8 @@ dofile ./scripts/run_c_test.tcl
 # Warning:           Hierarchy Block 'Serializer<PackedInt<32UL,16UL>,ODTYPE,16,256>' Instance 'outputSerializer' $PROJECT_HOME/src/Serializer.h:11
 # Warning:           Hierarchy Block 'InputDoubleBuffer<4096,16,16>' Instance 'inputDoubleBuffer' $PROJECT_HOME/src/InputDoubleBuffer.h:96
 # Warning:           Hierarchy Block 'WeightDoubleBuffer<8192,16,16>' Instance 'weightDoubleBuffer' $PROJECT_HOME/src/WeightDoubleBuffer.h:90
-# Warning:           Hierarchy Block 'SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>' Instance 'systolicArray' $PROJECT_HOME/src/SystolicArray.h:58
+# Warning:           Hierarchy Block 'SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>' Instance 'systolicArray' $PROJECT_HOME/src/SystolicArray.h:59
 # Info: CDesignChecker Shell script written to '/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw4/dnn-accelerator-hls-unoptimized/test/Conv.v1/CDesignChecker/design_checker.sh'
-# Info: Completed transformation 'compile' on solution 'Conv.v1': elapsed time 19.43 seconds, memory usage 943736kB, peak memory usage 943736kB (SOL-9)
+# Info: Completed transformation 'compile' on solution 'Conv.v1': elapsed time 19.20 seconds, memory usage 943736kB, peak memory usage 943736kB (SOL-9)
 # > end dofile ./scripts/run_c_test.tcl
-// Finish time Tue Feb  4 21:59:12 2025, time elapsed 0:29, peak memory 921.62MB, exit status 0
+// Finish time Tue Feb  4 22:27:50 2025, time elapsed 0:29, peak memory 921.62MB, exit status 0
