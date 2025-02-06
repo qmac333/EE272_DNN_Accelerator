@@ -117,10 +117,10 @@ public:
             // Your code ends here
             // -------------------------------
             // int step_bound = params.OY0 * params.OX0 + params.FY + params.FX - 1;//
-            int num_pixels = params.OY0 * params.OX0;
+            int num_output_tile_entries = params.OY0 * params.OX0;
             int ramp_up_time = IC0 - 1;
             int flush = OC0 - 1 ;
-            int step_bound = ramp_up_time + num_pixels + flush;
+            int step_bound = ramp_up_time + num_output_tile_entries + flush;
             int step = 0;
 
             // -------------------------------
@@ -128,7 +128,7 @@ public:
             // The number of steps in a run of the systolic array is equal to:
             // the ramp-up time + number of pixels + flush time
             // Your code starts here
-            while (true) { 
+            for (step = 0; step < step_bound; step++) { 
 
             // Your code ends here 
             // You should now be in the body of the loop
@@ -152,9 +152,9 @@ public:
                 // Read inputs from the channel and store in the variable in_col
                 // Note: you don't read in any inputs during the flush time
                 // Your code starts here
-                    if (step <= num_pixels) {
-                        in_col = input.read();
-                    }
+                if (step < num_output_tile_entries) {
+                    in_col = input.read();
+                }
                 // Your code ends here
                 // -------------------------------
 
@@ -181,7 +181,7 @@ public:
                 // Your code starts here
                     ifmap_in.value[0] = input_buf;
 
-                    // if (step < num_pixels + ramp_up_time) {
+                    // if (step < num_output_tile_entries + ramp_up_time) {
                     //     for (int i = 0; i < IC0; i++) {
                     //         input_reg[i][0] = input_buf.value[i];
                     //     }
@@ -196,13 +196,15 @@ public:
                 // Set partial outputs for the array to psum_buf.
                 // Depending on the loop index, the partial output will be 0 or a value from the accumulation buffer
                 // Your code starts here
-                if (step < num_pixels && loopIndices.ic1_idx != 0 && loopIndices.fx_idx == 0 && loopIndices.fy_idx == 0) {
-                    psum_buf = accumulation_buffer.value[step];
-                } else {
-                    for (int i = 0; i < OC0; i++) {
-                        psum_buf.value[i] = 0;
+                // if (step < num_output_tile_entries ){
+                    if ((loopIndices.ic1_idx == 0 && loopIndices.fx_idx == 0 && loopIndices.fy_idx == 0)) {
+                        for (int i = 0; i < OC0; i++) {
+                            psum_buf.value[i] = 0;
+                        }
+                    } else if (step < num_output_tile_entries) {
+                        psum_buf = accumulation_buffer.value[step];
                     }
-                }
+                // }
 
                 // Your code ends here
                 // -------------------------------
@@ -243,7 +245,7 @@ public:
                             ofmap_in.value[r].value[c], 
                             weight_array.value[r].value[c], 
                             ifmap_out.value[c].value[r], 
-                            ofmap_out.value[c].value[r]);
+                            psum_reg.value[r].value[c]);
                     }
                 }
 
@@ -255,7 +257,7 @@ public:
                 #ifndef __SYNTHESIS__
                 log_matrix(input_file, input_reg, step, OC0);
                 log_matrix(weight_file, weight_reg, step, OC0);
-                log_matrix(psum_file, ofmap_out, step, OC0);
+                log_matrix(psum_file, psum_reg, step, OC0);
                 #endif
                 #endif
                 
@@ -268,7 +270,7 @@ public:
 
                 #define FIFO_WRITE_BODY_NEW(z,i,unused)\
                     ODTYPE BOOST_PP_CAT(accum_fifo_output_, i); \
-                    BOOST_PP_CAT(accum_fifo_, i).run( ofmap_out.value[IC0-1].value[i] , BOOST_PP_CAT(accum_fifo_output_, i) );\
+                    BOOST_PP_CAT(accum_fifo_, i).run( psum_reg.value[IC0-1].value[i] , BOOST_PP_CAT(accum_fifo_output_, i) );\
                     output_row.value[i] = BOOST_PP_CAT(accum_fifo_output_,i); \
                 
                 REPEAT(FIFO_WRITE_BODY_NEW)
@@ -281,7 +283,7 @@ public:
                     if ((loopIndices.ic1_idx == params.IC1 - 1) && (loopIndices.fx_idx == params.FX - 1) && (loopIndices.fy_idx == params.FY - 1)) {
                         output.write(output_row);
                     } else {
-                        accumulation_buffer.value[step - (IC0 + OC0)] = output_row;
+                        accumulation_buffer.value[step - (ramp_up_time + flush)] = output_row;
                     }
                 }
 
@@ -292,16 +294,16 @@ public:
                 // Cycle the input/psum registers
                 // That is, the outputs that a PE wrote to should now become the input for the next PE
                 // Your code starts here
-                for (int i = 0; i < IC0; i++) {
+                for (int i = 0; i < IC0 - 1; i++) {
                     ifmap_in.value[i+1] = ifmap_out.value[i];
                 }
-                for (int i = 0; i < OC0; i++) {
-                    ofmap_in.value[i+1] = ofmap_out.value[i];
+                for (int i = 0; i < OC0 - 1; i++) {
+                    ofmap_in.value[i+1] = psum_reg.value[i];
                 }
                 // Your code ends here
                 // -------------------------------
-                if (step == step_bound-1) break;
-                step++;
+                // if (step == step_bound-1) break;
+                // step++;
                 
             }
         }
@@ -328,7 +330,7 @@ private:
     PackedInt2D<OUTPUT_PRECISION, OC0, ACCUMULATION_BUFFER_SIZE> accumulation_buffer;
     PackedInt2D<OUTPUT_PRECISION, OC0, IC0> ofmap_in;
     PackedInt2D<INPUT_PRECISION, IC0, OC0> ifmap_out;
-    PackedInt2D<OUTPUT_PRECISION, OC0, IC0> ofmap_out;
+    PackedInt2D<OUTPUT_PRECISION, OC0, IC0> psum_reg;
     // Your code ends here
     // -------------------------------
     

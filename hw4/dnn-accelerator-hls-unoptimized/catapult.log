@@ -5,7 +5,7 @@
 //             CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
 //                 PROPERTY OF MENTOR GRAPHICS OR ITS LICENSORS
 //  
-//  Running on Linux jiajunc4@iron-02 6.8.0-49-generic x86_64 aol
+//  Running on Linux jiajunc4@iron-03 6.8.0-49-generic x86_64 aol
 //  
 //  Package information: SIFLIBS v23.4_2.0, HLS_PKGS v23.4_2.0, 
 //                       SIF_TOOLKITS v23.4_2.0, SIF_XILINX v23.4_2.0, 
@@ -14,9 +14,9 @@
 //                       CDS_OASYS v19.1_2.4, CDS_PSR v19.1_1.16, 
 //                       DesignPad v2.78_1.0
 //  
-//  Start time Tue Feb  4 22:27:21 2025
+//  Start time Wed Feb  5 14:49:37 2025
 # -------------------------------------------------
-# Logging session transcript to file "/tmp/log2213267ec0d1003.0"
+# Logging session transcript to file "/tmp/log309735384025739.0"
 dofile ./scripts/run_c_test.tcl
 # > if {[file isdirectory test]} { 
 # >     project load test
@@ -108,7 +108,7 @@ dofile ./scripts/run_c_test.tcl
 # solution design add ParamsDeserializer -type block -unlocked (HC-1)
 # solution design add Conv -type top -unlocked (HC-1)
 # Source file analysis completed (CIN-68)
-# Info: Completed transformation 'analyze' on solution 'solution.v1': elapsed time 1.91 seconds, memory usage 878200kB, peak memory usage 878200kB (SOL-9)
+# Info: Completed transformation 'analyze' on solution 'solution.v1': elapsed time 1.91 seconds, memory usage 878204kB, peak memory usage 878204kB (SOL-9)
 # > directive set -DESIGN_HIERARCHY { 
 # >     {Conv}
 # > }
@@ -1938,7 +1938,7 @@ dofile ./scripts/run_c_test.tcl
 # $PROJECT_HOME/src/SystolicArrayCore.h(92): Synthesizing method 'SystolicArrayCore<IDTYPE, WDTYPE, ODTYPE, 16, 16>::run' (CIN-13)
 # $PROJECT_HOME/src/SystolicArrayCore.h(91): Pragma 'hls_pipeline_init_interval<1>' detected on '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/main' (CIN-203)
 # $PROJECT_HOME/src/SystolicArrayCore.h(92): Inlining member function 'SystolicArrayCore<IDTYPE, WDTYPE, ODTYPE, 16, 16>::run' on object '' (CIN-64)
-# $MGC_HOME/shared/include/ac_int.h(2744): Inlining routine 'operator!=<16, false>' (CIN-14)
+# $MGC_HOME/shared/include/ac_int.h(2744): Inlining routine 'operator==<16, false>' (CIN-14)
 # $MGC_HOME/shared/include/ac_int.h(2744): Inlining routine 'operator==<16, false>' (CIN-14)
 # $MGC_HOME/shared/include/ac_int.h(2744): Inlining routine 'operator==<16, false>' (CIN-14)
 # $MGC_HOME/shared/include/ac_int.h(2744): Inlining routine 'operator-<16, false>' (CIN-14)
@@ -1950,46 +1950,49 @@ dofile ./scripts/run_c_test.tcl
 # $PROJECT_HOME/src/SystolicArrayCore.h(95): INOUT port 'output' is only used as an output. (OPT-11)
 # $PROJECT_HOME/src/SystolicArrayCore.h(96): INOUT port 'paramsIn' is only used as an input. (OPT-10)
 # $PROJECT_HOME/src/SystolicArrayCore.h(97): INOUT port 'loopIndicesIn' is only used as an input. (OPT-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4336, Real ops = 42, Vars = 1402) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4337, Real ops = 44, Vars = 1402) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/constructor': (Total ops = 6, Real ops = 0, Vars = 6) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/constructor': (Total ops = 0, Real ops = 0, Vars = 0) (SOL-10)
 # Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/constructor': (Total ops = 0, Real ops = 0, Vars = 0) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4330, Real ops = 42, Vars = 565) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4331, Real ops = 44, Vars = 565) (SOL-10)
 # Info: $PROJECT_HOME/src/SystolicArrayCore.h(65): Partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/constructor' is found empty and is optimized away. (OPT-12)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4330, Real ops = 42, Vars = 2103) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2954, Real ops = 42, Vars = 1538) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2919, Real ops = 39, Vars = 1457) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4295, Real ops = 39, Vars = 2022) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4331, Real ops = 44, Vars = 2102) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2955, Real ops = 44, Vars = 1537) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2921, Real ops = 42, Vars = 1456) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4297, Real ops = 42, Vars = 2021) (SOL-10)
 # Info: $PROJECT_HOME/src/SystolicArrayCore.h(142): Splitting object 'pref' into 2 segments (OPT-19)
-# Info: $PROJECT_HOME/src/SystolicArrayCore.h(203): Splitting object 'pref#2' into 2 segments (OPT-19)
-# Info: $PROJECT_HOME/src/SystolicArrayCore.h(284): Splitting object 'pref#14' into 2 segments (OPT-19)
-# Info: $PROJECT_HOME/src/SystolicArrayCore.h(296): Splitting object 'pref#15' into 2 segments (OPT-19)
-# Info: $PROJECT_HOME/src/SystolicArrayCore.h(299): Splitting object 'pref#17' into 2 segments (OPT-19)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2919, Real ops = 39, Vars = 1462) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2910, Real ops = 36, Vars = 588) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4286, Real ops = 36, Vars = 1153) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2910, Real ops = 36, Vars = 588) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4286, Real ops = 36, Vars = 1153) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2910, Real ops = 36, Vars = 588) (SOL-10)
-# $PROJECT_HOME/src/SystolicArrayCore.h(202): Loop '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/while:else#2:for' iterated at most 16 times. (LOOP-2)
-# $PROJECT_HOME/src/SystolicArrayCore.h(295): Loop '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/while:for#1' iterated at most 16 times. (LOOP-2)
-# $PROJECT_HOME/src/SystolicArrayCore.h(298): Loop '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/while:for#2' iterated at most 16 times. (LOOP-2)
-# $PROJECT_HOME/src/SystolicArrayCore.h(203): Detected constant initialization of array 'while:psum_buf.value', optimizing loop 'while:else#2:for' (LOOP-12)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2924, Real ops = 36, Vars = 592) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2896, Real ops = 29, Vars = 587) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2896, Real ops = 29, Vars = 587) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4272, Real ops = 29, Vars = 1152) (SOL-10)
-# Info: $PROJECT_HOME/src/SystolicArrayCore.h(295): Splitting object 'while:for#1:i' into 2 segments (OPT-19)
-# Info: $PROJECT_HOME/src/SystolicArrayCore.h(298): Splitting object 'while:for#2:i' into 2 segments (OPT-19)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2894, Real ops = 29, Vars = 589) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2894, Real ops = 29, Vars = 587) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4270, Real ops = 29, Vars = 1152) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2894, Real ops = 29, Vars = 587) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4270, Real ops = 29, Vars = 1152) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4270, Real ops = 29, Vars = 1152) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2894, Real ops = 29, Vars = 587) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4270, Real ops = 29, Vars = 1152) (SOL-10)
-# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2894, Real ops = 29, Vars = 587) (SOL-10)
+# Info: $PROJECT_HOME/src/SystolicArrayCore.h(202): Splitting object 'pref#1' into 2 segments (OPT-19)
+# Info: $PROJECT_HOME/src/SystolicArrayCore.h(286): Splitting object 'pref#14' into 2 segments (OPT-19)
+# Info: $PROJECT_HOME/src/SystolicArrayCore.h(298): Splitting object 'pref#15' into 2 segments (OPT-19)
+# Info: $PROJECT_HOME/src/SystolicArrayCore.h(301): Splitting object 'pref#17' into 2 segments (OPT-19)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2919, Real ops = 40, Vars = 1461) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2910, Real ops = 38, Vars = 587) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4286, Real ops = 38, Vars = 1152) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2910, Real ops = 38, Vars = 587) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2908, Real ops = 36, Vars = 588) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4284, Real ops = 36, Vars = 1153) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4284, Real ops = 36, Vars = 1153) (SOL-10)
+# Info: $PROJECT_HOME/src/SystolicArrayCore.h(155): Splitting object 'for:acc#2.cse' into 2 segments (OPT-19)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2907, Real ops = 36, Vars = 589) (SOL-10)
+# $PROJECT_HOME/src/SystolicArrayCore.h(201): Loop '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/for:if#2:for' iterated at most 16 times. (LOOP-2)
+# $PROJECT_HOME/src/SystolicArrayCore.h(297): Loop '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/for:for#1' iterated at most 15 times. (LOOP-2)
+# $PROJECT_HOME/src/SystolicArrayCore.h(300): Loop '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/for:for#2' iterated at most 15 times. (LOOP-2)
+# $PROJECT_HOME/src/SystolicArrayCore.h(202): Detected constant initialization of array 'for:psum_buf.value', optimizing loop 'for:if#2:for' (LOOP-12)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2923, Real ops = 35, Vars = 604) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2872, Real ops = 30, Vars = 589) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2868, Real ops = 30, Vars = 589) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4244, Real ops = 30, Vars = 1154) (SOL-10)
+# Info: $PROJECT_HOME/src/SystolicArrayCore.h(297): Splitting object 'for:for#1:i' into 2 segments (OPT-19)
+# Info: $PROJECT_HOME/src/SystolicArrayCore.h(300): Splitting object 'for:for#2:i' into 2 segments (OPT-19)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2866, Real ops = 30, Vars = 591) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2866, Real ops = 30, Vars = 589) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4242, Real ops = 30, Vars = 1154) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2866, Real ops = 30, Vars = 589) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4242, Real ops = 30, Vars = 1154) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4242, Real ops = 30, Vars = 1154) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2866, Real ops = 30, Vars = 589) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>': (Total ops = 4242, Real ops = 30, Vars = 1154) (SOL-10)
+# Info: Optimizing partition '/Conv/SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run': (Total ops = 2866, Real ops = 30, Vars = 589) (SOL-10)
 # $PROJECT_HOME/src/SystolicArray.h(56): Creating instance '/Conv/SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>/systolicArrayCore' of C Hierarchy 'SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>' (CIN-204)
 # $PROJECT_HOME/src/SystolicArray.h(15): Inlining member function 'SystolicArrayLooper::SystolicArrayLooper' on object '' (CIN-64)
 # $PROJECT_HOME/src/SystolicArray.h(18): Synthesizing method 'SystolicArrayLooper::run' (CIN-13)
@@ -2053,23 +2056,23 @@ dofile ./scripts/run_c_test.tcl
 # $PROJECT_HOME/src/Conv.cpp(29): INOUT port 'weight_serial' is only used as an input. (OPT-10)
 # $PROJECT_HOME/src/Conv.cpp(30): INOUT port 'output_serial' is only used as an output. (OPT-11)
 # $PROJECT_HOME/src/Conv.cpp(31): INOUT port 'paramsIn' is only used as an input. (OPT-10)
-# Info: Optimizing partition '/Conv': (Total ops = 5212, Real ops = 271, Vars = 70) (SOL-10)
+# Info: Optimizing partition '/Conv': (Total ops = 5184, Real ops = 272, Vars = 70) (SOL-10)
 # Info: Optimizing partition '/Conv/constructor': (Total ops = 0, Real ops = 0, Vars = 0) (SOL-10)
 # Info: Optimizing partition '/Conv/constructor': (Total ops = 0, Real ops = 0, Vars = 0) (SOL-10)
-# Info: Optimizing partition '/Conv': (Total ops = 5212, Real ops = 271, Vars = 19) (SOL-10)
+# Info: Optimizing partition '/Conv': (Total ops = 5184, Real ops = 272, Vars = 19) (SOL-10)
 # Info: $PROJECT_HOME/src/Conv.cpp(25): Partition '/Conv/constructor' is found empty and is optimized away. (OPT-12)
-# Info: Optimizing partition '/Conv': (Total ops = 5212, Real ops = 271, Vars = 19) (SOL-10)
+# Info: Optimizing partition '/Conv': (Total ops = 5184, Real ops = 272, Vars = 19) (SOL-10)
 # Info: Optimizing partition '/Conv/run': (Total ops = 18, Real ops = 0, Vars = 0) (SOL-10)
 # Info: Optimizing partition '/Conv/run': (Total ops = 18, Real ops = 0, Vars = 0) (SOL-10)
-# Info: Optimizing partition '/Conv': (Total ops = 5212, Real ops = 271, Vars = 19) (SOL-10)
+# Info: Optimizing partition '/Conv': (Total ops = 5184, Real ops = 272, Vars = 19) (SOL-10)
 # Info: Optimizing partition '/Conv/run': (Total ops = 18, Real ops = 0, Vars = 0) (SOL-10)
-# Info: Optimizing partition '/Conv': (Total ops = 5212, Real ops = 271, Vars = 19) (SOL-10)
+# Info: Optimizing partition '/Conv': (Total ops = 5184, Real ops = 272, Vars = 19) (SOL-10)
 # Info: Optimizing partition '/Conv/run': (Total ops = 18, Real ops = 0, Vars = 0) (SOL-10)
-# Info: Optimizing partition '/Conv': (Total ops = 5212, Real ops = 271, Vars = 19) (SOL-10)
+# Info: Optimizing partition '/Conv': (Total ops = 5184, Real ops = 272, Vars = 19) (SOL-10)
 # Info: Optimizing partition '/Conv/run': (Total ops = 18, Real ops = 0, Vars = 0) (SOL-10)
-# Info: Optimizing partition '/Conv': (Total ops = 5212, Real ops = 271, Vars = 19) (SOL-10)
+# Info: Optimizing partition '/Conv': (Total ops = 5184, Real ops = 272, Vars = 19) (SOL-10)
 # Info: Optimizing partition '/Conv/run': (Total ops = 18, Real ops = 0, Vars = 0) (SOL-10)
-# Info: Optimizing partition '/Conv': (Total ops = 5212, Real ops = 271, Vars = 19) (SOL-10)
+# Info: Optimizing partition '/Conv': (Total ops = 5184, Real ops = 272, Vars = 19) (SOL-10)
 # Info: Optimizing partition '/Conv/run': (Total ops = 18, Real ops = 0, Vars = 0) (SOL-10)
 # Design 'Conv' was read (SOL-1)
 # Makefile for Original Design + Testbench written to file './scverify/Verify_orig_cxx_osci.mk'
@@ -2080,6 +2083,6 @@ dofile ./scripts/run_c_test.tcl
 # Warning:           Hierarchy Block 'WeightDoubleBuffer<8192,16,16>' Instance 'weightDoubleBuffer' $PROJECT_HOME/src/WeightDoubleBuffer.h:90
 # Warning:           Hierarchy Block 'SystolicArrayWrapper<IDTYPE,WDTYPE,ODTYPE,16,16>' Instance 'systolicArray' $PROJECT_HOME/src/SystolicArray.h:59
 # Info: CDesignChecker Shell script written to '/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw4/dnn-accelerator-hls-unoptimized/test/Conv.v1/CDesignChecker/design_checker.sh'
-# Info: Completed transformation 'compile' on solution 'Conv.v1': elapsed time 19.20 seconds, memory usage 943736kB, peak memory usage 943736kB (SOL-9)
+# Info: Completed transformation 'compile' on solution 'Conv.v1': elapsed time 19.38 seconds, memory usage 943740kB, peak memory usage 943740kB (SOL-9)
 # > end dofile ./scripts/run_c_test.tcl
-// Finish time Tue Feb  4 22:27:50 2025, time elapsed 0:29, peak memory 921.62MB, exit status 0
+// Finish time Wed Feb  5 14:50:06 2025, time elapsed 0:29, peak memory 921.62MB, exit status 0
