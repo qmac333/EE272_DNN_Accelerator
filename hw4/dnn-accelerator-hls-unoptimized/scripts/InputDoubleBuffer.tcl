@@ -18,6 +18,9 @@ go assembly
 # -------------------------------
 # Set the correct word widths and the stage replication
 # Your code starts here
+directive set /InputDoubleBuffer<4096,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/mem:cns -STAGE_REPLICATION 2
+directive set /InputDoubleBuffer<4096,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/mem -WORD_WIDTH 128
+# directive set /InputDoubleBuffer<4096,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/inputDoubleBufferReader/ -WORD_WIDTH 
 
 # Your code ends here
 # -------------------------------
