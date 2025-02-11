@@ -32,16 +32,16 @@ typedef ac_int<16, false> uint_16;
 typedef ac_int<32, false> uint_32;
 typedef ac_int<64, false> uint_64;
 struct Params {
-   uint_16 OY1;
-   uint_16 OX1;
-   uint_16 OY0;
-   uint_16 OX0;
+   ac_int<4, false> OY1;
+   ac_int<4, false> OX1;
+   ac_int<4, false> OY0;
+   ac_int<4, false> OX0;
 
-   uint_16 OC1;
-   uint_16 IC1;
-   uint_16 FX;
-   uint_16 FY;
-   uint_16 STRIDE;
+   ac_int<6, false> OC1;
+   ac_int<6, false> IC1;
+   ac_int<3, false> FX;
+   ac_int<3, false> FY;
+   ac_int<2, false> STRIDE;
 };
 
 #define ARRAY_DIMENSION 16
