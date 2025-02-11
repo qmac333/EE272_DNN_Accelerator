@@ -319,9 +319,9 @@ public:
                 // That is, the outputs that a PE wrote to should now become the input for the next PE
                 // Your code starts here
                 // -------------------------------
-                #pragma hls_pipeline_init_interval 1
+                #pragma hls_unroll yes
                 for(int j = 0; j < OC0_MAX; j++){
-                    #pragma hls_pipeline_init_interval 1
+                    #pragma hls_unroll yes
                     for(int i = 0; i < IC0_MAX; i++){
                         input_reg[i][j+1] = input_reg2[i][j];
                         psum_reg[i+1][j] = psum_reg2[i][j];
