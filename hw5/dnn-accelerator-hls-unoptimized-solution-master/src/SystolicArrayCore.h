@@ -126,6 +126,7 @@ public:
             // Your code starts here
             // -------------------------------
             uint_16 step_bound = OC0+IC0+(params.OX0*params.OY0)-1;
+            #pragma hls_pipeline_init_interval 1
             LABEL(INNER_LOOP) for (uint_16 step = 0; step < OC0_MAX + IC0_MAX + OX0_MAX * OY0_MAX - 1; ++step) { // loop inside each image tile
             // -------------------------------
             // Your code ends here 
@@ -139,9 +140,10 @@ public:
                 // -------------------------------
                 if (step < IC0) {       
                     PackedInt<WEIGHT_PRECISION, OC0> w_row = weight.read();
-
-                    for(int j = 0; j < OC0; j++){
+                    #pragma hls_unroll yes
+                    for(int j = 0; j < OC0_MAX; j++){
                             weight_reg[step][j] = w_row.value[j];
+                            if (j == OC0-1) break;
                     }
                 }
                 // -------------------------------
@@ -185,8 +187,10 @@ public:
                 // Assign values from input_buf into the registers for the first column of PEs
                 // Your code starts here
                 // -------------------------------
-                LABEL(INIT_IN) for(int i = 0; i < IC0; ++i) {
+                #pragma hls_unroll yes
+                LABEL(INIT_IN) for(int i = 0; i < IC0_MAX; ++i) {
                     input_reg[i][0] = input_buf.value[i];
+                    if (i == IC0-1) break;
                 }
                 // -------------------------------
                 // Your code ends here
@@ -202,13 +206,17 @@ public:
                 if(step < (params.OX0*params.OY0)){
                     // initial partial output of 0
                     if(loopIndices.ic1_idx == 0 && loopIndices.fx_idx == 0 && loopIndices.fy_idx == 0) {
-                        for(int j = 0; j < OC0; j++){
+                        #pragma hls_unroll yes
+                        for(int j = 0; j < OC0_MAX; j++){
                             psum_buf.value[j].template set_val<AC_VAL_0>();
+                            if (j == OC0-1) break;
                         }
                     }
                     else{ // read partial output from accumulation buffer
-                        for(int j = 0; j < OC0; j++){
+                        #pragma hls_unroll yes
+                        for(int j = 0; j < OC0_MAX; j++){
                             psum_buf.value[j] = accumulation_buffer[step][j];
+                            if (j == OC0-1) break;
                         }
                     }
                 }
@@ -236,8 +244,10 @@ public:
                 // Assign values from output_buf into the partial sum registers for the first row of PEs
                 // Your code starts here
                 // -------------------------------
-                LABEL(INIT_OUT) for(int j = 0; j < OC0; ++j) {
+                #pragma hls_unroll yes
+                LABEL(INIT_OUT) for(int j = 0; j < OC0_MAX; ++j) {
                     psum_reg[0][j] = output_buf.value[j];
+                    if (j == OC0-1) break;
                 }
                 // -------------------------------
                 // Your code ends here
@@ -249,10 +259,14 @@ public:
                 // Make sure that the correct registers are given to the PE
                 // Your code starts here
                 // -------------------------------
-                LABEL(COL) for (int j=0; j < OC0; ++j) {
-                    LABEL(ROW) for (int i=0; i < IC0; ++i) {
+                #pragma hls_unroll yes
+                LABEL(COL) for (int j=0; j < OC0_MAX; ++j) {
+                    #pragma hls_unroll yes
+                    LABEL(ROW) for (int i=0; i < IC0_MAX; ++i) {
                         pe[i][j].run(input_reg[i][j], psum_reg[i][j], weight_reg[i][j], input_reg2[i][j], psum_reg2[i][j]);
+                        if (i == IC0-1) break;
                     } //ROW
+                    if (j == OC0-1) break;
                 } //COL
                 // -------------------------------
                 // Your code ends here
@@ -287,8 +301,10 @@ public:
                 // Your code starts here
                 // -------------------------------
                 if(step >= OC0+IC0-1){
-                    for(int i = 0; i < OC0; i++){
+                    #pragma hls_unroll yes
+                    for(int i = 0; i < OC0_MAX; i++){
                         accumulation_buffer[step-(IC0+OC0-1)][i] = output_row.value[i];
+                        if (i == OC0-1) break;
                     }
                     if (loopIndices.ic1_idx==params.IC1-1 && loopIndices.fx_idx == params.FX-1 && loopIndices.fy_idx == params.FY-1) {   
                         output.write(output_row);
@@ -303,11 +319,15 @@ public:
                 // That is, the outputs that a PE wrote to should now become the input for the next PE
                 // Your code starts here
                 // -------------------------------
-                for(int j = 0; j < OC0; j++){
-                    for(int i = 0; i < IC0; i++){
+                #pragma hls_pipeline_init_interval 1
+                for(int j = 0; j < OC0_MAX; j++){
+                    #pragma hls_pipeline_init_interval 1
+                    for(int i = 0; i < IC0_MAX; i++){
                         input_reg[i][j+1] = input_reg2[i][j];
                         psum_reg[i+1][j] = psum_reg2[i][j];
+                        if (i == IC0-1) break;
                     }
+                    if (j == OC0-1) break;
                 }
 
                 // -------------------------------
