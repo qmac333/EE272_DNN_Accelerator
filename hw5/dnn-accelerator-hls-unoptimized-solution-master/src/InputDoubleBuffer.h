@@ -35,15 +35,15 @@ public:
             ac_int<ac::log2_ceil<size+1>::val, false> tileSize = ((params.OX0 - 1) * params.STRIDE + params.FX) * 
                                 ((params.OY0 - 1) * params.STRIDE + params.FY) * 
                                 params.IC1;
-            ac_int<ac::log2_ceil<size+1>::val, false> tileSize_MAX = ((OX0_MAX - 1) * STRIDE_MAX + FX_MAX) * ((OY0_MAX - 1) * STRIDE_MAX + FY_MAX) * IC1_MAX;
+            // ac_int<ac::log2_ceil<size+1>::val, false> tileSize_MAX = ((OX0_MAX - 1) * STRIDE_MAX + FX_MAX) * ((OY0_MAX - 1) * STRIDE_MAX + FY_MAX) * IC1_MAX;
 
             #pragma hls_pipeline_init_interval 1            
-            TILES: for (int t = 0; t < OX1_MAX*OY1_MAX; t++) {
+            TILES: for (int t = 0; t < params.OX1*params.OY1; t++) {
                 chanStruct<PackedInt<INPUT_PRECISION,IC0>,size> tmp;
 
                 // record one tile in buffer
                 // #pragma hls_pipeline_init_interval 1
-                TILE: for (int i = 0; i < tileSize_MAX; i++) {
+                TILE: for (int i = 0; i < tileSize; i++) {
                     PackedInt<INPUT_PRECISION, IC0> memCol;  // one column in the memory
                     // each packet contains 4 values, pack IC0 tgt into one row
                     for (int j = 0; j < IC0_MAX; j=j+4) {
@@ -57,11 +57,11 @@ public:
                         }
                     }
                     tmp.data[i] = memCol;
-                    if (i == tileSize-1) break;
+                    // if (i == tileSize-1) break;
                 } // TILE
                 // write a tile
                 dout.write(tmp);
-                if (t == params.OX1 * params.OY1 - 1) break;
+                // if (t == params.OX1 * params.OY1 - 1) break;
             } // TILES
 
             // -------------------------------
@@ -94,7 +94,7 @@ public:
             uint_16 IY0 = (params.OY0 - 1) * params.STRIDE + params.FY;
 
             #pragma hls_pipeline_init_interval 1
-            TILES: for (int t = 0; t < OX1_MAX*OY1_MAX; t++) {
+            TILES: for (int t = 0; t < params.OX1*params.OY1; t++) {
                 chanStruct<PackedInt<INPUT_PRECISION, IC0>,size> tmp;
                 
                 // read one tile from memory, and pass out one address at a time in the correct order
@@ -125,7 +125,7 @@ public:
                     } // IC1
                     if (oc1 == params.OC1 - 1) break;
                 } // OC1
-                if (t == params.OX1 * params.OY1 - 1) break; 
+                // if (t == params.OX1 * params.OY1 - 1) break; 
             } // TILES
 
             // -------------------------------
