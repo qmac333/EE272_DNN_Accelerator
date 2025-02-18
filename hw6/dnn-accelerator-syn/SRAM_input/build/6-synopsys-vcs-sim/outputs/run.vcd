@@ -1,0 +1,162 @@
+$date
+	Mon Feb 17 10:39:08 2025
+$end
+
+$version
+	Synopsys VCS version S-2021.09-SP1_Full64
+$end
+
+$timescale
+	1ps
+$end
+
+$comment Csum: 1 e86a0586981ec39a $end
+
+
+$scope module SramUnitTb $end
+$var reg 1 ! clk $end
+$var reg 1 " rst_n $end
+$var reg 1 # csb0 $end
+$var reg 1 $ csb1 $end
+$var reg 1 % web0 $end
+$var reg 4 & wmask0 [3:0] $end
+$var reg 8 ' addr0 [7:0] $end
+$var reg 32 ( din0 [31:0] $end
+$var wire 32 ) dout0 [31:0] $end
+$var wire 32 * dout1 [31:0] $end
+
+$scope module SramUnit_inst $end
+$var wire 1 ! clk $end
+$var wire 1 " rst_n $end
+$var wire 1 # csb0 $end
+$var wire 1 $ csb1 $end
+$var wire 1 % web0 $end
+$var wire 4 & wmask0 [3:0] $end
+$var wire 8 ' addr0 [7:0] $end
+$var wire 32 ( din0 [31:0] $end
+$var wire 32 ) dout0 [31:0] $end
+$var wire 32 * dout1 [31:0] $end
+$var reg 8 + addr1 [7:0] $end
+
+$scope module sram $end
+$var wire 1 ! clk0 $end
+$var wire 1 # csb0 $end
+$var wire 1 % web0 $end
+$var wire 8 ' addr0 [7:0] $end
+$var wire 4 & wmask0 [3:0] $end
+$var wire 32 ( din0 [31:0] $end
+$var reg 32 ) dout0 [31:0] $end
+$var wire 1 ! clk1 $end
+$var wire 1 $ csb1 $end
+$var wire 8 + addr1 [7:0] $end
+$var reg 32 * dout1 [31:0] $end
+$var reg 1 , csb0_reg $end
+$var reg 1 - web0_reg $end
+$var reg 4 . wmask0_reg [3:0] $end
+$var reg 8 / addr0_reg [7:0] $end
+$var reg 32 0 din0_reg [31:0] $end
+$var reg 1 1 csb1_reg $end
+$var reg 8 2 addr1_reg [7:0] $end
+
+$scope begin MEM_WRITE0 $end
+$upscope $end
+
+
+$scope begin MEM_READ0 $end
+$upscope $end
+
+
+$scope begin MEM_READ1 $end
+$upscope $end
+
+$upscope $end
+
+$upscope $end
+
+$upscope $end
+
+$enddefinitions $end
+
+#0
+$dumpvars
+0!
+1#
+x,
+1$
+x1
+0"
+1%
+x-
+b00000000 '
+bxxxxxxxx /
+bxxxxxxxx +
+bxxxxxxxx 2
+b00000000000000000000000000000000 (
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 0
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx )
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+bxxxx &
+bxxxx .
+$end
+#10000
+1!
+1,
+1-
+b00000000 /
+b00000000000000000000000000000000 0
+11
+b00000000 +
+#20000
+0!
+1"
+0#
+0%
+b10101010101010101010101010101010 (
+b1111 &
+#30000
+1!
+0,
+0-
+b1111 .
+b10101010101010101010101010101010 0
+b00000000 2
+#40000
+0!
+1%
+#50000
+1!
+1-
+#60000
+0!
+1#
+#61000
+b10101010101010101010101010101010 )
+#70000
+1!
+1,
+#71000
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx )
+#80000
+0!
+#90000
+1!
+#100000
+0!
+#110000
+1!
+#120000
+0!
+#130000
+1!
+#140000
+0!
+#150000
+1!
+#160000
+0!
+#170000
+1!
+#180000
+0!
+#190000
+1!

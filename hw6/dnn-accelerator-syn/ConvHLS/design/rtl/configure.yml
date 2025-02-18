@@ -1,0 +1,16 @@
+name: rtl
+
+outputs:
+  - design.v
+  - design.vcs.v
+
+commands:
+  # - cat SramUnit.v > outputs/design.v 
+  # - cat SramUnit.v > outputs/design.vcs.v 
+  - make clean && make
+  - sed -i '0,/module unreg_hier/{s/module unreg_hier/module unreg_hier1/}' build/Conv.v1/concat_rtl.v
+  - cat build/Conv.v1/concat_rtl.v > outputs/design.v
+  - make rtl_test_no_gui
+
+parameters:
+  clock_period: 20

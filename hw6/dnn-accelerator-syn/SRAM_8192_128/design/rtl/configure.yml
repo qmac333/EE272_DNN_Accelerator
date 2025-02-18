@@ -1,0 +1,9 @@
+name: rtl
+
+outputs:
+  - design.v
+  - design.vcs.v
+
+commands:
+  - cat  sram_4096_128_db.v > outputs/design.v 
+  - cat  sram_4096_128_db.v > outputs/design.vcs.v 

@@ -1,0 +1,39 @@
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: The derived static probability value (0.500000) for the clock net 'clk' conflicts with the annotated value (0.473684). Using the annotated value. (PWR-12)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : SramUnit
+Version: S-2021.06-SP5-4
+Date   : Mon Feb 17 10:42:10 2025
+****************************************
+
+
+Library(s) Used:
+
+    sky130_fd_sc_hd__tt_025C_1v80 (File: /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/SramUnit/build/8-synopsys-dc-synthesis/inputs/adk/stdcells.db)
+    sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C_lib (File: /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/SramUnit/build/8-synopsys-dc-synthesis/inputs/sram_tt_1p8V_25C.db)
+
+
+Operating Conditions: tt_025C_1v80   Library: sky130_fd_sc_hd__tt_025C_1v80
+Wire Load Model Mode: Inactive.
+
+
+Global Operating Voltage = 1.8  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+SramUnit                               3.54e-04    1.921 9.51e+03    1.931 100.0
+  add_x_1 (SramUnit_SramUnit_DW01_inc_J1_0_0)    0.000    0.000 7.91e-02 7.91e-08   0.0
+1

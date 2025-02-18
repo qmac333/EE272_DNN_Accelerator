@@ -1,0 +1,20 @@
+build_dir: 1-info
+build_id: '1'
+commands:
+- echo "Design name      -- $design_name"
+- echo "Clock period     -- $clock_period"
+- echo "ADK              -- $adk"
+- echo "ADK view         -- $adk_view"
+- echo
+- echo "Constructed from -- $construct_path"
+- echo
+edges_i: {}
+edges_o: {}
+name: info
+parameters:
+  adk: skywater-130nm-adk.v2021
+  adk_view: view-standard
+  clock_period: 20.0
+  construct_path: /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/SramUnit/design/construct.py
+  design_name: SramUnit
+source: /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/mflowgen/steps/info

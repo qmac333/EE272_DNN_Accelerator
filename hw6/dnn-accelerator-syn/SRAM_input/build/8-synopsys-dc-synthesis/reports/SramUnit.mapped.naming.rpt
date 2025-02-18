@@ -1,0 +1,18 @@
+
+Design          Type    Object                  New Name
+--------------------------------------------------------------------------------
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+SramUnit        cell    addr1_reg[7]            addr1_reg_7_
+SramUnit        cell    addr1_reg[6]            addr1_reg_6_
+SramUnit        cell    addr1_reg[5]            addr1_reg_5_
+SramUnit        cell    addr1_reg[4]            addr1_reg_4_
+SramUnit        cell    addr1_reg[3]            addr1_reg_3_
+SramUnit        cell    addr1_reg[2]            addr1_reg_2_
+SramUnit        cell    addr1_reg[1]            addr1_reg_1_
+SramUnit        cell    addr1_reg[0]            addr1_reg_0_
+SramUnit        net     *Logic0*                n_Logic0_
+SramUnit        net     n5                      n50
+SramUnit        net     n6                      n60
+SramUnit        net     n7                      n70
+SramUnit        net     n8                      n80
+1

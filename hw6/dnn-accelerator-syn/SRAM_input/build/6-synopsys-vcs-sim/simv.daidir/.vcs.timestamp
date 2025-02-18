@@ -1,0 +1,202 @@
+0 
+38
++itf+/cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/vcsdp_lite.tab
++lint=TFIPC-L
++neg_tchk
++vcs+dumpvars+outputs/run.vcd
++vcsd1
++vpi
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/cad/synopsys/vcs/S-2021.09-SP1/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/libvirsim.so /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/liberrorinf.so /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/libsnpsmalloc.so /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/libvfs.so
+-Mout=simv
+-Msaverestoreobj=/cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/cad/synopsys/vcs/S-2021.09-SP1/include
+-Mxllcflags=
+-Xvcs_run_simv=1
+-debug_access+pp
+-gen_obj
+-hsopt
+-lca
+-picarchive
+-sverilog
+-sverilog
+-timescale=1ns/1ps
+-top
+/cad/synopsys/vcs/S-2021.09-SP1/linux64/bin/vcs1
+SramUnitTb
+inputs/design.vcs.v
+inputs/sram.v
+inputs/testbench.sv
+147
+waveform=True
+testbench_name=SramUnitTb
+port=5909
+host=iron-04.farmshare.sunet
+dut_name=dut
+__LMOD_REF_COUNT_MODULEPATH=/software/modules/linux-ubuntu22.04-x86_64/Core:1;/software/modules/commercial:1
+_ModuleTable_Sz_=1
+_ModuleTable001_=X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IGZhbHNlLApjX3Nob3J0VGltZSA9IGZhbHNlLApkZXB0aFQgPSB7fSwKZmFtaWx5ID0ge30sCm1UID0ge30sCm1wYXRoQSA9IHsKIi9zb2Z0d2FyZS9tb2R1bGVzL2xpbnV4LXVidW50dTIyLjA0LXg4Nl82NC9Db3JlIiwgIi9zb2Z0d2FyZS9tb2R1bGVzL2NvbW1lcmNpYWwiLAp9LApzeXN0ZW1CYXNlTVBBVEggPSAiL3NvZnR3YXJlL21vZHVsZXMvbGludXgtdWJ1bnR1MjIuMDQteDg2XzY0L0NvcmU6L3NvZnR3YXJlL21vZHVsZXMvY29tbWVyY2lhbCIsCn0K
+_LMFILES__modshare=/cad/modules/modulefiles/tools/base/rsg:1:/etc/modulefiles/base/rsg:1:/etc/modulefiles/incisive/latest:1:/cad/modules/modulefiles/tools/innovus/21.16.000:1:/cad/modules/modulefiles/tools/prime/T-2022.03:1:/cad/modules/modulefiles/tools/calibre/2019.1:1:/cad/modules/modulefiles/tools/dc_shell/S-2021.06-SP5-4:1:/cad/modules/modulefiles/tools/vcs/S-2021.09-SP1:1:/etc/modulefiles/vcs/latest:1:/cad/modules/modulefiles/tools/genus/20.11.000:1
+_LMFILES_=/etc/modulefiles/base/rsg:/etc/modulefiles/vcs/latest:/etc/modulefiles/incisive/latest:/cad/modules/modulefiles/tools/base/rsg:/cad/modules/modulefiles/tools/vcs/S-2021.09-SP1:/cad/modules/modulefiles/tools/dc_shell/S-2021.06-SP5-4:/cad/modules/modulefiles/tools/innovus/21.16.000:/cad/modules/modulefiles/tools/calibre/2019.1:/cad/modules/modulefiles/tools/prime/T-2022.03:/cad/modules/modulefiles/tools/genus/20.11.000
+ZES_ENABLE_SYSMAN=1
+XDG_SESSION_TYPE=tty
+XDG_SESSION_ID=4294967295
+XDG_SESSION_CLASS=user
+XDG_RUNTIME_DIR=/run/user/448537
+XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+WEBSOCKIFY_CMD=/usr/bin/websockify
+VTE_VERSION=6800
+VRST_HOME=/cad/cadence/INCISIVE15.20.022
+VMR_MODE_FLAG=32
+VIRTUAL_ENV=/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/venv
+VENDOR=unknown
+VCS_TARGET_ARCH=linux64
+VCS_PATHMAP_PRELOAD_DONE=1
+VCS_MX_HOME_INTERNAL=1
+VCS_LCAMSG_PRINT_OFF=1
+VCS_HOME=/cad/synopsys/vcs/S-2021.09-SP1/
+VCS_EXEC_DONE=1
+VCS_DEPTH=0
+VCS_CC=gcc
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+USER_PATH=/software/spack/opt/apptainer-1.1.9-n4xn7emdl4avcl5dglkgwlnilnnn3lnf/bin:/software/spack/opt/apptainer/bin:/home/users/jiajunc4/.local/bin:/opt/TurboVNC/bin:/home/users/jiajunc4/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+UNAME=/bin/uname
+TOOL_HOME=/cad/synopsys/vcs/S-2021.09-SP1/linux64
+SYNOPSYS_PTS=/cad/synopsys/prime/T-2022.03
+SYNOPSYS_LICENSE=27000@cadlic0.stanford.edu
+SYNOPSYS=/cad/synopsys/syn/S-2021.06-SP5-4
+SPRINGSOFT_LICENSE=5219@cadlic0.stanford.edu
+SNPS_VCS_CLANG_PATH=/cad/synopsys/vcs/S-2021.09-SP1//linux64/clang
+SNPS_INTERNAL_VCS_LINUX_OS=linux
+SLURM_TRES_PER_TASK=cpu=2
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+SLURM_TOPOLOGY_ADDR=iron-04
+SLURM_TASK_PID=2719603
+SLURM_TASKS_PER_NODE=1
+SLURM_SUBMIT_HOST=ondemand-01
+SLURM_SUBMIT_DIR=/var/www/ood/apps/sys/dashboard
+SLURM_SCRIPT_CONTEXT=prolog_task
+SLURM_PROCID=0
+SLURM_PRIO_PROCESS=0
+SLURM_OOM_KILL_STEP=0
+SLURM_NODELIST=iron-04
+SLURM_NODEID=0
+SLURM_NNODES=1
+SLURM_MEM_PER_CPU=4000
+SLURM_LOCALID=0
+SLURM_JOB_USER=jiajunc4
+SLURM_JOB_UID=448537
+SLURM_JOB_START_TIME=1739399551
+SLURM_JOB_QOS=normal
+SLURM_JOB_PARTITION=caddyshack
+SLURM_JOB_NUM_NODES=1
+SLURM_JOB_NODELIST=iron-04
+SLURM_JOB_NAME=sys/dashboard/sys/bc_desktop/caddyshack
+SLURM_JOB_ID=305380
+SLURM_JOB_GID=37
+SLURM_JOB_END_TIME=1740004351
+SLURM_JOB_CPUS_PER_NODE=2
+SLURM_JOB_ACCOUNT=operator
+SLURM_JOBID=305380
+SLURM_GTIDS=0
+SLURM_GET_USER_ENV=1
+SLURM_EXPORT_ENV=NONE
+SLURM_CPUS_PER_TASK=2
+SLURM_CPUS_ON_NODE=2
+SLURM_CONF=/var/spool/slurmd/conf-cache/slurm.conf
+SLURM_CLUSTER_NAME=farmshare
+SLURMD_NODENAME=iron-04
+SINGULARITY_NAME=centos.sif-latest
+SINGULARITY_ENVIRONMENT=/.singularity.d/env/91-environment.sh
+SINGULARITY_CONTAINER=/home/classes/ee/admin/software/containers/centos.sif-latest
+SINGULARITY_BIND=/scratch,/cad,/farmshare,/farmshare/home
+SESSION_MANAGER=local/iron-04:@/tmp/.ICE-unix/2719732,unix/iron-04:/tmp/.ICE-unix/2719732
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+QT_GRAPHICSSYSTEM_CHECKED=1
+PYTHONPATH=/home/users/jiajunc4/ee272/ee272-interstellar/src
+PRTE_MCA_plm_slurm_args=--external-launcher
+PROMPT_COMMAND=PS1="Apptainer> "; unset PROMPT_COMMAND
+PDKPATH=/farmshare/home/classes/ee/272/PDKs/sky130A
+PATH_modshare=/cad/cadence/GENUS_20.11.000_lnx86/bin:1:/cad/cadence/GENUS_20.11.000_lnx86/tools/bin:1:/cad/synopsys/prime/T-2022.03/bin:1:/cad/mentor/2019.11/Catapult_Synthesis_10.4b-841621/Mgc_home/bin:1:/usr/bin:1:/cad/synopsys/vcs/U-2023.03//gui/dve/bin:1:/usr/local/bin:1:/cad/cadence/GENUS_20.11.000_lnx86/tools/synth/bin:1:/cad/mentor/2019.1/aoi_cal_2019.1_18.11/bin:1:/cad/synopsys/vcs/S-2021.09-SP1//gui/dve/bin:1:/cad/cadence/INNOVUS-ISR6_21.16.000_lnx86/bin:1:/cad/synopsys/syn/S-2021.06-SP5-4/amd64/syn/bin/:1:/cad/mentor/2019.11/Catapult_Synthesis_10.4b-841621/Mgc_home/bin/:1:/bin:1:/cad/synopsys/vcs/U-2023.03//bin:1:/cad/cadence/INCISIVE15.20.022/tools/bin:1:/farmshare/home/classes/ee/272/python37/bin:1:/sbin:1:/cad/synopsys/prime/T-2022.03/amd64/syn/bin/:1:/cad/synopsys/vcs/S-2021.09-SP1//bin:1:/usr/sbin:1:/cad/common/Linux/x86_64/bin:2:/cad/cadence/INCISIVE15.20.022/tools/dfII/bin:1:/usr/local/sbin:1
+OVA_UUM=0
+OSTYPE=linux
+OMPI_MCA_plm_slurm_args=--external-launcher
+OA_HOME=/cad/cadence/INNOVUS-ISR6_21.16.000_lnx86/share/oa
+MODULES_REL=2.6.32
+MODULES_OS=Linux
+MODULES_MACH=x86_64
+MODULESHOME=/cad/modules/tcl
+MODULEPATH_modshare=/home/users/jiajunc4/.modules:1:/cad/modules/modulefiles/tools:1:/usr/share/Modules/modulefiles:1:/etc/modulefiles:1
+MODULEPATH_ROOT=/software/spack/opt/spack/linux-ubuntu22.04-x86_64_v3/gcc-12.3.0/lmod-8.7.37-inagmmghckufenngqxzamcocdgqicyb6/modulefiles
+MODULEPATH=/home/users/jiajunc4/.modules:/cad/modules/modulefiles/tools:/usr/share/Modules/modulefiles:/etc/modulefiles
+MGLS_LICENSE_FILE=1717@cadlic0.stanford.edu
+MGC_HOME=/cad/mentor/2019.1/aoi_cal_2019.1_18.11
+MFLAGS=
+MANPATH_modshare=/cad/synopsys/prime/T-2022.03/doc/pt/man:1:/cad/synopsys/syn/S-2021.06-SP5-4/doc/snps_gui/man:1:/cad/synopsys/vcs/S-2021.09-SP1//doc/man:1::1:/cad/synopsys/vcs/U-2023.03//doc/man:1:/cad/synopsys/prime/T-2022.03/doc/snps_tcl/man:1:/cad/synopsys/syn/S-2021.06-SP5-4/doc/snps_tcl/man:1:/cad/synopsys/syn/S-2021.06-SP5-4/doc/syn/man:1:/software/spack/opt/spack/linux-ubuntu22.04-x86_64_v3/gcc-12.3.0/lmod-8.7.37-inagmmghckufenngqxzamcocdgqicyb6/lmod/lmod/share/man:1
+MAKELEVEL=1
+MAKEFLAGS=
+LOADEDMODULES_modshare=prime/T-2022.03:1:calibre/2019.1:1:dc_shell/S-2021.06-SP5-4:1:vcs/S-2021.09-SP1:1:vcs/latest:1:genus/20.11.000:1:base/rsg:2:incisive/latest:1:innovus/21.16.000:1
+LOADEDMODULES=base/rsg:vcs/latest:incisive/latest:vcs/S-2021.09-SP1:dc_shell/S-2021.06-SP5-4:innovus/21.16.000:calibre/2019.1:prime/T-2022.03:genus/20.11.000
+LM_LICENSE_FILE_modshare=1717@cadlic0.stanford.edu:1
+LMOD_sys=Linux
+LMOD_VERSION=8.7.37
+LMOD_SETTARG_FULL_SUPPORT=no
+LMOD_ROOT=/software/spack/opt/spack/linux-ubuntu22.04-x86_64_v3/gcc-12.3.0/lmod-8.7.37-inagmmghckufenngqxzamcocdgqicyb6/lmod
+LMOD_PKG=/software/spack/opt/spack/linux-ubuntu22.04-x86_64_v3/gcc-12.3.0/lmod-8.7.37-inagmmghckufenngqxzamcocdgqicyb6/lmod/lmod
+LMOD_DIR=/software/spack/opt/spack/linux-ubuntu22.04-x86_64_v3/gcc-12.3.0/lmod-8.7.37-inagmmghckufenngqxzamcocdgqicyb6/lmod/lmod/libexec
+LMOD_CMD=/software/spack/opt/spack/linux-ubuntu22.04-x86_64_v3/gcc-12.3.0/lmod-8.7.37-inagmmghckufenngqxzamcocdgqicyb6/lmod/lmod/libexec/lmod
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LESSCLOSE=/usr/bin/lesspipe %s %s
+LD_LIBRARY_PATH_modshare=/cad/cadence/INNOVUS-ISR6_21.16.000_lnx86/share/oa/lib/linux_rhel60_64/opt:1:/cad/cadence/INCISIVE15.20.022/tools/lib:1:/cad/common/Linux/x86_64/lib:2:/cad/cadence/INNOVUS-ISR6_21.16.000_lnx86/tools.lnx86/lib/64bit:1:/.singularity.d/libs:1:/cad/cadence/INCISIVE15.20.022/tools/dfII/lib:1:/cad/synopsys/syn/S-2021.06-SP5-4/lib:999999999
+LC_ALL=C
+I_MPI_HYDRA_BOOTSTRAP_EXEC_EXTRA_ARGS=--external-launcher
+I_MPI_HYDRA_BOOTSTRAP=slurm
+IUSHOME=/cad/cadence/INCISIVE15.20.022
+HYDRA_LAUNCHER_EXTRA_ARGS=--external-launcher
+HYDRA_BOOTSTRAP=slurm
+HOSTTYPE=x86_64-linux
+GROUP=operator
+ENVIRONMENT=BATCH
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-0wKCeVhT3e,guid=03c0b7c95fc2a16b1f9af19267ad218f
+COLORTERM=truecolor
+CDS_LIC_FILE=5280@cadlic0
+CDS_AUTO_64BIT=ALL
+CAD_COMMON=/cad/common/Linux/x86_64
+CADENCE_LICENSE=5280@cadlic0.stanford.edu
+BASH_FUNC_module%%=() {  if [ -z "${LMOD_SH_DBG_ON+x}" ]; then_ case "$-" in _ *v*x*)_ __lmod_sh_dbg='vx'_ ;;_ *v*)_ __lmod_sh_dbg='v'_ ;;_ *x*)_ __lmod_sh_dbg='x'_ ;;_ esac;_ fi;_ if [ -n "${__lmod_sh_dbg:-}" ]; then_ set +$__lmod_sh_dbg;_ echo "Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output" 1>&2;_ fi;_ eval "$($LMOD_CMD shell "$@")" && eval "$(${LMOD_SETTARG_CMD:-:} -s sh)";_ __lmod_my_status=$?;_ if [ -n "${__lmod_sh_dbg:-}" ]; then_ echo "Shell debugging restarted" 1>&2;_ set -$__lmod_sh_dbg;_ fi;_ unset __lmod_sh_dbg;_ return $__lmod_my_status_}
+BASH_FUNC_ml%%=() {  eval "$($LMOD_DIR/ml_cmd "$@")"_}
+BASH_ENV=/software/spack/opt/spack/linux-ubuntu22.04-x86_64_v3/gcc-12.3.0/lmod-8.7.37-inagmmghckufenngqxzamcocdgqicyb6/lmod/lmod/init/bash
+APPTAINER_NAME=centos.sif-latest
+APPTAINER_ENVIRONMENT=/.singularity.d/env/91-environment.sh
+APPTAINER_CONTAINER=/home/classes/ee/admin/software/containers/centos.sif-latest
+APPTAINER_COMMAND=exec
+APPTAINER_BIND=/scratch,/cad,/farmshare,/farmshare/home
+APPTAINER_APPNAME=
+AMSHOME=/cad/cadence/INCISIVE15.20.022
+0
+0
+4
+1739817542 inputs/testbench.sv
+1739817541 inputs/sram.v
+1739817508 inputs/design.vcs.v
+1638245157 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/vcsdp_lite.tab
+4
+1638257447 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/libvirsim.so
+1638246089 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/liberrorinf.so
+1638245983 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/libsnpsmalloc.so
+1638246086 /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/libvfs.so
+1739817548 simv.daidir
+-1 partitionlib

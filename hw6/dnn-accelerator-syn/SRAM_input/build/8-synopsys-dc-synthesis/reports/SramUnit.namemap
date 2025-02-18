@@ -1,0 +1,12 @@
+# PTPX name mapping file
+# created using Synopsys Power Compiler S-2021.06-SP5-4 */
+# design SramUnit
+# 
+set_rtl_to_gate_name -rtl {addr1[7]} -gate [get_cell {addr1_reg_7_}]
+set_rtl_to_gate_name -rtl {addr1[6]} -gate [get_cell {addr1_reg_6_}]
+set_rtl_to_gate_name -rtl {addr1[5]} -gate [get_cell {addr1_reg_5_}]
+set_rtl_to_gate_name -rtl {addr1[4]} -gate [get_cell {addr1_reg_4_}]
+set_rtl_to_gate_name -rtl {addr1[3]} -gate [get_cell {addr1_reg_3_}]
+set_rtl_to_gate_name -rtl {addr1[2]} -gate [get_cell {addr1_reg_2_}]
+set_rtl_to_gate_name -rtl {addr1[1]} -gate [get_cell {addr1_reg_1_}]
+set_rtl_to_gate_name -rtl {addr1[0]} -gate [get_cell {addr1_reg_0_}]

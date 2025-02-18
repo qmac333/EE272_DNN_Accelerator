@@ -1,0 +1,53 @@
+ 
+****************************************
+Report : reference
+Design : SramUnit
+Version: S-2021.06-SP5-4
+Date   : Mon Feb 17 10:42:10 2025
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+SramUnit_SNPS_CLOCK_GATE_HIGH_SramUnit_0    18.768000       1    18.768000 b, h
+SramUnit_SramUnit_DW01_inc_J1_0_0    87.584000       1    87.584000 h
+sky130_fd_sc_hd__and2_1 sky130_fd_sc_hd__tt_025C_1v80     6.256000       8    50.048000
+sky130_fd_sc_hd__buf_6 sky130_fd_sc_hd__tt_025C_1v80    11.260800       5    56.304002
+sky130_fd_sc_hd__buf_12 sky130_fd_sc_hd__tt_025C_1v80    20.019199       3    60.057598
+sky130_fd_sc_hd__conb_1 sky130_fd_sc_hd__tt_025C_1v80     3.753600       1     3.753600
+sky130_fd_sc_hd__dfxtp_1 sky130_fd_sc_hd__tt_025C_1v80    20.019199       8   160.153595 n
+sky130_fd_sc_hd__nand2_1 sky130_fd_sc_hd__tt_025C_1v80     3.753600       1     3.753600
+sky130_sram_1kbyte_1rw1r_32x256_8 sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C_lib 192561.843750       1 192561.843750 b, d
+-----------------------------------------------------------------------------
+Total 9 references                                  193002.266145
+
+****************************************
+Design: SramUnit_SNPS_CLOCK_GATE_HIGH_SramUnit_0 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+sky130_fd_sc_hd__sdlclkp_1 sky130_fd_sc_hd__tt_025C_1v80    18.768000       1    18.768000 b
+-----------------------------------------------------------------------------
+Total 1 references                                     18.768000
+
+****************************************
+Design: SramUnit_SramUnit_DW01_inc_J1_0_0 
+****************************************
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+sky130_fd_sc_hd__ha_1 sky130_fd_sc_hd__tt_025C_1v80    12.512000       6    75.072001 r
+sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__tt_025C_1v80     3.753600       1     3.753600
+sky130_fd_sc_hd__xor2_1 sky130_fd_sc_hd__tt_025C_1v80     8.758400       1     8.758400
+-----------------------------------------------------------------------------
+Total 3 references                                     87.584000
+1

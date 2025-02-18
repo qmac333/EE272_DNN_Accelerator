@@ -1,0 +1,18 @@
+build_dir: 7-gen-saif-rtl
+build_id: '7'
+commands:
+- vcd2saif -input inputs/run.vcd -output outputs/run.saif
+edges_i:
+  run.vcd:
+  - f: run.vcd
+    step: 6-synopsys-vcs-sim
+edges_o:
+  run.saif:
+  - f: run.saif
+    step: 8-synopsys-dc-synthesis
+inputs:
+- run.vcd
+name: gen-saif-rtl
+outputs:
+- run.saif
+source: /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/mflowgen/steps/synopsys-vcd2saif-convert

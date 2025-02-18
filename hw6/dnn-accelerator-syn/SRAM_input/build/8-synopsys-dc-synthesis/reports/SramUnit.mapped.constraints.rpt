@@ -1,0 +1,242 @@
+ 
+****************************************
+Report : constraint
+        -verbose
+Design : SramUnit
+Version: S-2021.06-SP5-4
+Date   : Mon Feb 17 10:42:10 2025
+****************************************
+
+
+  Startpoint: rst_n (input port clocked by ideal_clock)
+  Endpoint: clk_gate_addr1_reg/latch
+            (gating element for clock ideal_clock)
+  Path Group: REGIN
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ideal_clock (rise edge)                           0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                   10.00      10.00 r
+  rst_n (in)                                              0.08      10.08 r
+  U22/Y (sky130_fd_sc_hd__nand2_1)                        0.06 *    10.15 f
+  clk_gate_addr1_reg/latch/GATE (sky130_fd_sc_hd__sdlclkp_1)     0.00 *    10.15 f
+  data arrival time                                                 10.15
+
+  clock ideal_clock (rise edge)                          20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clk_gate_addr1_reg/latch/CLK (sky130_fd_sc_hd__sdlclkp_1)     0.00    20.00 r
+  clock gating setup time                                -0.19      19.81
+  data required time                                                19.81
+  --------------------------------------------------------------------------
+  data required time                                                19.81
+  data arrival time                                                -10.15
+  --------------------------------------------------------------------------
+  slack (MET)                                                        9.66
+
+
+  Startpoint: sram/clk1 (internal path startpoint clocked by ideal_clock)
+  Endpoint: dout1[26] (output port clocked by ideal_clock)
+  Path Group: REGOUT
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ideal_clock (fall edge)                          10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  input external delay                                    0.00      10.00 f
+  sram/clk1 (sky130_sram_1kbyte_1rw1r_32x256_8)           0.00      10.00 f
+  sram/dout1[26] (sky130_sram_1kbyte_1rw1r_32x256_8)      0.35      10.35 r
+  dout1[26] (out)                                         0.00 *    10.35 r
+  data arrival time                                                 10.35
+
+  clock ideal_clock (rise edge)                          20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  output external delay                                   0.00      20.00
+  data required time                                                20.00
+  --------------------------------------------------------------------------
+  data required time                                                20.00
+  data arrival time                                                -10.35
+  --------------------------------------------------------------------------
+  slack (MET)                                                        9.65
+
+
+  Startpoint: addr1_reg_1_
+              (rising edge-triggered flip-flop clocked by ideal_clock)
+  Endpoint: addr1_reg_7_
+            (rising edge-triggered flip-flop clocked by ideal_clock)
+  Path Group: ideal_clock
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ideal_clock (rise edge)                           0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  addr1_reg_1_/CLK (sky130_fd_sc_hd__dfxtp_1)             0.00       0.00 r
+  addr1_reg_1_/Q (sky130_fd_sc_hd__dfxtp_1)               0.32       0.32 f
+  add_x_1/U13/COUT (sky130_fd_sc_hd__ha_1)                0.23 *     0.54 f
+  add_x_1/U14/COUT (sky130_fd_sc_hd__ha_1)                0.18 *     0.72 f
+  add_x_1/U15/COUT (sky130_fd_sc_hd__ha_1)                0.19 *     0.91 f
+  add_x_1/U16/COUT (sky130_fd_sc_hd__ha_1)                0.18 *     1.09 f
+  add_x_1/U17/COUT (sky130_fd_sc_hd__ha_1)                0.19 *     1.28 f
+  add_x_1/U18/COUT (sky130_fd_sc_hd__ha_1)                0.20 *     1.48 f
+  add_x_1/U12/X (sky130_fd_sc_hd__xor2_1)                 0.16 *     1.64 f
+  U17/X (sky130_fd_sc_hd__and2_1)                         0.16 *     1.80 f
+  addr1_reg_7_/D (sky130_fd_sc_hd__dfxtp_1)               0.00 *     1.80 f
+  data arrival time                                                  1.80
+
+  clock ideal_clock (rise edge)                          20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  addr1_reg_7_/CLK (sky130_fd_sc_hd__dfxtp_1)             0.00      20.00 r
+  library setup time                                     -0.12      19.88
+  data required time                                                19.88
+  --------------------------------------------------------------------------
+  data required time                                                19.88
+  data arrival time                                                 -1.80
+  --------------------------------------------------------------------------
+  slack (MET)                                                       18.09
+
+
+  Startpoint: din0[31] (input port clocked by ideal_clock)
+  Endpoint: sram (rising edge-triggered flip-flop clocked by ideal_clock)
+  Path Group: REGIN
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ideal_clock (rise edge)                           0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                   10.00      10.00 f
+  din0[31] (in)                                           0.01      10.01 f
+  sram/din0[31] (sky130_sram_1kbyte_1rw1r_32x256_8)       0.00 *    10.01 f
+  data arrival time                                                 10.01
+
+  clock ideal_clock (rise edge)                           0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  sram/clk0 (sky130_sram_1kbyte_1rw1r_32x256_8)           0.00       0.00 r
+  library hold time                                      -0.06      -0.06
+  data required time                                                -0.06
+  --------------------------------------------------------------------------
+  data required time                                                -0.06
+  data arrival time                                                -10.01
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.07
+
+
+  Startpoint: sram/clk0 (internal path startpoint clocked by ideal_clock)
+  Endpoint: dout0[29] (output port clocked by ideal_clock)
+  Path Group: REGOUT
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ideal_clock (fall edge)                          10.00      10.00
+  clock network delay (ideal)                             0.00      10.00
+  input external delay                                    0.00      10.00 f
+  sram/clk0 (sky130_sram_1kbyte_1rw1r_32x256_8)           0.00      10.00 f
+  sram/dout0[29] (sky130_sram_1kbyte_1rw1r_32x256_8)      0.34      10.34 r
+  dout0[29] (out)                                         0.00 *    10.34 r
+  data arrival time                                                 10.34
+
+  clock ideal_clock (rise edge)                           0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  output external delay                                   0.00       0.00
+  data required time                                                 0.00
+  --------------------------------------------------------------------------
+  data required time                                                 0.00
+  data arrival time                                                -10.34
+  --------------------------------------------------------------------------
+  slack (MET)                                                       10.34
+
+
+  Startpoint: addr1_reg_2_
+              (rising edge-triggered flip-flop clocked by ideal_clock)
+  Endpoint: sram (rising edge-triggered flip-flop clocked by ideal_clock)
+  Path Group: ideal_clock
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ideal_clock (rise edge)                           0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  addr1_reg_2_/CLK (sky130_fd_sc_hd__dfxtp_1)             0.00       0.00 r
+  addr1_reg_2_/Q (sky130_fd_sc_hd__dfxtp_1)               0.30       0.30 f
+  U25/X (sky130_fd_sc_hd__buf_6)                          0.12 *     0.41 f
+  sram/addr1[2] (sky130_sram_1kbyte_1rw1r_32x256_8)       0.00 *     0.41 f
+  data arrival time                                                  0.41
+
+  clock ideal_clock (rise edge)                           0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  sram/clk1 (sky130_sram_1kbyte_1rw1r_32x256_8)           0.00       0.00 r
+  library hold time                                      -0.06      -0.06
+  data required time                                                -0.06
+  --------------------------------------------------------------------------
+  data required time                                                -0.06
+  data arrival time                                                 -0.41
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.47
+
+
+    Net: addr0[0]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "addr0[0]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/addr0[0]     0.04          0.05          -0.01  (VIOLATED)
+
+    Net: dout0[0]
+
+    max_fanout             4.00
+  - Fanout                 0.00
+  ------------------------------
+    Slack                  4.00  (MET)
+
+
+    Net: dout1[26]
+
+    max_capacitance        0.03
+  - Capacitance            0.01
+  ------------------------------
+    Slack                  0.02  (MET)
+
+
+    Net: dout0[29]
+
+    Capacitance            0.01
+  - min_capacitance        0.00
+  ------------------------------
+    Slack                  0.01  (MET)
+
+
+    Design: SramUnit
+
+    max_leakage_power          0.00
+  - Current Leakage Power   9508.24
+  ----------------------------------
+    Slack                  -9508.24  (VIOLATED)
+
+
+Min pulse width constraints
+
+                       Required      Actual
+  Pin                pulse width   pulse width   Slack           Scenario
+--------------------------------------------------------------------------------
+  sram/clk0(low)      0.82         10.00          9.18 (MET)
+
+    Pin: sram/clk0(high)
+
+    Period             20.00
+  - min_period          1.63
+  ------------------------------
+    Slack              18.36 (MET)
+
+
+1

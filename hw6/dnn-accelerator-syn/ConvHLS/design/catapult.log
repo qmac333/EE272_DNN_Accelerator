@@ -1,0 +1,23 @@
+//  Catapult Ultra Synthesis 10.4b/841621 (Production Release) Thu Oct 24 17:20:07 PDT 2019
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2019, All Rights Reserved.
+//                        UNPUBLISHED, LICENSED SOFTWARE.
+//             CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//                 PROPERTY OF MENTOR GRAPHICS OR ITS LICENSORS
+//  
+//  Running on Linux jiajunc4@iron-04 6.8.0-49-generic x86_64 aol
+//  
+//  Package information: SIFLIBS v23.4_2.0, HLS_PKGS v23.4_2.0, 
+//                       SIF_TOOLKITS v23.4_2.0, SIF_XILINX v23.4_2.0, 
+//                       SIF_ALTERA v23.4_2.0, CCS_LIBS v23.4_2.0, 
+//                       CDS_PPRO v10.3a_3, CDS_DesigChecker v10.4b, 
+//                       CDS_OASYS v19.1_2.4, CDS_PSR v19.1_1.16, 
+//                       DesignPad v2.78_1.0
+//  
+//  Start time Mon Feb 17 18:46:04 2025
+# -------------------------------------------------
+# Logging session transcript to file "/tmp/log16291762c3494d8.0"
+quit
+# Moving session transcript to file "/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/ConvHLS/design/catapult.log"
+# Saving project file '/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/ConvHLS/design/Catapult.ccs'. (PRJ-5)
+// Finish time Mon Feb 17 18:46:15 2025, time elapsed 0:11, peak memory 1.02GB, exit status 0

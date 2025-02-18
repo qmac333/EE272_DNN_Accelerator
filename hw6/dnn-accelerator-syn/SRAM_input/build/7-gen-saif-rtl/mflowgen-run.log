@@ -1,0 +1,5 @@
+VCD to SAIF translator version T-2022.03-DEV-20220225 Synopsys, Inc.
+direct mapping all VCD instances
+processing header of VCD file: inputs/run.vcd
+processing value changes of VCD file: inputs/run.vcd
+generating backward SAIF file: outputs/run.saif

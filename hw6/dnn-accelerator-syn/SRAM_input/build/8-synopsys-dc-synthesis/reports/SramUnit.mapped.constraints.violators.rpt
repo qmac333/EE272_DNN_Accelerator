@@ -1,0 +1,228 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+        -verbose
+Design : SramUnit
+Version: S-2021.06-SP5-4
+Date   : Mon Feb 17 10:42:10 2025
+****************************************
+
+
+    Net: addr0[0]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "addr0[0]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/addr0[0]     0.04          0.05          -0.01  (VIOLATED)
+
+    Net: addr0[1]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "addr0[1]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/addr0[1]     0.04          0.05          -0.01  (VIOLATED)
+
+    Net: addr0[2]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "addr0[2]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/addr0[2]     0.04          0.05          -0.01  (VIOLATED)
+
+    Net: addr0[3]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "addr0[3]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/addr0[3]     0.04          0.05          -0.01  (VIOLATED)
+
+    Net: addr0[7]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "addr0[7]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/addr0[7]     0.04          0.05          -0.01  (VIOLATED)
+
+    Net: addr0[4]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "addr0[4]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/addr0[4]     0.04          0.05          -0.01  (VIOLATED)
+
+    Net: addr0[5]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "addr0[5]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/addr0[5]     0.04          0.05          -0.01  (VIOLATED)
+
+    Net: addr0[6]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "addr0[6]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/addr0[6]     0.04          0.05          -0.01  (VIOLATED)
+
+    Net: wmask0[2]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "wmask0[2]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/wmask0[2]     0.04         0.05          -0.01  (VIOLATED)
+
+    Net: wmask0[3]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "wmask0[3]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/wmask0[3]     0.04         0.05          -0.01  (VIOLATED)
+
+    Net: wmask0[0]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "wmask0[0]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/wmask0[0]     0.04         0.05          -0.01  (VIOLATED)
+
+    Net: wmask0[1]
+
+    max_transition         0.04
+  - Transition Time        0.05
+  ------------------------------
+    Slack                 -0.01  (VIOLATED)
+
+    List of pins on net "wmask0[1]" with transition violations :
+   -----------------------------------------------------------------
+                             Required        Actual
+                            Transition     Transition       Slack
+   -----------------------------------------------------------------
+       PIN :   sram/wmask0[1]     0.04         0.05          -0.01  (VIOLATED)
+
+    Net: n1
+
+    max_transition         0.04
+  - Transition Time        0.04
+  ------------------------------
+    Slack                  0.00  (VIOLATED: increase significant digits)
+
+
+    Net: n60
+
+    max_transition         0.04
+  - Transition Time        0.04
+  ------------------------------
+    Slack                  0.00  (VIOLATED: increase significant digits)
+
+
+    Net: n2
+
+    max_transition         0.04
+  - Transition Time        0.04
+  ------------------------------
+    Slack                  0.00  (VIOLATED: increase significant digits)
+
+
+    Net: n4
+
+    max_transition         0.04
+  - Transition Time        0.04
+  ------------------------------
+    Slack                  0.00  (VIOLATED: increase significant digits)
+
+
+    Net: n3
+
+    max_transition         0.04
+  - Transition Time        0.04
+  ------------------------------
+    Slack                  0.00  (VIOLATED: increase significant digits)
+
+
+    Design: SramUnit
+
+    max_leakage_power          0.00
+  - Current Leakage Power   9508.24
+  ----------------------------------
+    Slack                  -9508.24  (VIOLATED)
+
+
+1

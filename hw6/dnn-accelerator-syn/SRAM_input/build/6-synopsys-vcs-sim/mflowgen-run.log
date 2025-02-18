@@ -1,0 +1,66 @@
++ vcs -R -sverilog -timescale=1ns/1ps -hsopt +vcs+dumpvars+outputs/run.vcd -top SramUnitTb inputs/design.vcs.v inputs/sram.v inputs/testbench.sv -file inputs/design.args
+
+Warning-[LINX_KRNL] Unsupported Linux kernel
+  Linux kernel '6.8.0-49-generic' is not supported.
+  Supported versions are 2.4* or 2.6*.
+
+*** Using c compiler gcc instead of cc ...
+                         Chronologic VCS (TM)
+       Version S-2021.09-SP1_Full64 -- Mon Feb 17 10:39:04 2025
+
+                    Copyright (c) 1991 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+
+Warning-[LCA_FEATURES_ENABLED] Usage warning
+  LCA features enabled by '-lca' argument on the command line.  For more 
+  information regarding list of LCA features please refer to Chapter "LCA 
+  features" in the VCS Release Notes
+
+Parsing design file 'inputs/design.vcs.v'
+Parsing design file 'inputs/sram.v'
+Parsing design file 'inputs/testbench.sv'
+Top Level Modules:
+       SramUnitTb
+TimeScale is 1 ns / 1 ps
+Starting vcs inline pass...
+
+1 module and 0 UDP read.
+recompiling module SramUnitTb
+make[1]: Entering directory `/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/SramUnit/build/6-synopsys-vcs-sim/csrc'
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/cad/synopsys/vcs/S-2021.09-SP1/linux64/lib -L/cad/synopsys/vcs/S-2021.09-SP1/linux64/lib  -Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _1402361_archive_1.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /cad/synopsys/vcs/S-2021.09-SP1/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+make[1]: Leaving directory `/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/SramUnit/build/6-synopsys-vcs-sim/csrc'
+
+Warning-[LCA_FEATURES_ENABLED] Usage warning
+  LCA features enabled by '-lca' argument on the command line.  For more 
+  information regarding list of LCA features please refer to Chapter "LCA 
+  features" in the VCS Release Notes
+
+Chronologic VCS simulator copyright 1991-2021
+Contains Synopsys proprietary information.
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Feb 17 10:39 2025
+VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
+dout0 = aaaaaaaa
+$finish called from file "inputs/testbench.sv", line 69.
+$finish at simulation time               200000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 200000 ps
+CPU Time:      0.310 seconds;       Data structure size:   0.0Mb
+Mon Feb 17 10:39:08 2025
+CPU time: .479 seconds to compile + .247 seconds to elab + .539 seconds to link + .367 seconds in simulation

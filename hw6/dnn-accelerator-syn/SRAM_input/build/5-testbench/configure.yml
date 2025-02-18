@@ -1,0 +1,17 @@
+build_dir: 5-testbench
+build_id: '5'
+commands:
+- cp SramUnitTb.sv outputs/testbench.sv
+edges_i: {}
+edges_o:
+  design.args:
+  - f: design.args
+    step: 6-synopsys-vcs-sim
+  testbench.sv:
+  - f: testbench.sv
+    step: 6-synopsys-vcs-sim
+name: testbench
+outputs:
+- testbench.sv
+- design.args
+source: /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/SramUnit/design/testbench

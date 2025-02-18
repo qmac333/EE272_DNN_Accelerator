@@ -1,0 +1,64 @@
+Warning: Layer 'li1' is missing the optional 'edge capacitance' attribute. (PSYN-101)
+Warning: Layer 'met1' is missing the optional 'edge capacitance' attribute. (PSYN-101)
+Warning: Layer 'met2' is missing the optional 'edge capacitance' attribute. (PSYN-101)
+Warning: Layer 'met3' is missing the optional 'edge capacitance' attribute. (PSYN-101)
+Warning: Layer 'met4' is missing the optional 'edge capacitance' attribute. (PSYN-101)
+Warning: Layer 'met5' is missing the optional 'edge capacitance' attribute. (PSYN-101)
+ 
+****************************************
+Report : area
+Design : SramUnit
+Version: S-2021.06-SP5-4
+Date   : Mon Feb 17 10:42:10 2025
+****************************************
+
+Library(s) Used:
+
+    sky130_fd_sc_hd__tt_025C_1v80 (File: /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/SramUnit/build/8-synopsys-dc-synthesis/inputs/adk/stdcells.db)
+    sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C_lib (File: /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/SramUnit/build/8-synopsys-dc-synthesis/inputs/sram_tt_1p8V_25C.db)
+
+Number of ports:                          133
+Number of nets:                           174
+Number of cells:                           38
+Number of combinational cells:             26
+Number of sequential cells:                 9
+Number of macros/black boxes:               1
+Number of buf/inv:                          9
+Number of references:                       9
+
+Combinational area:                261.500800
+Buf/Inv area:                      120.115200
+Noncombinational area:             178.921595
+Macro/Black Box area:           192561.843750
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                193002.266145
+Total area:                 undefined
+
+Core Area:                      3753
+Aspect Ratio:                 0.1971
+Utilization Ratio:            1.1733
+
+
+The above information was reported from the logical library. The following are from the physical library:
+
+  Total moveable cell area: 3436.5
+  Total fixed cell area: 0.0
+  Total physical cell area: 3436.5
+ Core area: 0.000, 0.000, 138.000, 27.200
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area              Local cell area
+                                  --------------------  -------------------------------- 
+Hierarchical cell                 Absolute     Percent  Combi-    Noncombi-  Black-
+                                  Total        Total    national  national   boxes        Design
+--------------------------------  -----------  -------  --------  ---------  -----------  ----------------------------------------
+SramUnit                          193002.2661    100.0  173.9168   160.1536  192561.8438  SramUnit
+add_x_1                               87.5840      0.0   87.5840     0.0000       0.0000  SramUnit_SramUnit_DW01_inc_J1_0_0
+clk_gate_addr1_reg                    18.7680      0.0    0.0000    18.7680       0.0000  SramUnit_SNPS_CLOCK_GATE_HIGH_SramUnit_0
+--------------------------------  -----------  -------  --------  ---------  -----------  ----------------------------------------
+Total                                                   261.5008   178.9216  192561.8438
+
+1

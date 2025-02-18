@@ -1,0 +1,39 @@
+ 
+****************************************
+Report : clock timing
+        -type summary
+Design : SramUnit
+Version: S-2021.06-SP5-4
+Date   : Mon Feb 17 10:42:10 2025
+****************************************
+
+  Clock: ideal_clock
+----------------------------------------------------------------------------
+  Maximum setup launch latency:
+      addr1_reg_7_/CLK                                       0.00      wr-+
+
+  Minimum setup capture latency:
+      addr1_reg_7_/CLK                                       0.00      wr-+
+
+  Minimum hold launch latency:
+      addr1_reg_7_/CLK                                       0.00      br-+
+
+  Maximum hold capture latency:
+      addr1_reg_7_/CLK                                       0.00      br-+
+
+  Maximum active transition:
+      addr1_reg_7_/CLK                                       0.00      wr-+
+
+  Minimum active transition:
+      addr1_reg_7_/CLK                                       0.00      wr-+
+
+  Maximum setup skew:
+      addr1_reg_0_/CLK                                                 wr-+
+      addr1_reg_0_/CLK                                       0.00      wr-+
+
+  Maximum hold skew:
+      addr1_reg_0_/CLK                                                 br-+
+      addr1_reg_0_/CLK                                       0.00      br-+
+----------------------------------------------------------------------------
+
+1

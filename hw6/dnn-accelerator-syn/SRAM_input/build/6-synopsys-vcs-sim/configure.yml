@@ -1,0 +1,36 @@
+build_dir: 6-synopsys-vcs-sim
+build_id: '6'
+commands:
+- ./run.sh
+edges_i:
+  design.args:
+  - f: design.args
+    step: 5-testbench
+  design.vcs.v:
+  - f: design.vcs.v
+    step: 2-rtl
+  sram.v:
+  - f: sram.v
+    step: 4-sram
+  testbench.sv:
+  - f: testbench.sv
+    step: 5-testbench
+edges_o:
+  run.vcd:
+  - f: run.vcd
+    step: 7-gen-saif-rtl
+inputs:
+- adk
+- design.vcs.v
+- testbench.sv
+- design.sdf
+- design.args
+- sram.v
+name: synopsys-vcs-sim
+outputs:
+- run.vcd
+parameters:
+  dut_name: dut
+  testbench_name: SramUnitTb
+  waveform: true
+source: /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/mflowgen/steps/synopsys-vcs-sim
