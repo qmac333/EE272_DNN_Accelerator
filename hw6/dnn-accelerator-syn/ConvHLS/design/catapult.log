@@ -14,10 +14,10 @@
 //                       CDS_OASYS v19.1_2.4, CDS_PSR v19.1_1.16, 
 //                       DesignPad v2.78_1.0
 //  
-//  Start time Mon Feb 17 18:46:04 2025
+//  Start time Tue Feb 18 14:19:11 2025
 # -------------------------------------------------
-# Logging session transcript to file "/tmp/log16291762c3494d8.0"
+# Logging session transcript to file "/tmp/log2251196b80ed6cc.0"
 quit
 # Moving session transcript to file "/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/ConvHLS/design/catapult.log"
-# Saving project file '/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/ConvHLS/design/Catapult.ccs'. (PRJ-5)
-// Finish time Mon Feb 17 18:46:15 2025, time elapsed 0:11, peak memory 1.02GB, exit status 0
+# Saving project file '/home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/ConvHLS/design/Catapult_1.ccs'. (PRJ-5)
+// Finish time Tue Feb 18 14:19:31 2025, time elapsed 0:20, peak memory 1.02GB, exit status 0

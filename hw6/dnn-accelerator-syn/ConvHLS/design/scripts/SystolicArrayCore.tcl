@@ -25,7 +25,7 @@ directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY
 # Make sure that the accumulation buffer has the appropriate interleaving and block size
 # Your code starts here
 # -------------------------------
-directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -INTERLEAVE ${ARRAY_DIMENSION}
+# directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -INTERLEAVE ${ARRAY_DIMENSION}
 # directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -BLOCK_SIZE 256
 
 # -------------------------------
@@ -43,6 +43,8 @@ directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/weight_reg:rsc -MAP_TO_MODULE {[Register]}
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/input_reg2:rsc -MAP_TO_MODULE {[Register]}
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/psum_reg2:rsc -MAP_TO_MODULE {[Register]}
+directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -MAP_TO_MODULE sram_256_512_db.sram_256_512_db
+
 # -------------------------------
 # Your code ends here
 # -------------------------------

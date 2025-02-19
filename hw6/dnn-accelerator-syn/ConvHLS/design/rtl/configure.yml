@@ -7,10 +7,12 @@ outputs:
 commands:
   # - cat SramUnit.v > outputs/design.v 
   # - cat SramUnit.v > outputs/design.vcs.v 
-  - make clean && make
-  - sed -i '0,/module unreg_hier/{s/module unreg_hier/module unreg_hier1/}' build/Conv.v1/concat_rtl.v
+  # - make clean && make
+  # - sed -i '0,/module unreg_hier/{s/module unreg_hier/module unreg_hier1/}' build/Conv.v1/concat_rtl.v
+  # TODO: Add a command/script to dump vcd file for power estimation
   - cat build/Conv.v1/concat_rtl.v > outputs/design.v
-  - make rtl_test_no_gui
+  - cat build/Conv.v1/concat_rtl.v > outputs/design.vcs.v
+  # - make rtl_test_no_gui
 
 parameters:
   clock_period: 20

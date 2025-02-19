@@ -24,6 +24,9 @@ directive set /WeightDoubleBuffer<8192,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/We
 directive set /WeightDoubleBuffer<8192,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/mem:cns -STAGE_REPLICATION 2
 directive set /WeightDoubleBuffer<8192,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/mem -WORD_WIDTH [expr ${ARRAY_DIMENSION} * 8]
 directive set /WeightDoubleBuffer<8192,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/.../tmp.data.value -match glob -WORD_WIDTH [expr ${ARRAY_DIMENSION} * 8]
+directive set /WeightDoubleBuffer<8192,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/mem:cns -MAP_TO_MODULE sram_8192_128_db.sram_8192_128_db
+directive set /WeightDoubleBuffer<8192,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/.../tmp.data.value:rsc -match glob -MAP_TO_MODULE sram_8192_128_db.sram_8192_128_db
+
 # -------------------------------
 # Your code ends here
 # -------------------------------

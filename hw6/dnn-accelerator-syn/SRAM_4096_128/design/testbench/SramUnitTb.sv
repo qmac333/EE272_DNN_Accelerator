@@ -21,7 +21,7 @@ module SramUnitTb;
 
   always #(`CLK_PERIOD/2) clk =~clk;
  
-  sram_4096_128_db #
+  sram_4096_128_db 
   SramUnit_inst (
     .clk0(clk),
     .csb0(csb0),
@@ -31,7 +31,7 @@ module SramUnitTb;
     .clk1(clk),
     .csb1(csb1),
     .addr1(addr1),
-    .dout1(dout1),
+    .dout1(dout1)
   );
 
   initial begin
@@ -49,7 +49,7 @@ module SramUnitTb;
     web0 <= 0;
     addr0 <= 0;
     din0 <= 32'haaaaaaaa;
-    wmask0 <= 4'b1111;
+    // wmask0 <= 4'b1111;
     #(1*`CLK_PERIOD) //csb0 <= 1;
     //csb1 <= 0;
     //Read
@@ -61,6 +61,25 @@ module SramUnitTb;
     csb1 <= 1;
     #(`CLK_PERIOD/2) $display("dout1 = %h", dout1);
     assert(dout1 == 32'haaaaaaaa);
+    #(`CLK_PERIOD/2)
+
+    // Write into last addr, 4095
+    csb0 <= 0;
+    web0 <= 0;
+    addr0 <= 4095;
+    din0 <= 32'hbbbbbbbb;
+    #(1*`CLK_PERIOD) //csb0 <= 1;
+
+    //Read
+    csb0 <= 1;
+    addr1 <= 4095;
+    csb1 <= 0;
+    web0 <= 1; // Read
+    #(1*`CLK_PERIOD) //csb1 <= 1;
+    csb1 <= 1;
+    #(`CLK_PERIOD/2) $display("dout1 = %h", dout1);
+    assert(dout1 == 32'hbbbbbbbb);
+
   end
 
   initial begin

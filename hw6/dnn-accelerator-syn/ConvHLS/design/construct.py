@@ -27,14 +27,14 @@ def construct():
 
   parameters = {
     'construct_path' : __file__,
-    'design_name'    : 'SramUnit',
+    'design_name'    : 'Conv',
     'clock_period'   : 20.0,
     'adk'            : adk_name,
     'adk_view'       : adk_view,
     'topographical'  : True,
-    'testbench_name' : 'SramUnitTb',
-    'strip_path'     : 'SramUnitTb/SramUnit_inst',
-    'saif_instance'  : 'SramUnitTb/SramUnit_inst'
+    # 'testbench_name' : 'ConvTb',
+    'strip_path'     : 'ConvTb/Conv_inst',
+    'saif_instance'  : 'ConvTb/Conv_inst'
   }
 
   #-----------------------------------------------------------------------
@@ -52,7 +52,7 @@ def construct():
 
   sram          = Step( this_dir + '/sram'          )
   rtl           = Step( this_dir + '/rtl'           )
-  testbench     = Step( this_dir + '/testbench'     )
+  # testbench     = Step( this_dir + '/testbench'     )
   constraints   = Step( this_dir + '/constraints'   )
 
   # Default steps
@@ -71,10 +71,10 @@ def construct():
   g.add_step( info         )
   g.add_step( sram         )
   g.add_step( rtl          )
-  g.add_step( testbench    )
+  # g.add_step( testbench    )
   g.add_step( constraints  )
   g.add_step( dc           )
-  g.add_step( rtl_sim      )
+  # g.add_step( rtl_sim      )
   g.add_step( gen_saif_rtl )
 
   #-----------------------------------------------------------------------
@@ -84,7 +84,7 @@ def construct():
   # Dynamically add edges
 
   dc.extend_inputs(['sram_1kbyte_1rw1r_32x256_tt_1p8V_25C.db', 'sram_2kbyte_1rw1r_32x512_tt_1p8V_25C.db'])
-  rtl_sim.extend_inputs(['sram_1kbyte_1rw1r_32x256.v', 'sram_2kbyte_1rw1r_32x512.v'])
+  # rtl_sim.extend_inputs(['sram_1kbyte_1rw1r_32x256.v', 'sram_2kbyte_1rw1r_32x512.v'])
 
   # Connect by name
 
@@ -93,7 +93,7 @@ def construct():
   g.connect_by_name( rtl,          dc           )
   g.connect_by_name( constraints,  dc           )
   g.connect_by_name( rtl,          rtl_sim      ) 
-  g.connect_by_name( testbench,    rtl_sim      ) 
+  # g.connect_by_name( testbench,    rtl_sim      ) 
   g.connect_by_name( sram,         rtl_sim      ) 
   g.connect( rtl_sim.o( 'run.vcd' ), gen_saif_rtl.i( 'run.vcd' ) ) # FIXME: VCS sim node generates a VCD file but gives it a VPD extension
   g.connect_by_name( gen_saif_rtl, dc           ) # run.saif

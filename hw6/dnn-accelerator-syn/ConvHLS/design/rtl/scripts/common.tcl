@@ -21,6 +21,7 @@ flow package require /NCSim
 
 solution options set Flows/NCSim/NC_ROOT /cad/cadence/INCISIVE15.20.022/
 
+solution options set ComponentLibs/SearchPath /home/users/jiajunc4/ee272/git_ee272/EE272_DNN_Accelerator/hw6/dnn-accelerator-syn/ConvHLS/design/sram_wrappers -append
 
 # Delete solution if already exists
 catch {

@@ -10,11 +10,11 @@ go compile
 
 source scripts/set_libraries.tcl
 
-solution library add {[CCORE] ProcessingElement<IDTYPE,WDTYPE,ODTYPE>.v1}
+solution library add {[CCORE] ProcessingElement<IDTYPE,ODTYPE>.v1}
 
 go libraries
 directive set -CLOCKS $clocks
-directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/ProcessingElement<IDTYPE,WDTYPE,ODTYPE> -MAP_TO_MODULE {[CCORE] ProcessingElement<IDTYPE,WDTYPE,ODTYPE>.v1}
+directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/ProcessingElement<IDTYPE,ODTYPE> -MAP_TO_MODULE {[CCORE] ProcessingElement<IDTYPE,ODTYPE>.v1}
 
 go assembly
 
@@ -26,7 +26,7 @@ directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY
 # Your code starts here
 # -------------------------------
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -INTERLEAVE ${ARRAY_DIMENSION}
-# directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -BLOCK_SIZE 256
+directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -BLOCK_SIZE 256
 
 # -------------------------------
 # Your code ends here
@@ -43,6 +43,7 @@ directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/weight_reg:rsc -MAP_TO_MODULE {[Register]}
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/input_reg2:rsc -MAP_TO_MODULE {[Register]}
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/psum_reg2:rsc -MAP_TO_MODULE {[Register]}
+directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/accumulation_buffer:rsc -MAP_TO_MODULE sram_256_32_1w1r.sram_256_32_1w1r
 # -------------------------------
 # Your code ends here
 # -------------------------------
@@ -54,7 +55,13 @@ go architect
 # To solve this, you need to use 'ignore_memory_precedences', Iterate on the design to ignore memory precedences that show up (make sure there is no real dependency)
 # Your code starts here
 # -------------------------------
+# ignore_memory_precedences -from INNER_LOOP:if#3:for:write_mem(accumulation_buffer:rsc(0)(0).@) -to INNER_LOOP:if#2:else:for:read_mem(accumulation_buffer:rsc(0)(0).@)
+# for {set i 1} {$i < ${ARRAY_DIMENSION}} {incr i} {
+#     ignore_memory_precedences -from INNER_LOOP:if#3:for:write_mem(accumulation_buffer:rsc(0)($i).@)#$i -to INNER_LOOP:if#2:else:for:read_mem(accumulation_buffer:rsc(0)($i).@)#$i
+# }
+
 ignore_memory_precedences -from *write_mem(accumulation_buffer:rsc* -to *read_mem(accumulation_buffer:rsc*
+
 # -------------------------------
 # Your code ends here
 # -------------------------------
