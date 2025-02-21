@@ -55,6 +55,8 @@ clean:
 	rm -rf build.ccs
 	rm -rf build
 	rm -rf test*
+	rm -rf *dump
+	rm -rf *vcd
 
 clean_test:
 	rm -rf ./build/Conv.v1/rtl.v

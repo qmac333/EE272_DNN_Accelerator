@@ -25,8 +25,10 @@ directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY
 # Make sure that the accumulation buffer has the appropriate interleaving and block size
 # Your code starts here
 # -------------------------------
-directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -INTERLEAVE ${ARRAY_DIMENSION}
-directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -BLOCK_SIZE 256
+# directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -INTERLEAVE ${ARRAY_DIMENSION}
+# directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer:rsc -BLOCK_SIZE 256
+directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer -WORD_WIDTH [expr ${ARRAY_DIMENSION} * 32]
+# directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/accumulation_buffer -WORD_WIDTH [32]
 
 # -------------------------------
 # Your code ends here
@@ -43,7 +45,7 @@ directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/weight_reg:rsc -MAP_TO_MODULE {[Register]}
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/input_reg2:rsc -MAP_TO_MODULE {[Register]}
 directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,${ARRAY_DIMENSION},${ARRAY_DIMENSION}>/run/psum_reg2:rsc -MAP_TO_MODULE {[Register]}
-directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/accumulation_buffer:rsc -MAP_TO_MODULE sram_256_32_1w1r.sram_256_32_1w1r
+# directive set /SystolicArrayCore<IDTYPE,WDTYPE,ODTYPE,16,16>/run/accumulation_buffer:rsc -MAP_TO_MODULE sram_256_32_1w1r.sram_256_32_1w1r
 # -------------------------------
 # Your code ends here
 # -------------------------------

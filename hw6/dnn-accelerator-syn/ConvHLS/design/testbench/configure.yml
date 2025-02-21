@@ -1,8 +1,0 @@
-name: testbench
-
-outputs:
-  - testbench.sv
-  - design.args
-
-commands:
-  - cp SramUnitTb.sv outputs/testbench.sv

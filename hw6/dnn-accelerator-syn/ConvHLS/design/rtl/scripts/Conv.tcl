@@ -26,8 +26,10 @@ directive set /Conv -FIFO_DEPTH 3
 directive set /Conv/systolicArray -FIFO_DEPTH 3
 
 
-directive set /Conv/outputSerializer/buffer:rsc -INTERLEAVE ${ARRAY_DIMENSION}
+# directive set /Conv/outputSerializer/buffer:rsc -INTERLEAVE ${ARRAY_DIMENSION}
 # directive set /Conv/outputSerializer/buffer:rsc -BLOCK_SIZE 256
+# directive set /Conv/Serializer<PackedInt<32UL,16UL>,ODTYPE,16,256>/run/buffer:rsc -INTERLEAVE 1
+directive set /Conv/outputSerializer/buffer -WORD_WIDTH [expr ${ARRAY_DIMENSION} * 32]
 
 
 go assembly

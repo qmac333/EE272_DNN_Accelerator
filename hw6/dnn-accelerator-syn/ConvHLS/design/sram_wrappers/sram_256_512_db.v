@@ -10,7 +10,7 @@ module sram_256_512_db (
     output [511:0] dout1
 );
 
-wire [32:0] dout0_floating [0:15];
+wire [31:0] dout0_floating [0:15];
 // reg [2:0] addr1_reg;
 // wire [511:0] dout_eachsram;
 
