@@ -3,6 +3,7 @@ name: rtl
 outputs:
   - design.v
   - design.vcs.v
+  - run.vcd
 
 commands:
   # - cat SramUnit.v > outputs/design.v 
@@ -12,6 +13,7 @@ commands:
   # TODO: Add a command/script to dump vcd file for power estimation
   - cat build/Conv.v1/concat_rtl.v > outputs/design.v
   - cat build/Conv.v1/concat_rtl.v > outputs/design.vcs.v
+  - cat run.vcd > outputs/run.vcd
   # - make rtl_test_no_gui
 
 parameters:

@@ -1,0 +1,114 @@
+ 
+****************************************
+Report : qor
+Design : Conv
+Version: S-2021.06-SP5-4
+Date   : Fri Feb 21 01:10:47 2025
+****************************************
+
+
+  Timing Path Group 'REGIN'
+  -----------------------------------
+  Levels of Logic:              43.00
+  Critical Path Length:          9.86
+  Critical Path Slack:           0.06
+  Critical Path Clk Period:     20.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'REGOUT'
+  -----------------------------------
+  Levels of Logic:               3.00
+  Critical Path Length:          1.52
+  Critical Path Slack:          18.48
+  Critical Path Clk Period:     20.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+  Timing Path Group 'ideal_clock'
+  -----------------------------------
+  Levels of Logic:              61.00
+  Critical Path Length:         19.57
+  Critical Path Slack:           0.31
+  Critical Path Clk Period:     20.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:       4356
+  Hierarchical Port Count:     320681
+  Leaf Cell Count:             263826
+  Buf/Inv Cell Count:           67981
+  Buf Cell Count:               47603
+  Inv Cell Count:               20378
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:    193925
+  Sequential Cell Count:        69901
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:  1465654.422945
+  Noncombinational Area:
+                       1737926.820812
+  Buf/Inv Area:         339374.226165
+  Total Buffer Area:        262883.37
+  Total Inverter Area:       76490.86
+  Macro/Black Box Area:
+                      61170225.000000
+  Net Area:                  0.000000
+  Net XLength        :     6736976.00
+  Net YLength        :     6041776.50
+  -----------------------------------
+  Cell Area:          64373806.243757
+  Design Area:        64373806.243757
+  Net Length        :     12778752.00
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:        288591
+  Nets With Violations:           507
+  Max Trans Violations:           507
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: iron-09
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                   27.90
+  Logic Optimization:               1924.81
+  Mapping Optimization:            60051.90
+  -----------------------------------------
+  Overall Compile Time:            63532.13
+  Overall Compile Wall Clock Time: 15685.36
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1

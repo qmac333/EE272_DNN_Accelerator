@@ -28,9 +28,9 @@ generate
     for (i = 0; i<4; i = i +1) begin
       sky130_sram_2kbyte_1rw1r_32x512_8 macro (
       // Port 0: W
-          .clk0(clk0),.csb0(csb0 || (which_512sram_depth0 != j)),.web0(web0),.wmask0(4'hF),.addr0(addr0[9:0]),.din0(din0[(i+1)*32-1 : i*32]),.dout0(dout0_floating[j][i]),
+          .clk0(clk0),.csb0(csb0 || (which_512sram_depth0 != j)),.web0(web0),.wmask0(4'hF),.addr0(addr0[8:0]),.din0(din0[(i+1)*32-1 : i*32]),.dout0(dout0_floating[j][i]),
       // Port 1: R
-          .clk1(clk1),.csb1(csb1 || (which_512sram_depth1 != j)),.addr1(addr1[9:0]),.dout1(dout_eachsram[j][(i+1)*32-1 : i*32])
+          .clk1(clk1),.csb1(csb1 || (which_512sram_depth1 != j)),.addr1(addr1[8:0]),.dout1(dout_eachsram[j][(i+1)*32-1 : i*32])
       );
     end
   end

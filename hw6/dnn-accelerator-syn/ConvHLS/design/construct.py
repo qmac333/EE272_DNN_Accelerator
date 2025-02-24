@@ -33,8 +33,8 @@ def construct():
     'adk_view'       : adk_view,
     'topographical'  : True,
     # 'testbench_name' : 'ConvTb',
-    'strip_path'     : 'ConvTb/Conv_inst',
-    'saif_instance'  : 'ConvTb/Conv_inst'
+    'strip_path'     : 'scverify_top/Conv',
+    'saif_instance'  : 'scverify_top/Conv'
   }
 
   #-----------------------------------------------------------------------
@@ -59,7 +59,7 @@ def construct():
 
   info         = Step( 'info',                          default=True )
   dc           = Step( 'synopsys-dc-synthesis',         default=True )
-  rtl_sim      = Step( 'synopsys-vcs-sim',              default=True )
+  # rtl_sim      = Step( 'synopsys-vcs-sim',              default=True )
   gen_saif     = Step( 'synopsys-vcd2saif-convert',     default=True )
   gen_saif_rtl = gen_saif.clone()
   gen_saif_rtl.set_name( 'gen-saif-rtl' )
@@ -83,7 +83,7 @@ def construct():
   
   # Dynamically add edges
 
-  dc.extend_inputs(['sram_1kbyte_1rw1r_32x256_tt_1p8V_25C.db', 'sram_2kbyte_1rw1r_32x512_tt_1p8V_25C.db'])
+  dc.extend_inputs(['sram_1kbyte_1rw1r_32x256_tt_1p8V_25C.db', 'sram_2kbyte_1rw1r_32x512_tt_1p8V_25C.db', ''])
   # rtl_sim.extend_inputs(['sram_1kbyte_1rw1r_32x256.v', 'sram_2kbyte_1rw1r_32x512.v'])
 
   # Connect by name
@@ -92,10 +92,10 @@ def construct():
   g.connect_by_name( sram,         dc           )
   g.connect_by_name( rtl,          dc           )
   g.connect_by_name( constraints,  dc           )
-  g.connect_by_name( rtl,          rtl_sim      ) 
+  # g.connect_by_name( rtl,          rtl_sim      ) 
   # g.connect_by_name( testbench,    rtl_sim      ) 
-  g.connect_by_name( sram,         rtl_sim      ) 
-  g.connect( rtl_sim.o( 'run.vcd' ), gen_saif_rtl.i( 'run.vcd' ) ) # FIXME: VCS sim node generates a VCD file but gives it a VPD extension
+  # g.connect_by_name( sram,         rtl_sim      ) 
+  g.connect( rtl.o( 'run.vcd' ), gen_saif_rtl.i( 'run.vcd' ) ) # FIXME: VCS sim node generates a VCD file but gives it a VPD extension
   g.connect_by_name( gen_saif_rtl, dc           ) # run.saif
 
   #-----------------------------------------------------------------------
@@ -103,6 +103,9 @@ def construct():
   #-----------------------------------------------------------------------
 
   g.update_params( parameters )
+  g.param_space(dc, "clock_period", [100.0, 20.0, 10.0, 5.0, 4.0, 2.0])
+
+
 
   return g
 
