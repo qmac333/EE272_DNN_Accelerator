@@ -48,11 +48,11 @@ setFlipping s
 
 # Use automatic floorplan synthesis to pack macros (e.g., SRAMs) together
 
-#planDesign
+planDesign
 
-placeInstance sram 55.4 65.4
+# placeInstance sram 55.4 65.4
 
-addHaloToBlock 10.88 10.88 10.88 10.88 sram
+# addHaloToBlock 10.88 10.88 10.88 10.88 sram
 
 # Create a routing blockage on li1 layer over the entire chip area, so that 
 # Innovus does not use this layer for routing

@@ -62,6 +62,13 @@ def construct():
 
   # signoff         = Step( this_dir + '/cadence-innovus-signoff'         ) 
 
+  # Power node is custom because power and gnd pins are named differently in
+  # the standard cells compared to the default node, and the layer numbering is
+  # different because of li layer, the default assumes metal 1 is the lowest
+  # layer
+  
+  power           = Step( this_dir + '/cadence-innovus-power'           ) 
+
   # Default steps
 
   info         = Step( 'info',                           default=True )
@@ -93,7 +100,7 @@ def construct():
   g.add_step( pin_placement   )
   g.add_step( floorplan       )
   g.add_step( init            )
-  # g.add_step( power           )
+  g.add_step( power           )
   g.add_step( place           )
   # g.add_step( cts             )
   # g.add_step( postcts_hold    )
@@ -146,7 +153,7 @@ def construct():
   rtl_sim_vcs.extend_inputs(['sky130_sram_1kbyte_1rw1r_32x256_8.v'])
 
   # for step in [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff]:
-  for step in [iflow, init, place]:
+  for step in [iflow, init, place, power]:
     step.extend_inputs(['sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib', 'sky130_sram_1kbyte_1rw1r_32x256_8.lef', 'sky130_sram_4kbyte_1rw1r_32x1024_8.lef'])
 
   init.extend_inputs(['floorplan.tcl', 'pin-assignments.tcl'])
@@ -174,7 +181,7 @@ def construct():
   # g.connect_by_name( adk,             dc              )
   g.connect_by_name( adk,             iflow           )
   g.connect_by_name( adk,             init            )
-  # g.connect_by_name( adk,             power           )
+  g.connect_by_name( adk,             power           )
   g.connect_by_name( adk,             place           )
   # g.connect_by_name( adk,             cts             )
   # g.connect_by_name( adk,             postcts_hold    )
@@ -195,17 +202,17 @@ def construct():
   # g.connect_by_name( adk,             pt_power_rtl    )
   # g.connect_by_name( adk,             pt_power_gl     )
 
-  g.connect_by_name( rtl,             rtl_sim         ) # design.v
-  g.connect_by_name( testbench,       rtl_sim         ) # testbench.sv
+  # g.connect_by_name( rtl,             rtl_sim         ) # design.v
+  # g.connect_by_name( testbench,       rtl_sim         ) # testbench.sv
   # g.connect( rtl_sim.o( 'run.vcd' ), gen_saif_rtl.i( 'run.vcd' ) ) 
   # FIXME: VCS sim node generates a VCD file but gives it a VPD extension
 
-  g.connect_by_name( sram,            rtl_sim         )
+  # g.connect_by_name( sram,            rtl_sim         )
   # g.connect_by_name( sram,            gl_sim          )
-  g.connect_by_name( sram,            dc              )
+  # g.connect_by_name( sram,            dc              )
   g.connect_by_name( sram,            iflow           )
   g.connect_by_name( sram,            init            )
-  # g.connect_by_name( sram,            power           )
+  g.connect_by_name( sram,            power           )
   g.connect_by_name( sram,            place           )
   # g.connect_by_name( sram,            cts             )
   # g.connect_by_name( sram,            postcts_hold    )
@@ -232,13 +239,13 @@ def construct():
   
   g.connect_by_name( dc,              iflow           )
   g.connect_by_name( dc,              init            )
-  # g.connect_by_name( dc,              power           )
+  g.connect_by_name( dc,              power           )
   g.connect_by_name( dc,              place           )
   # g.connect_by_name( dc,              cts             )
   # g.connect_by_name( dc,              pt_power_rtl    ) # design.namemap
 
   g.connect_by_name( iflow,           init            )
-  # g.connect_by_name( iflow,           power           )
+  g.connect_by_name( iflow,           power           )
   g.connect_by_name( iflow,           place           )
   # g.connect_by_name( iflow,           cts             )
   # g.connect_by_name( iflow,           postcts_hold    )
@@ -249,7 +256,7 @@ def construct():
   # Core place and route flow
   g.connect_by_name( floorplan,       init            )
   g.connect_by_name( pin_placement,   init            )
-  # g.connect_by_name( init,            power           )
+  g.connect_by_name( init,            power           )
   # g.connect_by_name( power,           place           )
   # g.connect_by_name( place,           cts             )
   # g.connect_by_name( cts,             postcts_hold    )
