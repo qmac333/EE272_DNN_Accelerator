@@ -1,0 +1,56 @@
+name: rtl
+
+outputs:
+  - design.v
+  - design.vcs.v
+  - run.vcd
+
+commands:
+  # - cat SramUnit.v > outputs/design.v 
+  # - cat SramUnit.v > outputs/design.vcs.v 
+  # - make clean && make
+  # - sed -i '0,/module unreg_hier/{s/module unreg_hier/module unreg_hier1/}' build/Conv.v1/concat_rtl.v
+  # TODO: Add a command/script to dump vcd file for power estimation
+  # - cat build/Conv.v1/concat_rtl.v > outputs/design.v
+  # - cat build/Conv.v1/concat_rtl.v > outputs/design.vcs.v
+  # - make rtl_test_no_gui
+
+  - cat accumulation_buffer.v > outputs/design.v
+  - cat adr_gen_sequential.v >> outputs/design.v
+  - cat aggregator.v >> outputs/design.v
+  - cat conv_controller_optimized.v >> outputs/design.v
+  - cat conv_controller.v >> outputs/design.v
+  # - cat conv_optimized.v >> outputs/design.v
+  - cat conv.v >> outputs/design.v
+  - cat deaggregator.v >> outputs/design.v
+  - cat double_buffer.v >> outputs/design.v
+  - cat fifo.v >> outputs/design.v
+  - cat ifmap_radr_gen.v >> outputs/design.v
+  - cat mac.v >> outputs/design.v
+  - cat ram_sync_1r1w.v >> outputs/design.v
+  - cat SizedFIFO.v >> outputs/design.v
+  - cat skew_registers.v >> outputs/design.v
+  - cat systolic_array_with_skew.v >> outputs/design.v
+  - cat systolic_array.v >> outputs/design.v
+
+  - cat accumulation_buffer.v > outputs/design.vcs.v
+  - cat adr_gen_sequential.v >> outputs/design.vcs.v
+  - cat aggregator.v >> outputs/design.vcs.v
+  - cat conv_controller_optimized.v >> outputs/design.vcs.v
+  - cat conv_controller.v >> outputs/design.vcs.v
+  # - cat conv_optimized.v >> outputs/design.vcs.v
+  - cat conv.v >> outputs/design.vcs.v
+  - cat deaggregator.v >> outputs/design.vcs.v
+  - cat double_buffer.v >> outputs/design.vcs.v
+  - cat fifo.v >> outputs/design.vcs.v
+  - cat ifmap_radr_gen.v >> outputs/design.vcs.v
+  - cat mac.v >> outputs/design.vcs.v
+  - cat ram_sync_1r1w.v >> outputs/design.vcs.v
+  - cat SizedFIFO.v >> outputs/design.vcs.v
+  - cat skew_registers.v >> outputs/design.vcs.v
+  - cat systolic_array_with_skew.v >> outputs/design.vcs.v
+  - cat systolic_array.v >> outputs/design.vcs.v
+
+  - cat run.vcd > outputs/run.vcd
+parameters:
+  clock_period: 20
