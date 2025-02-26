@@ -34,7 +34,51 @@ addRing -nets {VDD VSS} -type core_rings -follow core   \
         -offset $savedvars(p_ring_spacing)              \
         -extend_corner {tl tr bl br lt lb rt rb}
 
-selectInst sram
+selectInst weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram 
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+ 
+selectInst weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ofmap_buffer_inst/ram0/genblk1_width_macro_0__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ofmap_buffer_inst/ram0/genblk1_width_macro_1__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ofmap_buffer_inst/ram0/genblk1_width_macro_2__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ofmap_buffer_inst/ram0/genblk1_width_macro_3__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ofmap_buffer_inst/ram1/genblk1_width_macro_0__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ofmap_buffer_inst/ram1/genblk1_width_macro_1__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ofmap_buffer_inst/ram1/genblk1_width_macro_2__sram
+setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
+addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
+
+selectInst ofmap_buffer_inst/ram1/genblk1_width_macro_3__sram
 setAddRingMode -ring_target default -extend_over_row 0 -ignore_rows 0 -avoid_short 0 -skip_crossing_trunks none -stacked_via_top_layer met5 -stacked_via_bottom_layer met4 -via_using_exact_crossover_size 1 -orthogonal_only true -skip_via_on_pin {  standardcell } -skip_via_on_wire_shape {  noshape }
 addRing -nets {VDD VSS} -type block_rings -around selected -layer {top met5 bottom met5 left met4 right met4} -width {top 1.8 bottom 1.8 left 1.8 right 1.8} -spacing {top 1.8 bottom 1.8 left 1.8 right 1.8} -offset {top 1.8 bottom 1.8 left 1.8 right 1.8} -center 0 -threshold 0 -jog_distance 0 -snap_wire_center_to_grid None
 
@@ -128,6 +172,55 @@ addStripe -nets {VSS VDD} -layer $pmesh_top -direction horizontal \
 # Route power to power pins on the macro
 
 deselectAll
-selectInst sram
 
-sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst sram
+# selectInst weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram
+
+# selectInst weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram
+
+# selectInst ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram
+
+# selectInst ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram
+
+# selectInst ofmap_buffer_inst/ram0/genblk1_width_macro_0__sram 
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ofmap_buffer_inst/ram0/genblk1_width_macro_0__sram
+
+# selectInst ofmap_buffer_inst/ram0/genblk1_width_macro_1__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ofmap_buffer_inst/ram0/genblk1_width_macro_1__sram
+
+# selectInst ofmap_buffer_inst/ram0/genblk1_width_macro_2__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ofmap_buffer_inst/ram0/genblk1_width_macro_2__sram
+
+# selectInst ofmap_buffer_inst/ram0/genblk1_width_macro_3__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ofmap_buffer_inst/ram0/genblk1_width_macro_3__sram
+
+# selectInst ofmap_buffer_inst/ram1/genblk1_width_macro_0__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ofmap_buffer_inst/ram1/genblk1_width_macro_0__sram
+
+# selectInst ofmap_buffer_inst/ram1/genblk1_width_macro_1__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ofmap_buffer_inst/ram1/genblk1_width_macro_1__sram
+
+# selectInst ofmap_buffer_inst/ram1/genblk1_width_macro_2__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ofmap_buffer_inst/ram1/genblk1_width_macro_2__sram
+
+# selectInst ofmap_buffer_inst/ram1/genblk1_width_macro_3__sram
+# sroute -connect {blockPin} -layerChangeRange {met1 met5} -blockPinTarget { nearestTarget } -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -inst ofmap_buffer_inst/ram1/genblk1_width_macro_3__sram
+
+sroute -connect {blockPin} -layerChangeRange {met1 met5} \
+       -blockPinTarget { nearestTarget } -nets {VDD VSS} \
+       -allowLayerChange 1 -blockPin useLef -inst {ofmap_buffer_inst/ram0/genblk1_width_macro_0__sram \
+                                                    ofmap_buffer_inst/ram0/genblk1_width_macro_1__sram \
+                                                    ofmap_buffer_inst/ram0/genblk1_width_macro_2__sram \
+                                                    ofmap_buffer_inst/ram0/genblk1_width_macro_3__sram \
+                                                    ofmap_buffer_inst/ram1/genblk1_width_macro_0__sram \
+                                                    ofmap_buffer_inst/ram1/genblk1_width_macro_1__sram \
+                                                    ofmap_buffer_inst/ram1/genblk1_width_macro_2__sram \
+                                                    ofmap_buffer_inst/ram1/genblk1_width_macro_3__sram \
+                                                    weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram \
+                                                    weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram \
+                                                    ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram \
+                                                    ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram}
+

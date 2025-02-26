@@ -78,7 +78,7 @@ def construct():
   iflow           = Step( 'cadence-innovus-flowsetup',     default=True )
   init            = Step( 'cadence-innovus-init',          default=True )
   place           = Step( 'cadence-innovus-place',         default=True )
-  # cts             = Step( 'cadence-innovus-cts',           default=True )
+  cts             = Step( 'cadence-innovus-cts',           default=True )
   # postcts_hold    = Step( 'cadence-innovus-postcts_hold',  default=True )
   # route           = Step( 'cadence-innovus-route',         default=True )
   # postroute       = Step( 'cadence-innovus-postroute',     default=True )
@@ -153,7 +153,7 @@ def construct():
   rtl_sim_vcs.extend_inputs(['sky130_sram_1kbyte_1rw1r_32x256_8.v'])
 
   # for step in [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff]:
-  for step in [iflow, init, place, power]:
+  for step in [iflow, init, place, power, cts]:
     step.extend_inputs(['sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib', 'sky130_sram_1kbyte_1rw1r_32x256_8.lef', 'sky130_sram_4kbyte_1rw1r_32x1024_8.lef'])
 
   init.extend_inputs(['floorplan.tcl', 'pin-assignments.tcl'])
@@ -257,7 +257,7 @@ def construct():
   g.connect_by_name( floorplan,       init            )
   g.connect_by_name( pin_placement,   init            )
   g.connect_by_name( init,            power           )
-  # g.connect_by_name( power,           place           )
+  g.connect_by_name( power,           place           )
   # g.connect_by_name( place,           cts             )
   # g.connect_by_name( cts,             postcts_hold    )
   # g.connect_by_name( postcts_hold,    route           )

@@ -60,10 +60,10 @@ set pins_bottom {\
 
 set pins_left {\
    rst_n \
-   clk \
    ifmap_weight_rdy \
    ifmap_weight_vld \
    ofmap_rdy \
+   clk \
    ofmap_vld \
    config_rdy \
    config_vld \
