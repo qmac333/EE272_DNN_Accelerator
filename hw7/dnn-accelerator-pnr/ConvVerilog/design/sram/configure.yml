@@ -18,12 +18,14 @@ outputs:
   - sky130_sram_4kbyte_1rw1r_32x1024_8_TT_1p8V_25C.lib
   - sky130_sram_4kbyte_1rw1r_32x1024_8.gds
   - sky130_sram_4kbyte_1rw1r_32x1024_8_TT_1p8V_25C.db
+
   - sky130_sram_2kbyte_1rw1r_32x512_8.sp
   - sky130_sram_2kbyte_1rw1r_32x512_8.v
   - sky130_sram_2kbyte_1rw1r_32x512_8.lef
   - sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib
   - sky130_sram_2kbyte_1rw1r_32x512_8.gds
   - sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.db
+  
   - sky130_sram_1kbyte_1rw1r_32x256_8.sp
   - sky130_sram_1kbyte_1rw1r_32x256_8.v
   - sky130_sram_1kbyte_1rw1r_32x256_8.lef

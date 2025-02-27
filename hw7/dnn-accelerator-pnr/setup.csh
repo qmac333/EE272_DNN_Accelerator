@@ -9,7 +9,7 @@ source /cad/modules/tcl/init/tcsh
 module load base
 module load vcs/S-2021.09-SP1
 module load dc_shell/S-2021.06-SP5-4
-module load innovus/21.16.000
+module load innovus/latest
 module load calibre/2019.1
 module load prime/T-2022.03
 module load magic

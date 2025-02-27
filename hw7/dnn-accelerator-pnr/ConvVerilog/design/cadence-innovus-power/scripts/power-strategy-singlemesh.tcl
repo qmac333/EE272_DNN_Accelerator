@@ -224,3 +224,5 @@ sroute -connect {blockPin} -layerChangeRange {met1 met5} \
                                                     ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram \
                                                     ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram}
 
+editTrim -nets {VDD VSS}
+

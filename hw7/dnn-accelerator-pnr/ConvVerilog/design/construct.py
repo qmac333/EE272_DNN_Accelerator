@@ -69,6 +69,12 @@ def construct():
   
   power           = Step( this_dir + '/cadence-innovus-power'           ) 
 
+  # Signoff is custom because it has to output def that the default step does
+  # not do. This is because we use the def instead of gds for generating spice
+  # from layout for LVS
+  
+  signoff         = Step( this_dir + '/cadence-innovus-signoff'         ) 
+
   # Default steps
 
   info         = Step( 'info',                           default=True )
@@ -79,9 +85,9 @@ def construct():
   init            = Step( 'cadence-innovus-init',          default=True )
   place           = Step( 'cadence-innovus-place',         default=True )
   cts             = Step( 'cadence-innovus-cts',           default=True )
-  # postcts_hold    = Step( 'cadence-innovus-postcts_hold',  default=True )
-  # route           = Step( 'cadence-innovus-route',         default=True )
-  # postroute       = Step( 'cadence-innovus-postroute',     default=True )
+  postcts_hold    = Step( 'cadence-innovus-postcts_hold',  default=True )
+  route           = Step( 'cadence-innovus-route',         default=True )
+  postroute       = Step( 'cadence-innovus-postroute',     default=True )
 
 
   #-----------------------------------------------------------------------
@@ -102,11 +108,11 @@ def construct():
   g.add_step( init            )
   g.add_step( power           )
   g.add_step( place           )
-  # g.add_step( cts             )
-  # g.add_step( postcts_hold    )
-  # g.add_step( route           )
-  # g.add_step( postroute       )
-  # g.add_step( signoff         )
+  g.add_step( cts             )
+  g.add_step( postcts_hold    )
+  g.add_step( route           )
+  g.add_step( postroute       )
+  g.add_step( signoff         )
   # g.add_step( gdsmerge        )
   # g.add_step( pt_timing       )
   # g.add_step( gen_saif_rtl    )
@@ -153,8 +159,11 @@ def construct():
   rtl_sim_vcs.extend_inputs(['sky130_sram_1kbyte_1rw1r_32x256_8.v'])
 
   # for step in [iflow, init, power, place, cts, postcts_hold, route, postroute, signoff]:
-  for step in [iflow, init, place, power, cts]:
-    step.extend_inputs(['sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib', 'sky130_sram_1kbyte_1rw1r_32x256_8.lef', 'sky130_sram_4kbyte_1rw1r_32x1024_8.lef'])
+  for step in [iflow, init, place, power, cts, postcts_hold, route, postroute, signoff]:
+    step.extend_inputs(['sky130_sram_1kbyte_1rw1r_32x256_8_TT_1p8V_25C.lib', 'sky130_sram_1kbyte_1rw1r_32x256_8.lef', 
+    'sky130_sram_4kbyte_1rw1r_32x1024_8.lef', 'sky130_sram_4kbyte_1rw1r_32x1024_8_TT_1p8V_25C.lib',
+    'sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib', 'sky130_sram_2kbyte_1rw1r_32x512_8.lef'
+    ])
 
   init.extend_inputs(['floorplan.tcl', 'pin-assignments.tcl'])
   # dc.extend_inputs(['compile.tcl'])
@@ -183,11 +192,11 @@ def construct():
   g.connect_by_name( adk,             init            )
   g.connect_by_name( adk,             power           )
   g.connect_by_name( adk,             place           )
-  # g.connect_by_name( adk,             cts             )
-  # g.connect_by_name( adk,             postcts_hold    )
-  # g.connect_by_name( adk,             route           )
-  # g.connect_by_name( adk,             postroute       )
-  # g.connect_by_name( adk,             signoff         )
+  g.connect_by_name( adk,             cts             )
+  g.connect_by_name( adk,             postcts_hold    )
+  g.connect_by_name( adk,             route           )
+  g.connect_by_name( adk,             postroute       )
+  g.connect_by_name( adk,             signoff         )
   
   # g.connect_by_name( adk,             gdsmerge        )
   # g.connect_by_name( adk,             magic_drc       )
@@ -214,11 +223,11 @@ def construct():
   g.connect_by_name( sram,            init            )
   g.connect_by_name( sram,            power           )
   g.connect_by_name( sram,            place           )
-  # g.connect_by_name( sram,            cts             )
-  # g.connect_by_name( sram,            postcts_hold    )
-  # g.connect_by_name( sram,            route           )
-  # g.connect_by_name( sram,            postroute       )
-  # g.connect_by_name( sram,            signoff         )
+  g.connect_by_name( sram,            cts             )
+  g.connect_by_name( sram,            postcts_hold    )
+  g.connect_by_name( sram,            route           )
+  g.connect_by_name( sram,            postroute       )
+  g.connect_by_name( sram,            signoff         )
   
   # g.connect_by_name( sram,            gdsmerge        )
   # g.connect_by_name( sram,            pt_timing       )
@@ -241,28 +250,28 @@ def construct():
   g.connect_by_name( dc,              init            )
   g.connect_by_name( dc,              power           )
   g.connect_by_name( dc,              place           )
-  # g.connect_by_name( dc,              cts             )
+  g.connect_by_name( dc,              cts             )
   # g.connect_by_name( dc,              pt_power_rtl    ) # design.namemap
 
   g.connect_by_name( iflow,           init            )
   g.connect_by_name( iflow,           power           )
   g.connect_by_name( iflow,           place           )
-  # g.connect_by_name( iflow,           cts             )
-  # g.connect_by_name( iflow,           postcts_hold    )
-  # g.connect_by_name( iflow,           route           )
-  # g.connect_by_name( iflow,           postroute       )
-  # g.connect_by_name( iflow,           signoff         )
+  g.connect_by_name( iflow,           cts             )
+  g.connect_by_name( iflow,           postcts_hold    )
+  g.connect_by_name( iflow,           route           )
+  g.connect_by_name( iflow,           postroute       )
+  g.connect_by_name( iflow,           signoff         )
   
   # Core place and route flow
   g.connect_by_name( floorplan,       init            )
   g.connect_by_name( pin_placement,   init            )
   g.connect_by_name( init,            power           )
   g.connect_by_name( power,           place           )
-  # g.connect_by_name( place,           cts             )
-  # g.connect_by_name( cts,             postcts_hold    )
-  # g.connect_by_name( postcts_hold,    route           )
-  # g.connect_by_name( route,           postroute       )
-  # g.connect_by_name( postroute,       signoff         )
+  g.connect_by_name( place,           cts             )
+  g.connect_by_name( cts,             postcts_hold    )
+  g.connect_by_name( postcts_hold,    route           )
+  g.connect_by_name( route,           postroute       )
+  g.connect_by_name( postroute,       signoff         )
   # g.connect_by_name( signoff,         gdsmerge        )
   
   # DRC, LVS, timing signoff and power signoff
