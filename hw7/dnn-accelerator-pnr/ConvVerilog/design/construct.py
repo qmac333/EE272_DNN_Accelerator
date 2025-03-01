@@ -28,13 +28,14 @@ def construct():
   parameters = {
     'construct_path' : __file__,
     'design_name'    : 'conv',
-    'clock_period'   : 20.0,
+    'clock_period'   : 10.0,
     'adk'            : adk_name,
     'adk_view'       : adk_view,
     'topographical'  : True,
     'testbench_name' : 'conv_tb',
     'strip_path'     : 'conv_tb/conv_inst',
-    'saif_instance'  : 'conv_tb/conv_inst'
+    'saif_instance'  : 'conv_tb/conv_inst',
+    'setup_target_slack' : 0.2
   }
 
   #-----------------------------------------------------------------------

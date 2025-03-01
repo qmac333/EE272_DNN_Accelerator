@@ -54,18 +54,18 @@ setFlipping s
 
 # addHaloToBlock 10.88 10.88 10.88 10.88 sram
 
-placeInstance weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram 37 152 R0
-placeInstance weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram 750 152 R0
+placeInstance weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram 37 202 R0
+placeInstance weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram 770 202 R0
 placeInstance ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram 37 1635 MX
-placeInstance ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram 750 1635 MX
-placeInstance ofmap_buffer_inst/ram0/genblk1_width_macro_0__sram 1577 88 MY90
-placeInstance ofmap_buffer_inst/ram0/genblk1_width_macro_1__sram 1577 651 R90
-placeInstance ofmap_buffer_inst/ram0/genblk1_width_macro_2__sram 2075 88 R270
-placeInstance ofmap_buffer_inst/ram0/genblk1_width_macro_3__sram 2075 651 MX90
-placeInstance ofmap_buffer_inst/ram1/genblk1_width_macro_0__sram 1577 1413 MY90
-placeInstance ofmap_buffer_inst/ram1/genblk1_width_macro_1__sram 1577 2016 R90
-placeInstance ofmap_buffer_inst/ram1/genblk1_width_macro_2__sram 2075 1413 R270
-placeInstance ofmap_buffer_inst/ram1/genblk1_width_macro_3__sram 2075 2016 MX90
+placeInstance ifmap_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram 770 1635 MX
+placeInstance ofmap_buffer_inst/ram0/genblk1_width_macro_0__sram 1525.0000 70.0000 R0
+placeInstance ofmap_buffer_inst/ram0/genblk1_width_macro_1__sram 1525.0000 651.0000 R0
+placeInstance ofmap_buffer_inst/ram0/genblk1_width_macro_2__sram 2075.0000 90.0000 R0
+placeInstance ofmap_buffer_inst/ram0/genblk1_width_macro_3__sram 2075.0000 651.0000 R0
+placeInstance ofmap_buffer_inst/ram1/genblk1_width_macro_0__sram 1527.0000 1393.0000 R0
+placeInstance ofmap_buffer_inst/ram1/genblk1_width_macro_1__sram 1527.0000 2016.0000 R0
+placeInstance ofmap_buffer_inst/ram1/genblk1_width_macro_2__sram 2075.0000 1393.0000 R0
+placeInstance ofmap_buffer_inst/ram1/genblk1_width_macro_3__sram 2075.0000 2016.0000 R0
 
 addHaloToBlock 5 5 5 5 weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_0__sram
 addHaloToBlock 5 5 5 5 weight_double_buffer_inst/ram/genblk1_width_macro_0__depth_macro_1__sram 

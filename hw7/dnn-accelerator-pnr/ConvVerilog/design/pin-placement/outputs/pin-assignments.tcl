@@ -28,9 +28,7 @@ set pins_top {\
    rst_n \
    ifmap_weight_rdy \
    ifmap_weight_vld \
-   ofmap_rdy \
    clk \
-   ofmap_vld \
    config_rdy \
    config_vld \
 }
@@ -46,6 +44,8 @@ set pins_right {\
   {ofmap_data[13]} {ofmap_data[12]} {ofmap_data[11]} {ofmap_data[10]} {ofmap_data[9]}  {ofmap_data[8]} \
   {ofmap_data[7]}  {ofmap_data[6]}  {ofmap_data[5]}  {ofmap_data[4]}  {ofmap_data[3]}  {ofmap_data[2]} \
   {ofmap_data[1]}  {ofmap_data[0]}\
+  ofmap_vld \
+  ofmap_rdy \
   }
 
 # Pins on the bottom side from right (dout0[0]) to left (din0[31]). I list pins
