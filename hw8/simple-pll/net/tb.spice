@@ -1,0 +1,21 @@
+* Testbench for a ring oscillator
+
+* YOUR IMPLEMENTATION HERE
+
+* initialize ro_out to 0 to prevent the oscillator
+* from starting the equilibrium point
+.ic V(ro_out)=0
+
+* specify simulation duration, with "uic"
+* indicating "use initial conditions"
+.tran 10e-12 25e-09 0e-00 uic
+
+* ngspice control commands
+.control
+save all
+run
+write
+.endc
+
+* end of the testbench
+.end

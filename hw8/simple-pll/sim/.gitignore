@@ -1,0 +1,8 @@
+*.shm
+*.err
+*.key
+xcelium.d
+*.history
+*.csv
+.simvision
+.bpad

@@ -1,0 +1,3 @@
+* Include SKY130 libraries
+.lib "/farmshare/home/classes/ee/272/skywater-pdk.v2021/libraries/sky130_fd_pr/latest/models/sky130.lib.spice" tt
+
