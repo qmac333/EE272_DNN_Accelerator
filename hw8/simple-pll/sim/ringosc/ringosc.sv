@@ -16,10 +16,11 @@ initial begin
     // vdd = 1;
     A_vco = 3.4;
     b_vco = -3.9;
+    period = 1;
 end
 
 always @(vdd) begin
-    if (vdd != 0.000000) begin
+    $display("vdd changed");
         f_vco = A_vco * vdd + b_vco;
         // $display("f_vco = %f", f_vco);
         if (f_vco < 0.5) begin
@@ -31,18 +32,19 @@ always @(vdd) begin
         else begin
             f_vco = f_vco;
         end
+        $display("vdd = %f", vdd);
         $display("f_vco = %f", f_vco);
         period = (1/f_vco);
         $display("period = %f", period);
-
-    end
+        $display("-------------------------------------------------------");
 end
 
 always begin
+        // #(100ns);
         #((period/2) * 1e-9) out = ~out;
-        $display("period2 = %f", period);
-        $display("out = %d", out);
-        $display("vdd = %f", vdd);
+        // $display("period2 = %f", period);
+        // $display("out = %d", out);
+        // $display("vdd = %f", vdd);
 end
 
 

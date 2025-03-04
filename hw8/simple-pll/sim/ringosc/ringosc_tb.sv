@@ -30,12 +30,17 @@ module ringosc_tb;
         // setup
         $shm_open("ringosc.shm");
         $shm_probe("AS");
+        // #(1ns)vdd = 1;
 
         // measure frequency vs vdd and write results to a file
         fid = $fopen("ringosc.csv", "w");
+        // $display("Writing results to ringosc.csv...");
         $fwrite(fid, "VDD (V), Frequency (GHz)\n");
         for (vdd=0; vdd<1.801; vdd=vdd+10e-3) begin
+            $display ("vdd = %f", vdd);
             #(100ns);
+            // $display ("Test");
+            // $display ("out = %f", out);
             $fwrite(fid, "%0.10f,%0.10f\n", vdd, freq/1e9);
         end
         $fclose(fid);
