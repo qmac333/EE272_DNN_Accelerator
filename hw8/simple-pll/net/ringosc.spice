@@ -8,6 +8,7 @@ X2 out1 out2 vdd gnd inv1
 X3 out2 out3 vdd gnd inv1
 X4 out3 out4 vdd gnd inv1
 X5 out4 out5 vdd gnd inv1
-X6 out5 out vdd gnd inv1
+X6 out5 out6 vdd gnd inv1
+X7 out6 out vdd gnd inv1
 
 .ends
