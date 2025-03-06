@@ -3,5 +3,8 @@
 .subckt ringosc out vdd gnd
 
 * YOUR IMPLEMENTATION HERE
+X1 out3 out1 vdd gnd inv1
+X2 out1 out2 vdd gnd inv1
+X3 out2 out3 vdd gnd inv1
 
 .ends

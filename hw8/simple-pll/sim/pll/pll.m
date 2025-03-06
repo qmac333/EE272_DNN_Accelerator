@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % YOUR PARAMETERS HERE
 Kvco = 2*pi*3.4e9; % in rad/s/V, not Hz/V!
-Ki = 0;
-Kp = 0;
+Ki = 1500e1;
+Kp = 5e-3;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % fixed parameters
@@ -16,4 +16,5 @@ LF = Kvco * (1/Ndiv) * (1/s) * (Vdd/pi) * ...
      (1/(1+tau_filt*s)) * (Kp + (Ki/s));
 
 % plot the phase margin
+figure;
 margin(LF);

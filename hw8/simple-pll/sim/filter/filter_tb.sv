@@ -36,6 +36,7 @@ module filter_tb;
 
         // test 2: intermediate value change
         in=3.45;
+        
         #(45.6ns);
         in=-5.67;
         #(67.8ns);

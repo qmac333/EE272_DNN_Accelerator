@@ -40,11 +40,7 @@ always @(vdd) begin
 end
 
 always begin
-        // #(100ns);
-        #((period/2) * 1e-9) out = ~out;
-        // $display("period2 = %f", period);
-        // $display("out = %d", out);
-        // $display("vdd = %f", vdd);
+    #((period/2) * 1e-9) out = ~out;
 end
 
 

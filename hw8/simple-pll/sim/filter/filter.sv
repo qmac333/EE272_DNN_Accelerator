@@ -12,34 +12,31 @@ module filter #(
     real prev_in;
     real prev_in_reg;
     real prev_startingtime;
+    real initialout_reg;
     initial begin
         initialout = 0;
         initialtime = 0;
-        // prev_in = 0;
         prev_in_reg = 0;
         prev_startingtime = 0;
     end
 
     function real out();
         // FILL IN FUNCTION IMPLEMENTATION
-        $display("OUT GETTING CALLED");
-        $display("At t=%0.1f ns", $realtime * 1e9);
-        $display("initialtime = %f", initialtime*1e9);
-        $display("---------------------------------------");
         actualtime = $realtime - initialtime;
         out = $exp(-actualtime / tau) * initialout + (1 - $exp(-actualtime / tau)) * in;
-        initialout = out;
+        // initialout = out;
     endfunction
 
     always @(in) begin
         // UPDATE INTERNAL STATE VARIABLES AS NECESSARY
+        // $display("---------------------------------------");
+        // $display("IN CHANGED in = %f", in);
         prev_startingtime = initialtime;
         initialtime = $realtime;
         prev_in_reg = prev_in;
         prev_in = in;
-        $display("out value = %f", out());
-        // initialout = out();
-        initialout = $exp(-(initialtime-prev_startingtime) / tau) * initialout + (1 - $exp(-(initialtime-prev_startingtime) / tau)) * prev_in_reg;
+        initialout_reg = initialout;
+        initialout = $exp(-(initialtime-prev_startingtime) / tau) * initialout_reg + (1 - $exp(-(initialtime-prev_startingtime) / tau)) * prev_in_reg;
     end
 
 endmodule

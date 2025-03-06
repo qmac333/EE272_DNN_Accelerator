@@ -2,6 +2,13 @@
 
 * YOUR IMPLEMENTATION HERE
 
+Vringosc V0 0 1.5
+Vinv V1 0 1.8
+
+
+Xringosc ro_out V0 0 ringosc
+Xinverter ro_out out V1 0 inv1
+
 * initialize ro_out to 0 to prevent the oscillator
 * from starting the equilibrium point
 .ic V(ro_out)=0
