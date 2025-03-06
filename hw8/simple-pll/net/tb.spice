@@ -18,10 +18,22 @@ Xinverter ro_out out V1 0 inv1
 .tran 10e-12 25e-09 0e-00 uic
 
 * ngspice control commands
+* .control
+* save all
+* run
+* write
+* .endc
+
 .control
-save all
-run
-write
+let pwr=0.1
+while pwr < 1.81
+  set pwr = $&pwr
+  alter V0 dc pwr
+  save out
+  run
+  write sim_{$pwr}.raw out
+  let pwr = pwr + 0.1
+end
 .endc
 
 * end of the testbench
