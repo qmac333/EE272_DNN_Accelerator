@@ -2,6 +2,8 @@
 
 * YOUR IMPLEMENTATION HERE
 
+* .param V0_sthelse 
+
 Vringosc V0 0 1.5
 Vinv V1 0 1.8
 
@@ -28,13 +30,16 @@ Xinverter ro_out out V1 0 inv1
 let pwr=0.1
 while pwr < 1.81
   set pwr = $&pwr
-  alter V0 dc pwr
+  alter Vringosc dc pwr
   save out
   run
   write sim_{$pwr}.raw out
   let pwr = pwr + 0.1
+  meas tran t_osc TRIG v(out) val=0.9 rise=2 TARG v(out) val=0.9 rise=3
 end
 .endc
+
+* .meas tran t_osc TRIG v(out) val=0.9 rise=2 TARG v(out) val=0.9 rise=3
 
 * end of the testbench
 .end

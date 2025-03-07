@@ -1,0 +1,22 @@
+* Simple inverter
+
+.subckt inv1 A Y VPWR VGND
+
+X0 Y A VGND VGND sky130_fd_pr__nfet_01v8 w=650000u l=150000u
+X1 Y A VPWR VPWR sky130_fd_pr__pfet_01v8_hvt w=1e+06u l=150000u
+
+.ends
+* Ring oscillator circuit
+
+.subckt ringosc out vdd gnd
+
+* YOUR IMPLEMENTATION HERE
+X1 out out1 vdd gnd inv1
+X2 out1 out2 vdd gnd inv1
+X3 out2 out3 vdd gnd inv1
+X4 out3 out4 vdd gnd inv1
+X5 out4 out5 vdd gnd inv1
+X6 out5 out6 vdd gnd inv1
+X7 out6 out vdd gnd inv1
+
+.ends
